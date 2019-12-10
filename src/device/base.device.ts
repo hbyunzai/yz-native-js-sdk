@@ -1,5 +1,5 @@
 import { NavigationParam } from "../operation/navigation";
 
-export abstract class BasePlatForm {
+export abstract class BaseDevice {
   abstract openWindow(param: NavigationParam): void;
 }

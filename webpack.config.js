@@ -5,7 +5,8 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
 const banner = new webpack.BannerPlugin({
-  banner: `YzPlatForm v${pkg.version} - 
+  banner: `
+  YzPlatForm v${pkg.version}
   provide the native function call API of yunzai mobile platform for the third party.
   Copyright (c) 2019 河北云在, b3log.org
   `,
@@ -14,13 +15,13 @@ const banner = new webpack.BannerPlugin({
 module.exports = {
   watch: true,
   mode: "production",
-  entry: "./src/index.ts",
+  entry: "./src/umd.ts",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].bundle.js",
     chunkFilename: "[name].bundle.js",
     libraryTarget: "umd",
-    library: "ynjs",
+    library: "YzDevice",
     libraryExport: "default"
   },
   resolve: {
@@ -34,7 +35,7 @@ module.exports = {
           {
             loader: "html-loader",
             options: {
-              minimize: true
+              minimize: false
             }
           }
         ]
