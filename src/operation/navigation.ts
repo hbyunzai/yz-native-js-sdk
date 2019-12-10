@@ -1,4 +1,9 @@
-export interface NavigationParam {}
+export interface NavigationParam {
+  [key: string]: any;
+}
+export interface NavigationBarTitleParam {
+  [key: string]: any;
+}
 export interface AliPayNavigationParam extends NavigationParam {}
 export interface BrowserNavigationParam extends NavigationParam {}
 export interface WechatMicroNavigationParam extends NavigationParam {}
@@ -29,15 +34,36 @@ export interface YzNavigationParam extends NavigationParam {
    * 回调函数 函数调用成功后执行
    * @param msg
    */
-  success?: (msg:any) => void;
+  success?: (msg: any) => void;
   /**
    * 回调函数 函数调用成功后执行
    * @param msg
    */
-  fail?: (msg:any) => void;
+  fail?: (msg: any) => void;
   /**
    * 无论成功或失败，调用后都会执行
    * @param msg
    */
-  complete?: (msg:any) => void;
+  complete?: (msg: any) => void;
+}
+
+export interface YzNavigationBarTitleParam extends NavigationBarTitleParam {
+  /**
+   * 标题
+   */
+  title: string;
+  /**
+   * 成功后执行的函数
+   */
+  success?: (msg: any) => void;
+  /**
+   * 回调函数 函数调用成功后执行
+   * @param msg
+   */
+  fail?: (msg: any) => void;
+  /**
+   * 无论成功或失败，调用后都会执行
+   * @param msg
+   */
+  complete?: (msg: any) => void;
 }

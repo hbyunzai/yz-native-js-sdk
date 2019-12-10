@@ -6,10 +6,42 @@
     <script type="text/javascript" src="sdk.js"></script>
   </head>
   <body>
-    <ul></ul>
+    <ul>
+      <li><button onclick="openWindow()">跳页面</button></li>
+      <li><button onclick="setNavigationBarTitle()">设置标题</button></li>
+    </ul>
   </body>
   <script>
     const device = new YzDevice();
-    device.openWindow({ type: "url", url: "http://www.baidu.com" });
+    function openWindow() {
+      device.openWindow({
+        type: "url",
+        url: "http://www.baidu.com",
+        shareFlag: true,
+        success: function(msg) {
+          alert(JSON.stringify(msg));
+        },
+        fail: function(msg) {
+          alert(JSON.stringify(msg));
+        },
+        complete: function(msg) {
+          alert(JSON.stringify(msg));
+        }
+      });
+    }
+    function setNavigationBarTitle() {
+      device.setNavigationBarTitle({
+        title: "哈哈哈哈哈",
+        success: function(msg) {
+          alert(JSON.stringify(msg));
+        },
+        fail: function(msg) {
+          alert(JSON.stringify(msg));
+        },
+        complete: function(msg) {
+          alert(JSON.stringify(msg));
+        }
+      });
+    }
   </script>
 </html>
