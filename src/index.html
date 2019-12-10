@@ -9,6 +9,9 @@
     <ul>
       <li><button onclick="openWindow()">跳页面</button></li>
       <li><button onclick="setNavigationBarTitle()">设置标题</button></li>
+      <li>
+        <button onclick="setNavigationBarRightItems()">设置按钮们</button>
+      </li>
     </ul>
   </body>
   <script>
@@ -40,6 +43,47 @@
         },
         complete: function(msg) {
           alert(JSON.stringify(msg));
+        }
+      });
+    }
+    function setNavigationBarRightItems() {
+      device.setNavigationBarRightItems({
+        showMenu: true,
+        shareFlag: false,
+        items: [
+          {
+            type: "icon", //显示类型：图标，文字
+            title: "",
+            icon: "edit", // 目前支持图标按钮：add添加, edit编辑, delete删除, search搜索, done完成, send发送
+            clickId: "edit" //点击Id
+          },
+          {
+            type: "icon", //显示类型：图标，文字
+            title: "",
+            icon: "delete", // 目前支持图标按钮：add添加, edit编辑, delete删除, search搜索, done完成, send发送
+            clickId: "123123" //点击Id
+          },
+          {
+            type: "icon", //显示类型：图标，文字
+            title: "",
+            icon: "search", // 目前支持图标按钮：add添加, edit编辑, delete删除, search搜索, done完成, send发送
+            clickId: "hahah" //点击Id
+          },
+          {
+            type: "icon", //显示类型：图标，文字
+            title: "",
+            icon: "done", // 目前支持图标按钮：add添加, edit编辑, delete删除, search搜索, done完成, send发送
+            clickId: "hahah" //点击Id
+          },
+          {
+            type: "icon", //显示类型：图标，文字
+            title: "",
+            icon: "send", // 目前支持图标按钮：add添加, edit编辑, delete删除, search搜索, done完成, send发送
+            clickId: "hahah" //点击Id
+          }
+        ],
+        onClick: function(clickId) {
+          alert(clickId + "按钮1被点击了");
         }
       });
     }

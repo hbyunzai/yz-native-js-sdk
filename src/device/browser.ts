@@ -1,10 +1,12 @@
 import { BaseDevice } from "./base.device";
 import {
-  BrowserNavigationParam,
-  NavigationBarTitleParam
+  BrowserNavigation,
+  NavigationBarTitle,
+  NavigationBarRightItems
 } from "../operation/navigation";
 
 export class Browser extends BaseDevice {
-  setNavigationBarTitle(param: NavigationBarTitleParam): void {}
-  openWindow(param: BrowserNavigationParam): void {}
+  setNavigationBarRightItems(param: NavigationBarRightItems): void {}
+  setNavigationBarTitle(param: NavigationBarTitle): void {}
+  openWindow(param: BrowserNavigation): void {}
 }

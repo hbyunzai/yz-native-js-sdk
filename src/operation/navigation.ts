@@ -1,14 +1,16 @@
-export interface NavigationParam {
+export interface Navigation {
   [key: string]: any;
 }
-export interface NavigationBarTitleParam {
+export interface NavigationBarTitle {
   [key: string]: any;
 }
-export interface AliPayNavigationParam extends NavigationParam {}
-export interface BrowserNavigationParam extends NavigationParam {}
-export interface WechatMicroNavigationParam extends NavigationParam {}
-export interface WechatOfficeNavigationParam extends NavigationParam {}
-export interface YzNavigationParam extends NavigationParam {
+
+export interface NavigationBarRightItems {
+  [key: string]: any;
+}
+export interface NavigationBarRightItem {}
+
+export interface YzNavigation extends Navigation {
   /**
    * native: 跳转到手机APP页面
    * url: 浏览器跳转类型
@@ -47,7 +49,7 @@ export interface YzNavigationParam extends NavigationParam {
   complete?: (msg: any) => void;
 }
 
-export interface YzNavigationBarTitleParam extends NavigationBarTitleParam {
+export interface YzNavigationBarTitle extends NavigationBarTitle {
   /**
    * 标题
    */
@@ -67,3 +69,48 @@ export interface YzNavigationBarTitleParam extends NavigationBarTitleParam {
    */
   complete?: (msg: any) => void;
 }
+
+export interface YzNavigationBarRightItem extends NavigationBarRightItem {
+  type?: "icon" | "text";
+  title?: string;
+  icon?: "add" | "edit" | "delete" | "search" | "done" | "send";
+  clickId?: string;
+}
+
+export interface YzNavigationBarRightItems extends NavigationBarRightItems {
+  /**
+   * 三个小菜单(刷新,分享)
+   */
+  showMenu?: boolean;
+  /**
+   * 是否可分享
+   */
+  shareFlag?: boolean;
+  /**
+   * 菜单列表
+   */
+  items?: Array<YzNavigationBarRightItem>;
+  /**
+   * 点击后的回调函数
+   */
+  onClick?: (id: string) => void;
+  /**
+   * 成功后执行的函数
+   */
+  success?: (msg: any) => void;
+  /**
+   * 回调函数 函数调用成功后执行
+   * @param msg
+   */
+  fail?: (msg: any) => void;
+  /**
+   * 无论成功或失败，调用后都会执行
+   * @param msg
+   */
+  complete?: (msg: any) => void;
+}
+
+export interface AliPayNavigation extends Navigation {}
+export interface BrowserNavigation extends Navigation {}
+export interface WechatMicroNavigation extends Navigation {}
+export interface WechatOfficeNavigation extends Navigation {}

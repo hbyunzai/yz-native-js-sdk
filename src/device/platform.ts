@@ -1,7 +1,8 @@
 import { BaseDevice } from "./base.device";
 import {
-  NavigationParam,
-  NavigationBarTitleParam
+  Navigation,
+  NavigationBarTitle,
+  NavigationBarRightItems
 } from "../operation/navigation";
 import { YzMobile } from "./yzmobile";
 
@@ -14,11 +15,14 @@ export class PlatForm extends BaseDevice {
   distribute(): BaseDevice {
     return new YzMobile();
   }
-  openWindow(param: NavigationParam): void {
+  openWindow(param: Navigation): void {
     this.proxy.openWindow(param);
   }
 
-  setNavigationBarTitle(param: NavigationBarTitleParam): void {
+  setNavigationBarTitle(param: NavigationBarTitle): void {
     this.proxy.setNavigationBarTitle(param);
+  }
+  setNavigationBarRightItems(param: NavigationBarRightItems): void {
+    this.proxy.setNavigationBarRightItems(param);
   }
 }

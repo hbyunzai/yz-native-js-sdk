@@ -1,13 +1,21 @@
 import { BaseDevice } from "./base.device";
-import { YzNavigationParam, YzNavigationBarTitleParam } from "../operation/navigation";
+import {
+  YzNavigation,
+  YzNavigationBarTitle,
+  NavigationBarRightItems,
+  YzNavigationBarRightItems
+} from "../operation/navigation";
 
 declare let yz: any;
 
 export class YzMobile extends BaseDevice {
-  setNavigationBarTitle(param:YzNavigationBarTitleParam): void {
+  setNavigationBarRightItems(param: YzNavigationBarRightItems): void {
+    yz.setNavigationBarRightItems(param);
+  }
+  setNavigationBarTitle(param: YzNavigationBarTitle): void {
     yz.setNavigationBarTitle(param);
   }
-  openWindow(param: YzNavigationParam): void {
+  openWindow(param: YzNavigation): void {
     yz.navigationOpenWindow(param);
   }
 }

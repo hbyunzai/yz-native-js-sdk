@@ -1,10 +1,12 @@
 import { BaseDevice } from "./base.device";
 import {
-  AliPayNavigationParam,
-  NavigationBarTitleParam
+  AliPayNavigation,
+  NavigationBarTitle,
+  NavigationBarRightItems
 } from "../operation/navigation";
 
 export class Alipay extends BaseDevice {
-  setNavigationBarTitle(param: NavigationBarTitleParam): void {}
-  openWindow(param: AliPayNavigationParam): void {}
+  setNavigationBarRightItems(param: NavigationBarRightItems): void {}
+  setNavigationBarTitle(param: NavigationBarTitle): void {}
+  openWindow(param: AliPayNavigation): void {}
 }
