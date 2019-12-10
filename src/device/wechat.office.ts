@@ -1,12 +1,21 @@
-import { BaseDevice } from "./base.device";
+import {BaseDevice} from "./base.device";
 import {
-  WechatOfficeNavigation,
-  NavigationBarTitle,
-  NavigationBarRightItems
+    WechatOfficeNavigation,
+    NavigationBarTitle,
+    NavigationBarRightItems
 } from "../operation/navigation";
+import {WebCanShare} from "../operation/share";
 
 export class WechatOffice extends BaseDevice {
-  setNavigationBarRightItems(param: NavigationBarRightItems): void {}
-  setNavigationBarTitle(param: NavigationBarTitle): void {}
-  openWindow(param: WechatOfficeNavigation): void {}
+    setNavigationBarRightItems(param: NavigationBarRightItems): void {
+    }
+
+    setNavigationBarTitle(param: NavigationBarTitle): void {
+    }
+
+    openWindow(param: WechatOfficeNavigation): void {
+    }
+
+    setWebCanShare(param: WebCanShare): void {
+    }
 }

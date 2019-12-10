@@ -1,91 +1,115 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8"/>
     <title>NativePage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
     <script type="text/javascript" src="sdk.js"></script>
-  </head>
-  <body>
-    <ul>
-      <li><button onclick="openWindow()">跳页面</button></li>
-      <li><button onclick="setNavigationBarTitle()">设置标题</button></li>
-      <li>
+</head>
+<body>
+<ol>
+    <li>
+        <button onclick="openWindow()">跳页面</button>
+    </li>
+    <li>
+        <button onclick="setNavigationBarTitle()">设置标题</button>
+    </li>
+    <li>
         <button onclick="setNavigationBarRightItems()">设置按钮们</button>
-      </li>
-    </ul>
-  </body>
-  <script>
+    </li>
+    <li>
+        <button onclick="webShare()">设置分享</button>
+    </li>
+    <li>
+        <button onclick="webCantShare()">设置不能分享</button>
+    </li>
+
+</ol>
+</body>
+<script>
     const device = new YzDevice();
+
+    function webCantShare() {
+        device.setWebCanshare({shareFlag: false});
+    }
+
+    function webShare() {
+        device.setWebCanshare({shareFlag: true});
+    }
+
     function openWindow() {
-      device.openWindow({
-        type: "url",
-        url: "http://www.baidu.com",
-        shareFlag: true,
-        success: function(msg) {
-          alert(JSON.stringify(msg));
-        },
-        fail: function(msg) {
-          alert(JSON.stringify(msg));
-        },
-        complete: function(msg) {
-          alert(JSON.stringify(msg));
-        }
-      });
+        device.openWindow({
+            type: "url",
+            url: "http://www.baidu.com",
+            shareFlag: true,
+            success: function (msg) {
+                alert(JSON.stringify(msg));
+            },
+            fail: function (msg) {
+                alert(JSON.stringify(msg));
+            },
+            complete: function (msg) {
+                alert(JSON.stringify(msg));
+            }
+        });
     }
+
     function setNavigationBarTitle() {
-      device.setNavigationBarTitle({
-        title: "哈哈哈哈哈",
-        success: function(msg) {
-          alert(JSON.stringify(msg));
-        },
-        fail: function(msg) {
-          alert(JSON.stringify(msg));
-        },
-        complete: function(msg) {
-          alert(JSON.stringify(msg));
-        }
-      });
+        device.setNavigationBarTitle({
+            title: "哈哈哈哈哈",
+            success: function (msg) {
+                alert(JSON.stringify(msg));
+            },
+            fail: function (msg) {
+                alert(JSON.stringify(msg));
+            },
+            complete: function (msg) {
+                alert(JSON.stringify(msg));
+            }
+        });
     }
+
     function setNavigationBarRightItems() {
-      device.setNavigationBarRightItems({
-        showMenu: true,
-        shareFlag: false,
-        items: [
-          {
-            type: "icon", //显示类型：图标，文字
-            title: "",
-            icon: "edit", // 目前支持图标按钮：add添加, edit编辑, delete删除, search搜索, done完成, send发送
-            clickId: "edit" //点击Id
-          },
-          {
-            type: "icon", //显示类型：图标，文字
-            title: "",
-            icon: "delete", // 目前支持图标按钮：add添加, edit编辑, delete删除, search搜索, done完成, send发送
-            clickId: "123123" //点击Id
-          },
-          {
-            type: "icon", //显示类型：图标，文字
-            title: "",
-            icon: "search", // 目前支持图标按钮：add添加, edit编辑, delete删除, search搜索, done完成, send发送
-            clickId: "hahah" //点击Id
-          },
-          {
-            type: "icon", //显示类型：图标，文字
-            title: "",
-            icon: "done", // 目前支持图标按钮：add添加, edit编辑, delete删除, search搜索, done完成, send发送
-            clickId: "hahah" //点击Id
-          },
-          {
-            type: "icon", //显示类型：图标，文字
-            title: "",
-            icon: "send", // 目前支持图标按钮：add添加, edit编辑, delete删除, search搜索, done完成, send发送
-            clickId: "hahah" //点击Id
-          }
-        ],
-        onClick: function(clickId) {
-          alert(clickId + "按钮1被点击了");
-        }
-      });
+        device.setNavigationBarRightItems({
+            showMenu: true,
+            shareFlag: true,
+            items: [
+                {
+                    type: "icon", //显示类型：图标，文字
+                    title: "",
+                    icon: "edit", // 目前支持图标按钮：add添加, edit编辑, delete删除, search搜索, done完成, send发送
+                    clickId: "edit" //点击Id
+                },
+                {
+                    type: "icon", //显示类型：图标，文字
+                    title: "",
+                    icon: "delete", // 目前支持图标按钮：add添加, edit编辑, delete删除, search搜索, done完成, send发送
+                    clickId: "123123" //点击Id
+                },
+                {
+                    type: "icon", //显示类型：图标，文字
+                    title: "",
+                    icon: "search", // 目前支持图标按钮：add添加, edit编辑, delete删除, search搜索, done完成, send发送
+                    clickId: "hahah" //点击Id
+                },
+                {
+                    type: "icon", //显示类型：图标，文字
+                    title: "",
+                    icon: "done", // 目前支持图标按钮：add添加, edit编辑, delete删除, search搜索, done完成, send发送
+                    clickId: "hahah" //点击Id
+                },
+                {
+                    type: "icon", //显示类型：图标，文字
+                    title: "",
+                    icon: "send", // 目前支持图标按钮：add添加, edit编辑, delete删除, search搜索, done完成, send发送
+                    clickId: "hahah" //点击Id
+                }
+            ],
+            onClick: function (clickId) {
+                alert(clickId + "按钮1被点击了");
+            }
+        });
     }
-  </script>
+</script>
 </html>
