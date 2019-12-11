@@ -9,7 +9,8 @@ import {YzMobile} from "./yzmobile";
 import {Token, TokenParam} from "../operation/token";
 import {User, UserParam} from "../operation/user";
 import {MediaCamera, MediaCameraParam} from "../operation/media.camera";
-import {QRcode, QRcodeParam} from "../operation/media.qrcode";
+import {QRcode, QRcodeParam} from '../operation/media.qrcode';
+import {ContactUser, ContactUserParam} from "../operation/contact.users";
 
 export class PlatForm extends BaseDevice {
     private proxy: BaseDevice;
@@ -47,7 +48,7 @@ export class PlatForm extends BaseDevice {
         return this.proxy.getTokenSync();
     }
 
-    getUserAsync(param?:UserParam): Promise<User> {
+    getUserAsync(param?: UserParam): Promise<User> {
         return this.proxy.getUserAsync(param);
     }
 
@@ -61,6 +62,10 @@ export class PlatForm extends BaseDevice {
 
     scanQrCodeAsync(param?: QRcodeParam): Promise<QRcode> {
         return this.proxy.scanQrCodeAsync(param);
+    }
+
+    chooseContacts(param?: ContactUserParam): Promise<Array<ContactUser>> {
+        return this.proxy.chooseContacts(param);
     }
 
 

@@ -1,14 +1,10 @@
-import {
-    Navigation,
-    NavigationBarTitle,
-    NavigationBarRightItems
-} from "../operation/navigation";
-
+import {Navigation, NavigationBarTitle, NavigationBarRightItems} from "../operation/navigation";
 import {WebCanShare} from "../operation/share";
 import {Token, TokenParam} from "../operation/token";
 import {User, UserParam} from "../operation/user";
 import {MediaCamera, MediaCameraParam} from "../operation/media.camera";
 import {QRcode, QRcodeParam} from "../operation/media.qrcode";
+import {ContactUser, ContactUserParam} from "../operation/contact.users";
 
 export abstract class BaseDevice {
     abstract openWindow(param?: Navigation): void;
@@ -30,4 +26,6 @@ export abstract class BaseDevice {
     abstract openMediaCameraAsync(param?: MediaCameraParam): Promise<MediaCamera>;
 
     abstract scanQrCodeAsync(param?: QRcodeParam): Promise<QRcode>;
+
+    abstract chooseContacts(param?: ContactUserParam): Promise<Array<ContactUser>>
 }

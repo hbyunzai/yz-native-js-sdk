@@ -54,6 +54,10 @@
         <button onclick="scanQrCodeAsync()">扫个二维码</button>
     </li>
 
+    <li>
+        <div id="userList"></div>
+        <button onclick="chooseUser()">调用联系人</button>
+    </li>
 
 
 </ol>
@@ -61,8 +65,14 @@
 <script>
     const device = new YzDevice();
 
-    function scanQrCodeAsync(){
-        device.scanQrCodeAsync().then((code)=>{
+    function chooseUser() {
+        device.chooseContacts({count: 1}).then((users) => {
+            document.getElementById("userList").innerHTML = JSON.stringify(users);
+        })
+    }
+
+    function scanQrCodeAsync() {
+        device.scanQrCodeAsync().then((code) => {
             document.getElementById("qrcode").innerHTML = code;
         });
     }

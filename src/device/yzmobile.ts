@@ -8,7 +8,8 @@ import {YzWebCanShare} from "../operation/share";
 import {YzToken, YzTokenAsyncParam} from "../operation/token";
 import {YzUser, YzUserParam} from "../operation/user";
 import {YzMediaCamera, YzMediaCameraParam} from "../operation/media.camera";
-import {QRcode, QRcodeParam, YzQrcode, YzQrcodeParam} from "../operation/media.qrcode";
+import {QRcode, YzQrcode, YzQrcodeParam} from "../operation/media.qrcode";
+import {YzContactUser, YzContactUserParam} from "../operation/contact.users";
 
 declare let yz: any;
 
@@ -133,6 +134,35 @@ export class YzMobile extends BaseDevice {
                     }
                 }
             })
+        });
+    }
+
+    chooseContacts(param?: YzContactUserParam): Promise<Array<YzContactUser>> {
+        return new Promise<Array<YzContactUser>>((resolve, reject) => {
+            let temp = {
+                success: (contacts: Array<YzContactUser>) => {
+                    if (param && param.success) {
+                        param.success(contacts);
+                    }
+                    resolve(contacts);
+                },
+                fail: (error: any) => {
+                    if (param && param.fail) {
+                        param.fail(error);
+                    }
+                    reject(false);
+                },
+                complete: (msg: any) => {
+                    if (param && param.complete) {
+                        param.complete(msg)
+                    }
+                    reject(false);
+                }
+            }
+            if (param && param.count) {
+                temp = Object.defineProperties(temp, {count: {value: param.count}});
+            }
+            yz.chooseContacts(temp)
         });
     }
 }
