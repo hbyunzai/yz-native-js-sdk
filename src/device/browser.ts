@@ -21,6 +21,7 @@ import {FaceCollection, FaceCollectionParam} from "../operation/face.collection"
 import {FaceCompare, FaceCompareParam} from "../operation/face.compare";
 import {PayWechat, PayWechatParam} from "../operation/pay.wechat";
 import {PayAlipay, PayAlipayParam} from "../operation/pay.alipay";
+import {ReadWithNumber, ReadWithNumberParam} from "../operation/read.with.number";
 
 export class Browser extends BaseDevice {
     setNavigationBarRightItems(param?: NavigationBarRightItems): void {
@@ -100,6 +101,10 @@ export class Browser extends BaseDevice {
     }
 
     aliPayAsync(param?: PayAlipayParam): Promise<PayAlipay> {
+        return undefined;
+    }
+
+    openReadWithTimer(param?: ReadWithNumberParam): Promise<ReadWithNumber> {
         return undefined;
     }
 

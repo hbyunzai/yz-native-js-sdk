@@ -15,6 +15,7 @@ import {FaceCollection, FaceCollectionParam} from "../operation/face.collection"
 import {FaceCompare, FaceCompareParam} from "../operation/face.compare";
 import {PayWechat, PayWechatParam} from "../operation/pay.wechat";
 import {PayAlipay, PayAlipayParam} from "../operation/pay.alipay";
+import {ReadWithNumber, ReadWithNumberParam} from "../operation/read.with.number";
 
 export abstract class BaseDevice {
     /**
@@ -142,4 +143,10 @@ export abstract class BaseDevice {
      * @param param
      */
     abstract aliPayAsync(param?: PayAlipayParam): Promise<PayAlipay>;
+
+    /**
+     * 计时阅读
+     * @param param
+     */
+    abstract openReadWithTimer(param?: ReadWithNumberParam): Promise<ReadWithNumber>;
 }

@@ -16,6 +16,7 @@ import {YzFaceCollection, YzFaceCollectionParam} from "../operation/face.collect
 import {YzFaceCompare, YzFaceCompareParam} from "../operation/face.compare";
 import {YzPayWechat, YzPayWechatParam} from "../operation/pay.wechat";
 import {YzAlipay, YzAlipayParam} from "../operation/pay.alipay";
+import {YzReadWithNumber, YzReadWithNumberParam} from "../operation/read.with.number";
 
 declare let yz: any;
 
@@ -444,5 +445,33 @@ export class YzMobile extends BaseDevice {
         })
     }
 
-
+    openReadWithTimer(param?: YzReadWithNumberParam): Promise<YzReadWithNumber> {
+        return new Promise<YzReadWithNumber>((resolve, reject) => {
+            yz.openReadWithTimer({
+                url: param.url,
+                openType: param.openType,
+                title: param.title,
+                id: param.id,
+                type: param.type,
+                success: function (data: YzReadWithNumber) {
+                    if (param && param.success) {
+                        param.success(data);
+                    }
+                    resolve(data);
+                },
+                fail: (error: any) => {
+                    if (param && param.fail) {
+                        param.fail(error)
+                    }
+                    reject(false);
+                },
+                complete: (msg: any) => {
+                    if (param && param.complete) {
+                        param.complete(msg);
+                    }
+                    reject(false);
+                }
+            })
+        });
+    }
 }

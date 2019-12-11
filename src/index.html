@@ -108,11 +108,29 @@
         <button onclick="aliPayAsync()">支付宝支付</button>
     </li>
 
+    <li>
+        <div id="readnumber"></div>
+        <button onclick="openReadWithTimer()">计时阅读</button>
+    </li>
+
 
 </ol>
 </body>
 <script>
     const device = new YzDevice();
+
+    function openReadWithTimer() {
+        device.openReadWithTimer({
+            url: 'http://www.baidu.com',
+            openType: "web",
+            title: '百度',
+            id: 'baidu',
+            type: 'web'
+        }).then((info) => {
+            alert(info);
+            document.getElementById('readnumber').innerHTML = JSON.stringify(info);
+        })
+    }
 
     function aliPayAsync() {
         device.aliPayAsync().then((info) => {

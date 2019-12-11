@@ -20,6 +20,7 @@ import {FaceCollection, FaceCollectionParam} from "../operation/face.collection"
 import {FaceCompare, FaceCompareParam} from "../operation/face.compare";
 import {PayWechat, PayWechatParam} from "../operation/pay.wechat";
 import {PayAlipay, PayAlipayParam} from "../operation/pay.alipay";
+import {ReadWithNumber, ReadWithNumberParam} from "../operation/read.with.number";
 
 export class WechatOffice extends BaseDevice {
     setNavigationBarRightItems(param?: NavigationBarRightItems): void {
@@ -42,7 +43,7 @@ export class WechatOffice extends BaseDevice {
         return undefined;
     }
 
-    getUserAsync(param?:UserParam): Promise<User> {
+    getUserAsync(param?: UserParam): Promise<User> {
         return undefined;
     }
 
@@ -102,6 +103,8 @@ export class WechatOffice extends BaseDevice {
         return undefined;
     }
 
-
+    openReadWithTimer(param?: ReadWithNumberParam): Promise<ReadWithNumber> {
+        return undefined;
+    }
 
 }
