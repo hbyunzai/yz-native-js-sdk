@@ -11,6 +11,8 @@ import {MediaLocation, MediaLocationParam} from "../operation/media.location";
 import {MediaWifiLocation, MediaWifiLocationParam} from "../operation/media.wifi.location";
 import {MediaWifiInfo, MediaWifiInfoParam} from "../operation/media.wifi.info";
 import {MediaWifiMac, MediaWifiMacParam} from "../operation/media.wifi.mac";
+import {FaceCollection, FaceCollectionParam} from "../operation/face.collection";
+import {FaceCompare, FaceCompareParam} from "../operation/face.compare";
 
 export abstract class BaseDevice {
     /**
@@ -111,7 +113,19 @@ export abstract class BaseDevice {
 
     /**
      * 获取已连接Wifi的Mac地址
-     * @param param
+     * @param param 参数
      */
     abstract getWifiMacAsync(param?: MediaWifiMacParam): Promise<MediaWifiMac>;
+
+    /**
+     * 人脸采集
+     * @param param 参数
+     */
+    abstract faceCollectionAsync(param?: FaceCollectionParam): Promise<FaceCollection>;
+
+    /**
+     * 人脸对比
+     * @param param 参数
+     */
+    abstract faceCompareAsync(param?: FaceCompareParam): Promise<FaceCompare>;
 }

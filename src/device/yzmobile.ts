@@ -12,6 +12,8 @@ import {YzMediaLocation, YzMediaLocationParam} from "../operation/media.location
 import {YzMediaWifiLocation, YzMediaWifiLocationParam} from "../operation/media.wifi.location";
 import {YzMediaWifiInfo, YzMediaWifiInfoParam} from "../operation/media.wifi.info";
 import {YzMediaWifiMac, YzMediaWifiMacParam} from "../operation/media.wifi.mac";
+import {YzFaceCollection, YzFaceCollectionParam} from "../operation/face.collection";
+import {YzFaceCompare, YzFaceCompareParam} from "../operation/face.compare";
 
 declare let yz: any;
 
@@ -324,6 +326,59 @@ export class YzMobile extends BaseDevice {
                     reject(false);
                 }
             });
+        });
+    }
+
+    faceCollectionAsync(param?: YzFaceCollectionParam): Promise<YzFaceCollection> {
+        return new Promise<YzFaceCollection>((resolve, reject) => {
+            yz.faceLiveCollection({
+                live: param.live,
+                userId: param.userId,
+                success: function (data: YzFaceCollection) {
+                    if (param && param.success) {
+                        param.success(data);
+                    }
+                    resolve(data);
+                },
+                fail: (error: any) => {
+                    if (param && param.fail) {
+                        param.fail(error)
+                    }
+                    reject(false);
+                },
+                complete: (msg: any) => {
+                    if (param && param.complete) {
+                        param.complete(msg);
+                    }
+                    reject(false);
+                }
+            })
+        });
+    }
+
+    faceCompareAsync(param?: YzFaceCompareParam): Promise<YzFaceCompare> {
+        return new Promise<YzFaceCompare>((resolve, reject) => {
+            yz.faceCompare({
+                userId: param.userId,
+                success: function (data: YzFaceCompare) {
+                    if (param && param.success) {
+                        param.success(data);
+                    }
+                    resolve(data);
+                },
+                fail: (error: any) => {
+                    if (param && param.fail) {
+                        param.fail(error)
+                    }
+                    reject(false);
+                },
+                complete: (msg: any) => {
+                    if (param && param.complete) {
+                        param.complete(msg);
+                    }
+                    reject(false);
+                }
+            })
         });
     }
 

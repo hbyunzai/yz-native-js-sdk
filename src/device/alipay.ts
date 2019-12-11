@@ -17,6 +17,8 @@ import {MediaLocation, MediaLocationParam} from "../operation/media.location";
 import {MediaWifiLocation, MediaWifiLocationParam} from "../operation/media.wifi.location";
 import {MediaWifiInfo, MediaWifiInfoParam} from "../operation/media.wifi.info";
 import {MediaWifiMac, MediaWifiMacParam} from "../operation/media.wifi.mac";
+import {FaceCollection, FaceCollectionParam} from "../operation/face.collection";
+import {FaceCompare, FaceCompareParam} from "../operation/face.compare";
 
 export class Alipay extends BaseDevice {
     setNavigationBarRightItems(param?: NavigationBarRightItems): void {
@@ -80,6 +82,14 @@ export class Alipay extends BaseDevice {
     }
 
     getWifiMacAsync(param?: MediaWifiMacParam): Promise<MediaWifiMac> {
+        return undefined;
+    }
+
+    faceCollectionAsync(param?: FaceCollectionParam): Promise<FaceCollection> {
+        return undefined;
+    }
+
+    faceCompareAsync(param?: FaceCompareParam): Promise<FaceCompare> {
         return undefined;
     }
 

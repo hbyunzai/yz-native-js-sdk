@@ -88,11 +88,36 @@
         <div id="wifimac"></div>
         <button onclick="getWifiMacAsync()">获取WIFIMAC地址</button>
     </li>
+    <li>
+        <div id="caiji"></div>
+        <button onclick="faceLiveCollection()">人脸采集</button>
+    </li>
 
+    <li>
+        <div id="duibi"></div>
+        <button onclick="faceCompareAsync()">人脸对比</button>
+    </li>
 </ol>
 </body>
 <script>
     const device = new YzDevice();
+
+    function faceCompareAsync() {
+        device.getUserAsync().then((user) => {
+            device.faceCompareAsync({live: true, userId: user.userId}).then((data) => {
+                document.getElementById("duibi").innerHTML = JSON.stringify(data);
+            })
+        });
+
+    }
+
+    function faceLiveCollection() {
+        device.getUserAsync().then((user) => {
+            device.faceCollectionAsync({live: true, userId: user.userId}).then((data) => {
+                document.getElementById("caiji").innerHTML = JSON.stringify(data);
+            })
+        });
+    }
 
     function getWifiMacAsync() {
         device.getWifiMacAsync().then((mac) => {

@@ -17,6 +17,8 @@ import {MediaLocation, MediaLocationParam} from "../operation/media.location";
 import {MediaWifiLocation, MediaWifiLocationParam} from "../operation/media.wifi.location";
 import {MediaWifiInfo, MediaWifiInfoParam} from "../operation/media.wifi.info";
 import {MediaWifiMac, MediaWifiMacParam} from "../operation/media.wifi.mac";
+import {FaceCollection, FaceCollectionParam} from "../operation/face.collection";
+import {FaceCompare, FaceCompareParam} from "../operation/face.compare";
 
 export class PlatForm extends BaseDevice {
     private proxy: BaseDevice;
@@ -96,6 +98,14 @@ export class PlatForm extends BaseDevice {
 
     getWifiMacAsync(param?: MediaWifiMacParam): Promise<MediaWifiMac> {
         return this.proxy.getWifiMacAsync(param);
+    }
+
+    faceCollectionAsync(param?: FaceCollectionParam): Promise<FaceCollection> {
+        return this.proxy.faceCollectionAsync(param);
+    }
+
+    faceCompareAsync(param?: FaceCompareParam): Promise<FaceCompare> {
+        return this.proxy.faceCompareAsync(param);
     }
 
 

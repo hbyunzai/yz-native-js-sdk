@@ -7,7 +7,7 @@ export interface UserParam {
 }
 
 export interface YzUserParam extends UserParam {
-    success?: (data: User) => void;
+    success?: (data: YzUser) => void;
     fail?: (msg: any) => void;
     complete?: (msg: any) => void;
 }
