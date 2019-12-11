@@ -15,6 +15,7 @@ import {ContactUserInfo, ContactUserInfoParam} from "../operation/contact.userin
 import {MediaPhoto, MediaPhotoParam} from "../operation/media.photo";
 import {MediaLocation, MediaLocationParam} from "../operation/media.location";
 import {MediaWifiLocation, MediaWifiLocationParam} from "../operation/media.wifi.location";
+import {MediaWifiInfo, MediaWifiInfoParam} from "../operation/media.wifi.info";
 
 export class PlatForm extends BaseDevice {
     private proxy: BaseDevice;
@@ -86,6 +87,10 @@ export class PlatForm extends BaseDevice {
 
     userLocationWifiAsync(param?: MediaWifiLocationParam): Promise<MediaWifiLocation> {
         return this.proxy.userLocationWifiAsync(param);
+    }
+
+    getWifiInfoAsync(param?: MediaWifiInfoParam): Promise<MediaWifiInfo> {
+        return this.proxy.getWifiInfoAsync(param);
     }
 
 

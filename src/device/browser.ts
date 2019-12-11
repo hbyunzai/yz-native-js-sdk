@@ -15,6 +15,7 @@ import {ContactUserInfo, ContactUserInfoParam} from "../operation/contact.userin
 import {MediaPhoto, MediaPhotoParam} from "../operation/media.photo";
 import {MediaLocation, MediaLocationParam} from "../operation/media.location";
 import {MediaWifiLocation, MediaWifiLocationParam} from "../operation/media.wifi.location";
+import {MediaWifiInfo, MediaWifiInfoParam} from "../operation/media.wifi.info";
 
 export class Browser extends BaseDevice {
     setNavigationBarRightItems(param?: NavigationBarRightItems): void {
@@ -70,6 +71,10 @@ export class Browser extends BaseDevice {
     }
 
     userLocationWifiAsync(param?: MediaWifiLocationParam): Promise<MediaWifiLocation> {
+        return undefined;
+    }
+
+    getWifiInfoAsync(param?: MediaWifiInfoParam): Promise<MediaWifiInfo> {
         return undefined;
     }
 

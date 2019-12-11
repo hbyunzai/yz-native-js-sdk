@@ -10,6 +10,7 @@ import {YzMediaPhoto, YzMediaPhotoParam, YzMediaPhotoType} from "../operation/me
 import {YzNavigation, YzNavigationBarTitle, YzNavigationBarRightItems} from "../operation/navigation";
 import {YzMediaLocation, YzMediaLocationParam} from "../operation/media.location";
 import {YzMediaWifiLocation, YzMediaWifiLocationParam} from "../operation/media.wifi.location";
+import {YzMediaWifiInfo, YzMediaWifiInfoParam} from "../operation/media.wifi.info";
 
 declare let yz: any;
 
@@ -257,14 +258,44 @@ export class YzMobile extends BaseDevice {
                     if (param && param.success) {
                         param.success(data);
                     }
-                    ;
                     resolve(data);
                 },
-                fail: function (errMsg: any) {
-                    param.fail(errMsg);
+                fail: (error: any) => {
+                    if (param && param.fail) {
+                        param.fail(error)
+                    }
+                    reject(false);
                 },
-                complete: function (msg: any) {
-                    param.complete(msg);
+                complete: (msg: any) => {
+                    if (param && param.complete) {
+                        param.complete(msg);
+                    }
+                    reject(false);
+                }
+            });
+        });
+    }
+
+    getWifiInfoAsync(param?: YzMediaWifiInfoParam): Promise<YzMediaWifiInfo> {
+        return new Promise<YzMediaWifiInfo>((resolve, reject) => {
+            yz.getWifiInfo({
+                success: function (data: YzMediaWifiInfo) {
+                    if (param && param.success) {
+                        param.success(data);
+                    }
+                    resolve(data);
+                },
+                fail: (error: any) => {
+                    if (param && param.fail) {
+                        param.fail(error)
+                    }
+                    reject(false);
+                },
+                complete: (msg: any) => {
+                    if (param && param.complete) {
+                        param.complete(msg);
+                    }
+                    reject(false);
                 }
             });
         });

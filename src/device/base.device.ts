@@ -9,6 +9,7 @@ import {ContactUserInfo, ContactUserInfoParam} from "../operation/contact.userin
 import {MediaPhoto, MediaPhotoParam} from "../operation/media.photo";
 import {MediaLocation, MediaLocationParam} from "../operation/media.location";
 import {MediaWifiLocation, MediaWifiLocationParam} from "../operation/media.wifi.location";
+import {MediaWifiInfo, MediaWifiInfoParam} from "../operation/media.wifi.info";
 
 export abstract class BaseDevice {
     /**
@@ -100,4 +101,10 @@ export abstract class BaseDevice {
      * @param param 参数
      */
     abstract userLocationWifiAsync(param?: MediaWifiLocationParam): Promise<MediaWifiLocation>;
+
+    /**
+     * 获取已连接Wifi信息
+     * @param param 参数
+     */
+    abstract getWifiInfoAsync(param?: MediaWifiInfoParam): Promise<MediaWifiInfo>;
 }

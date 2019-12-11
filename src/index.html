@@ -79,10 +79,21 @@
         <button onclick="userLocationWifiAsync()">WIFI MAC地址验证</button>
     </li>
 
+    <li>
+        <div id="wifiinfo"></div>
+        <button onclick="getWifiInfoAsync()">获取WIFI信息</button>
+    </li>
+
 </ol>
 </body>
 <script>
     const device = new YzDevice();
+
+    function getWifiInfoAsync() {
+        device.getWifiInfoAsync().then((info) => {
+            document.getElementById('wifiinfo').innerHTML = JSON.stringify(info);
+        })
+    }
 
     function userLocationWifiAsync() {
         device.userLocationWifiAsync({bssids: ['111.111.111.111', '222.222.222.222']}).then((status) => {
