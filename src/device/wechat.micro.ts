@@ -15,6 +15,7 @@ import {MediaPhoto, MediaPhotoParam} from "../operation/media.photo";
 import {MediaLocation, MediaLocationParam} from "../operation/media.location";
 import {MediaWifiLocation, MediaWifiLocationParam} from "../operation/media.wifi.location";
 import {MediaWifiInfo, MediaWifiInfoParam} from "../operation/media.wifi.info";
+import {MediaWifiMac, MediaWifiMacParam} from "../operation/media.wifi.mac";
 
 export class WechatMicro extends BaseDevice {
     setNavigationBarRightItems(param?: NavigationBarRightItems): void {
@@ -74,6 +75,10 @@ export class WechatMicro extends BaseDevice {
     }
 
     getWifiInfoAsync(param?: MediaWifiInfoParam): Promise<MediaWifiInfo> {
+        return undefined;
+    }
+
+    getWifiMacAsync(param?: MediaWifiMacParam): Promise<MediaWifiMac> {
         return undefined;
     }
 

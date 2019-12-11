@@ -11,6 +11,7 @@ import {YzNavigation, YzNavigationBarTitle, YzNavigationBarRightItems} from "../
 import {YzMediaLocation, YzMediaLocationParam} from "../operation/media.location";
 import {YzMediaWifiLocation, YzMediaWifiLocationParam} from "../operation/media.wifi.location";
 import {YzMediaWifiInfo, YzMediaWifiInfoParam} from "../operation/media.wifi.info";
+import {YzMediaWifiMac, YzMediaWifiMacParam} from "../operation/media.wifi.mac";
 
 declare let yz: any;
 
@@ -280,6 +281,31 @@ export class YzMobile extends BaseDevice {
         return new Promise<YzMediaWifiInfo>((resolve, reject) => {
             yz.getWifiInfo({
                 success: function (data: YzMediaWifiInfo) {
+                    if (param && param.success) {
+                        param.success(data);
+                    }
+                    resolve(data);
+                },
+                fail: (error: any) => {
+                    if (param && param.fail) {
+                        param.fail(error)
+                    }
+                    reject(false);
+                },
+                complete: (msg: any) => {
+                    if (param && param.complete) {
+                        param.complete(msg);
+                    }
+                    reject(false);
+                }
+            });
+        });
+    }
+
+    getWifiMacAsync(param?: YzMediaWifiMacParam): Promise<YzMediaWifiMac> {
+        return new Promise<YzMediaWifiMac>((resolve, reject) => {
+            yz.getMac({
+                success: function (data: YzMediaWifiMac) {
                     if (param && param.success) {
                         param.success(data);
                     }

@@ -84,10 +84,21 @@
         <button onclick="getWifiInfoAsync()">获取WIFI信息</button>
     </li>
 
+    <li>
+        <div id="wifimac"></div>
+        <button onclick="getWifiMacAsync()">获取WIFIMAC地址</button>
+    </li>
+
 </ol>
 </body>
 <script>
     const device = new YzDevice();
+
+    function getWifiMacAsync() {
+        device.getWifiMacAsync().then((mac) => {
+            document.getElementById("wifimac").innerHTML = mac;
+        })
+    }
 
     function getWifiInfoAsync() {
         device.getWifiInfoAsync().then((info) => {
