@@ -7,7 +7,8 @@ import {
 import {WebCanShare} from '../operation/share';
 import {YzMobile} from "./yzmobile";
 import {Token, TokenParam} from "../operation/token";
-import {User} from "../operation/user";
+import {User, UserParam} from "../operation/user";
+import {MediaCamera, MediaCameraParam} from "../operation/media.camera";
 
 export class PlatForm extends BaseDevice {
     private proxy: BaseDevice;
@@ -21,23 +22,23 @@ export class PlatForm extends BaseDevice {
         return new YzMobile();
     }
 
-    openWindow(param: Navigation): void {
+    openWindow(param?: Navigation): void {
         this.proxy.openWindow(param);
     }
 
-    setNavigationBarTitle(param: NavigationBarTitle): void {
+    setNavigationBarTitle(param?: NavigationBarTitle): void {
         this.proxy.setNavigationBarTitle(param);
     }
 
-    setNavigationBarRightItems(param: NavigationBarRightItems): void {
+    setNavigationBarRightItems(param?: NavigationBarRightItems): void {
         this.proxy.setNavigationBarRightItems(param);
     }
 
-    setWebCanShare(param: WebCanShare): void {
+    setWebCanShare(param?: WebCanShare): void {
         this.proxy.setWebCanShare(param);
     }
 
-    getTokenAsync(param: TokenParam): Promise<Token> {
+    getTokenAsync(param?: TokenParam): Promise<Token> {
         return this.proxy.getTokenAsync(param);
     }
 
@@ -45,12 +46,16 @@ export class PlatForm extends BaseDevice {
         return this.proxy.getTokenSync();
     }
 
-    getUserAsync(): Promise<User> {
-        return this.proxy.getUserAsync();
+    getUserAsync(param?:UserParam): Promise<User> {
+        return this.proxy.getUserAsync(param);
     }
 
     getUserSync(): User {
         return this.proxy.getUserSync();
+    }
+
+    openMediaCameraAsync(param?: MediaCameraParam): Promise<MediaCamera> {
+        return this.proxy.openMediaCameraAsync(param);
     }
 
 

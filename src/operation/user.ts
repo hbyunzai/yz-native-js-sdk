@@ -2,6 +2,16 @@ export interface User {
     [key: string]: any;
 }
 
+export interface UserParam {
+    [key: string]: any;
+}
+
+export interface YzUserParam extends UserParam {
+    success?: (data: User) => void;
+    fail?: (msg: any) => void;
+    complete?: (msg: any) => void;
+}
+
 export interface YzUser extends User {
     /**
      * 账号

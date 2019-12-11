@@ -6,22 +6,25 @@ import {
 
 import {WebCanShare} from "../operation/share";
 import {Token, TokenParam} from "../operation/token";
-import {User} from "../operation/user";
+import {User, UserParam} from "../operation/user";
+import {MediaCamera, MediaCameraParam} from "../operation/media.camera";
 
 export abstract class BaseDevice {
-    abstract openWindow(param: Navigation): void;
+    abstract openWindow(param?: Navigation): void;
 
-    abstract setNavigationBarTitle(param: NavigationBarTitle): void;
+    abstract setNavigationBarTitle(param?: NavigationBarTitle): void;
 
-    abstract setNavigationBarRightItems(param: NavigationBarRightItems): void;
+    abstract setNavigationBarRightItems(param?: NavigationBarRightItems): void;
 
-    abstract setWebCanShare(param: WebCanShare): void;
+    abstract setWebCanShare(param?: WebCanShare): void;
 
-    abstract getTokenAsync(param: TokenParam): Promise<Token>;
+    abstract getTokenAsync(param?: TokenParam): Promise<Token>;
 
     abstract getTokenSync(): Token;
 
-    abstract getUserAsync(): Promise<User>;
+    abstract getUserAsync(param?: UserParam): Promise<User>;
 
     abstract getUserSync(): User;
+
+    abstract openMediaCameraAsync(param?: MediaCameraParam): Promise<MediaCamera>;
 }

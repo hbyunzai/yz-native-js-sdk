@@ -44,11 +44,22 @@
         <button onclick="getUserSync()">同步获取User</button>
     </li>
 
+    <li>
+        <div id="mediaCamera"></div>
+        <button onclick="openMediaCamera()">开启你的摄像头</button>
+    </li>
+
 
 </ol>
 </body>
 <script>
     const device = new YzDevice();
+
+    function openMediaCamera() {
+        device.openMediaCameraAsync().then((camera) => {
+            document.getElementById("mediaCamera").innerHTML = camera;
+        })
+    }
 
     function getUserAsync() {
         device.getUserAsync().then((user) => {

@@ -26,9 +26,24 @@ export interface YzToken extends Token {
     accessToken: string;
 }
 
-export interface YzTokenParam extends TokenParam {
+export interface YzTokenAsyncParam extends TokenParam {
     /**
      * 是否刷新token
      */
     refresh?: boolean;
+    /**
+     * 成功后回调
+     * @param data token信息
+     */
+    success?: (data: Token) => void;
+    /**
+     * 失败回调
+     * @param msg 失败信息
+     */
+    fail?: (msg: any) => void;
+    /**
+     * 调用后执行的函数
+     * @param msg
+     */
+    complete?: (msg: any) => void;
 }
