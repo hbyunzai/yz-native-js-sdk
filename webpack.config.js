@@ -8,7 +8,7 @@ const banner = new webpack.BannerPlugin({
   banner: `
   YzPlatForm v${pkg.version}
   provide the native function call API of yunzai mobile platform for the third party.
-  Copyright (c) 2019 河北云在, b3log.org
+  Copyright (c) 2019 河北云在, ${pkg.repository.url}
   `,
   entryOnly: true
 });
@@ -17,7 +17,7 @@ module.exports = {
   mode: "production",
   entry: "./src/umd.ts",
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "dist/yz-native-js-sdk/"),
     filename: "[name].bundle.js",
     chunkFilename: "[name].bundle.js",
     libraryTarget: "umd",

@@ -7,8 +7,28 @@
     "watch": "node_modules/.bin/tsc --watch",
     "build": "node_modules/.bin/webpack"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ferried/yz-native-js-sdk"
+  },
+  "bugs": {
+    "url": "https://github.com/ferried/yz-native-js-sdk/issues",
+    "email": "harlancui@outlook.com"
+  },
+  "contributors": [
+    {
+      "name": "ferried",
+      "email": "harlancui@outlook.com"
+    }
+  ],
+  "keywords": [
+    "yz",
+    "yunzai",
+    "js",
+    "native",
+    "sdk"
+  ],
   "author": "ferried",
-  "license": "MIT",
   "typings": "./index.d.ts",
   "dependencies": {
     "@babel/core": "^7.7.5",

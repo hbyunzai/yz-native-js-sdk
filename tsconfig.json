@@ -7,7 +7,7 @@
     "src"
   ],
   "compilerOptions": {
-    "outDir": "./dist/",
+    "outDir": "./dist/yz-native-js-sdk",
     "importHelpers": false,
     "noImplicitAny": true,
     "sourceMap": true,
