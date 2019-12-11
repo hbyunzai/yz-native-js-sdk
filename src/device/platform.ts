@@ -19,6 +19,8 @@ import {MediaWifiInfo, MediaWifiInfoParam} from "../operation/media.wifi.info";
 import {MediaWifiMac, MediaWifiMacParam} from "../operation/media.wifi.mac";
 import {FaceCollection, FaceCollectionParam} from "../operation/face.collection";
 import {FaceCompare, FaceCompareParam} from "../operation/face.compare";
+import {PayWechat, PayWechatParam} from "../operation/pay.wechat";
+import {PayAlipay, PayAlipayParam} from "../operation/pay.alipay";
 
 export class PlatForm extends BaseDevice {
     private proxy: BaseDevice;
@@ -106,6 +108,14 @@ export class PlatForm extends BaseDevice {
 
     faceCompareAsync(param?: FaceCompareParam): Promise<FaceCompare> {
         return this.proxy.faceCompareAsync(param);
+    }
+
+    wechatPayAsync(param?: PayWechatParam): Promise<PayWechat> {
+        return this.proxy.wechatPayAsync(param);
+    }
+
+    aliPayAsync(param?: PayAlipayParam): Promise<PayAlipay> {
+        return this.proxy.aliPayAsync(param);
     }
 
 

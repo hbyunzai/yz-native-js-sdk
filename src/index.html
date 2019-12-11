@@ -97,10 +97,42 @@
         <div id="duibi"></div>
         <button onclick="faceCompareAsync()">人脸对比</button>
     </li>
+
+    <li>
+        <div id="paywechat"></div>
+        <button onclick="wechatPayAsync()">微信支付</button>
+    </li>
+
+    <li>
+        <div id="payali"></div>
+        <button onclick="aliPayAsync()">支付宝支付</button>
+    </li>
+
+
 </ol>
 </body>
 <script>
     const device = new YzDevice();
+
+    function aliPayAsync() {
+        device.aliPayAsync().then((info) => {
+            document.getElementById('payali').innerHTML = JSON.stringify(info);
+        })
+    }
+
+    function wechatPayAsync() {
+        device.wechatPayAsync({
+            "appid": "wx105c666575c89f9a",
+            "partnerid": "1439124702",
+            "prepayid": "wx04111944463057cc6b7954d61634639200",
+            "package": "Sign=WXPay",
+            "noncestr": "1cbfb3efb1de4fd186d85367f893d233",
+            "timestamp": "1567567183",
+            "sign": "FF993B12EE67DF76FD1E34FD26471454"
+        }).then((info) => {
+            document.getElementById('paywechat').innerHTML = JSON.stringify(info);
+        })
+    }
 
     function faceCompareAsync() {
         device.getUserAsync().then((user) => {

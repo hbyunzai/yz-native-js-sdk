@@ -14,6 +14,8 @@ import {YzMediaWifiInfo, YzMediaWifiInfoParam} from "../operation/media.wifi.inf
 import {YzMediaWifiMac, YzMediaWifiMacParam} from "../operation/media.wifi.mac";
 import {YzFaceCollection, YzFaceCollectionParam} from "../operation/face.collection";
 import {YzFaceCompare, YzFaceCompareParam} from "../operation/face.compare";
+import {YzPayWechat, YzPayWechatParam} from "../operation/pay.wechat";
+import {YzAlipay, YzAlipayParam} from "../operation/pay.alipay";
 
 declare let yz: any;
 
@@ -380,6 +382,66 @@ export class YzMobile extends BaseDevice {
                 }
             })
         });
+    }
+
+    wechatPayAsync(param?: YzPayWechatParam): Promise<YzPayWechat> {
+        return new Promise<YzPayWechat>((resolve, reject) => {
+            yz.wechatPay({
+                payInfo: {
+                    appid: param.appid,
+                    partnerid: param.partnerid,
+                    prepayid: param.prepayid,
+                    package: param.package,
+                    noncestr: param.noncestr,
+                    timestamp: param.timestamp,
+                    sign: param.sign
+                },
+                success: function (data: YzPayWechat) {
+                    if (param && param.success) {
+                        param.success(data);
+                    }
+                    resolve(data);
+                },
+                fail: (error: any) => {
+                    if (param && param.fail) {
+                        param.fail(error)
+                    }
+                    reject(false);
+                },
+                complete: (msg: any) => {
+                    if (param && param.complete) {
+                        param.complete(msg);
+                    }
+                    reject(false);
+                }
+            })
+        })
+    }
+
+    aliPayAsync(param?: YzAlipayParam): Promise<YzAlipay> {
+        return new Promise<YzAlipay>((resolve, reject) => {
+            yz.aliPay({
+                payInfo: param,
+                success: function (data: YzAlipay) {
+                    if (param && param.success) {
+                        param.success(data);
+                    }
+                    resolve(data);
+                },
+                fail: (error: any) => {
+                    if (param && param.fail) {
+                        param.fail(error)
+                    }
+                    reject(false);
+                },
+                complete: (msg: any) => {
+                    if (param && param.complete) {
+                        param.complete(msg);
+                    }
+                    reject(false);
+                }
+            })
+        })
     }
 
 

@@ -18,6 +18,8 @@ import {MediaWifiInfo, MediaWifiInfoParam} from "../operation/media.wifi.info";
 import {MediaWifiMac, MediaWifiMacParam} from "../operation/media.wifi.mac";
 import {FaceCollection, FaceCollectionParam} from "../operation/face.collection";
 import {FaceCompare, FaceCompareParam} from "../operation/face.compare";
+import {PayWechat, PayWechatParam} from "../operation/pay.wechat";
+import {PayAlipay, PayAlipayParam} from "../operation/pay.alipay";
 
 export class WechatOffice extends BaseDevice {
     setNavigationBarRightItems(param?: NavigationBarRightItems): void {
@@ -89,6 +91,14 @@ export class WechatOffice extends BaseDevice {
     }
 
     faceCompareAsync(param?: FaceCompareParam): Promise<FaceCompare> {
+        return undefined;
+    }
+
+    wechatPayAsync(param?: PayWechatParam): Promise<PayWechat> {
+        return undefined;
+    }
+
+    aliPayAsync(param?: PayAlipayParam): Promise<PayAlipay> {
         return undefined;
     }
 

@@ -13,6 +13,8 @@ import {MediaWifiInfo, MediaWifiInfoParam} from "../operation/media.wifi.info";
 import {MediaWifiMac, MediaWifiMacParam} from "../operation/media.wifi.mac";
 import {FaceCollection, FaceCollectionParam} from "../operation/face.collection";
 import {FaceCompare, FaceCompareParam} from "../operation/face.compare";
+import {PayWechat, PayWechatParam} from "../operation/pay.wechat";
+import {PayAlipay, PayAlipayParam} from "../operation/pay.alipay";
 
 export abstract class BaseDevice {
     /**
@@ -128,4 +130,16 @@ export abstract class BaseDevice {
      * @param param 参数
      */
     abstract faceCompareAsync(param?: FaceCompareParam): Promise<FaceCompare>;
+
+    /**
+     * 云在app微信支付
+     * @param param 参数
+     */
+    abstract wechatPayAsync(param?: PayWechatParam): Promise<PayWechat>;
+
+    /**
+     * 云在app支付宝支付
+     * @param param
+     */
+    abstract aliPayAsync(param?: PayAlipayParam): Promise<PayAlipay>;
 }
