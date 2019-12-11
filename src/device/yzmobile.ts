@@ -11,6 +11,7 @@ import {YzMediaCamera, YzMediaCameraParam} from "../operation/media.camera";
 import {QRcode, YzQrcode, YzQrcodeParam} from "../operation/media.qrcode";
 import {YzContactUser, YzContactUserParam} from "../operation/contact.users";
 import {YzConcatUserInfoParam, YzContactUserInfo} from "../operation/contact.userinfo";
+import {MediaPhoto, MediaPhotoParam, YzMediaPhoto, YzMediaPhotoParam, YzMediaPhotoType} from "../operation/media.photo";
 
 declare let yz: any;
 
@@ -189,6 +190,39 @@ export class YzMobile extends BaseDevice {
                     reject(false);
                 }
             });
+        });
+    }
+
+    uploadPhotoAsync(param?: YzMediaPhotoParam): Promise<YzMediaPhoto> {
+        return new Promise<YzMediaPhoto>((resolve, reject) => {
+            let temp = {
+                success: function (photo: YzMediaPhoto) {
+                    if (param && param.success) {
+                        param.success(photo);
+                    }
+                    resolve(photo);
+                },
+                fail: function (errMsg: any) {
+                    if (param && param.fail) {
+                        param.fail(errMsg);
+                    }
+                },
+                complete: function (msg: any) {
+                    if (param && param.complete) {
+                        param.complete(msg);
+                    }
+                }
+            }
+
+            if (param && param.count) {
+                Object.defineProperties(temp, {count: {value: param.count}});
+            }
+            if (param && param.sourceType) {
+                Object.defineProperties(temp, {sourceType: {value: param.sourceType}});
+            } else {
+                Object.defineProperties(temp, {sourceType: {value: [YzMediaPhotoType.ALBUM, YzMediaPhotoType.CAMERA]}});
+            }
+            yz.uploadImage(temp);
         });
     }
 }

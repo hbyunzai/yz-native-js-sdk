@@ -64,12 +64,22 @@
         <button onclick="getContactsInfoAsync()">获取联系人详细信息</button>
     </li>
 
+    <li>
+        <div id="photos"></div>
+        <button onclick="uploadPhotoAsync()">上传图像们</button>
+    </li>
+
 
 </ol>
 </body>
 <script>
     const device = new YzDevice();
 
+    function uploadPhotoAsync() {
+        device.uploadPhotoAsync({count: 100}).then((images) => {
+            document.getElementById('photos').innerHTML = JSON.stringify(images);
+        })
+    }
 
     function chooseUser() {
         device.chooseContactsAsync({count: 1}).then((users) => {

@@ -12,6 +12,7 @@ import {MediaCamera, MediaCameraParam} from "../operation/media.camera";
 import {QRcode, QRcodeParam} from "../operation/media.qrcode";
 import {ContactUser, ContactUserParam} from "../operation/contact.users";
 import {ContactUserInfo, ContactUserInfoParam} from "../operation/contact.userinfo";
+import {MediaPhoto, MediaPhotoParam} from "../operation/media.photo";
 
 export class Alipay extends BaseDevice {
     setNavigationBarRightItems(param?: NavigationBarRightItems): void {
@@ -55,6 +56,10 @@ export class Alipay extends BaseDevice {
     }
 
     getContactsInfoAsync(param?: ContactUserInfoParam): Promise<ContactUserInfo> {
+        return undefined;
+    }
+
+    uploadPhotoAsync(param?: MediaPhotoParam): Promise<MediaPhoto> {
         return undefined;
     }
 

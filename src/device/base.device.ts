@@ -6,6 +6,7 @@ import {MediaCamera, MediaCameraParam} from "../operation/media.camera";
 import {QRcode, QRcodeParam} from "../operation/media.qrcode";
 import {ContactUser, ContactUserParam} from "../operation/contact.users";
 import {ContactUserInfo, ContactUserInfoParam} from "../operation/contact.userinfo";
+import {MediaPhoto, MediaPhotoParam} from "../operation/media.photo";
 
 export abstract class BaseDevice {
     /**
@@ -79,4 +80,10 @@ export abstract class BaseDevice {
      * @param param
      */
     abstract getContactsInfoAsync(param?: ContactUserInfoParam): Promise<ContactUserInfo>;
+
+    /**
+     * 异步上传图像
+     * @param param 参数
+     */
+    abstract uploadPhotoAsync(param?: MediaPhotoParam): Promise<MediaPhoto>;
 }
