@@ -34,11 +34,32 @@
         <button onclick="getTokenSync()">同步获取Token</button>
     </li>
 
+    <li>
+        <div id="userAsync"></div>
+        <button onclick="getUserAsync()">异步获取User</button>
+    </li>
+
+    <li>
+        <div id="userSync"></div>
+        <button onclick="getUserSync()">同步获取User</button>
+    </li>
+
 
 </ol>
 </body>
 <script>
     const device = new YzDevice();
+
+    function getUserAsync() {
+        device.getUserAsync().then((user) => {
+            document.getElementById('userAsync').innerHTML = JSON.stringify(user);
+        })
+    }
+
+    function getUserSync() {
+        let user = device.getUserSync();
+        document.getElementById('userSync').innerHTML = JSON.stringify(user);
+    }
 
     function getTokenSync() {
         let token = device.getTokenSync();

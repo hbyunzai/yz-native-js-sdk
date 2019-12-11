@@ -6,6 +6,7 @@ import {
 
 import {WebCanShare} from "../operation/share";
 import {Token, TokenParam} from "../operation/token";
+import {User} from "../operation/user";
 
 export abstract class BaseDevice {
     abstract openWindow(param: Navigation): void;
@@ -19,4 +20,8 @@ export abstract class BaseDevice {
     abstract getTokenAsync(param: TokenParam): Promise<Token>;
 
     abstract getTokenSync(): Token;
+
+    abstract getUserAsync(): Promise<User>;
+
+    abstract getUserSync(): User;
 }

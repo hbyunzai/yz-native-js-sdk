@@ -6,6 +6,7 @@ import {
 } from "../operation/navigation";
 import {WebCanShare} from "../operation/share";
 import {Token, TokenParam} from "../operation/token";
+import {User} from "../operation/user";
 
 export class WechatMicro extends BaseDevice {
     setNavigationBarRightItems(param: NavigationBarRightItems): void {
@@ -27,5 +28,14 @@ export class WechatMicro extends BaseDevice {
     getTokenSync(): Token {
         return undefined;
     }
+
+    getUserAsync(): Promise<User> {
+        return undefined;
+    }
+
+    getUserSync(): User {
+        return undefined;
+    }
+
 
 }

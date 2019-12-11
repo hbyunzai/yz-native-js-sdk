@@ -6,6 +6,7 @@ import {
 } from "../operation/navigation";
 import {YzWebCanShare} from "../operation/share";
 import {YzToken, YzTokenParam} from "../operation/token";
+import {User, YzUser} from "../operation/user";
 
 declare let yz: any;
 
@@ -46,5 +47,26 @@ export class YzMobile extends BaseDevice {
     getTokenSync(): YzToken {
         return yz.getTokenSync();
     }
+
+    getUserAsync(): Promise<YzUser> {
+        return new Promise<YzUser>((resolve, reject) => {
+            yz.getUserInfo({
+                success: (user: YzUser) => {
+                    resolve(user);
+                },
+                fail: (msg: any) => {
+                    reject(false);
+                },
+                complete: (msg: any) => {
+                    reject(false);
+                }
+            })
+        });
+    }
+
+    getUserSync(): YzUser {
+        return yz.getUserInfoSync();
+    }
+
 
 }

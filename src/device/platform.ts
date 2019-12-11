@@ -7,6 +7,7 @@ import {
 import {WebCanShare} from '../operation/share';
 import {YzMobile} from "./yzmobile";
 import {Token, TokenParam} from "../operation/token";
+import {User} from "../operation/user";
 
 export class PlatForm extends BaseDevice {
     private proxy: BaseDevice;
@@ -43,5 +44,14 @@ export class PlatForm extends BaseDevice {
     getTokenSync(): Token {
         return this.proxy.getTokenSync();
     }
+
+    getUserAsync(): Promise<User> {
+        return this.proxy.getUserAsync();
+    }
+
+    getUserSync(): User {
+        return this.proxy.getUserSync();
+    }
+
 
 }

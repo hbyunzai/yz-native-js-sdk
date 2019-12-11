@@ -7,6 +7,7 @@ import {
 
 import {WebCanShare} from '../operation/share';
 import {Token, TokenParam} from "../operation/token";
+import {User} from "../operation/user";
 
 export class Browser extends BaseDevice {
     setNavigationBarRightItems(param: NavigationBarRightItems): void {
@@ -27,5 +28,14 @@ export class Browser extends BaseDevice {
     getTokenSync(): Token {
         return undefined;
     }
+
+    getUserAsync(): Promise<User> {
+        return undefined;
+    }
+
+    getUserSync(): User {
+        return undefined;
+    }
+
 
 }
