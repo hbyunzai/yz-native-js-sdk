@@ -5,7 +5,8 @@
   "scripts": {
     "start": "webpack-dev-server",
     "watch": "node_modules/.bin/tsc --watch",
-    "build": "node_modules/.bin/webpack"
+    "build": "node_modules/.bin/webpack",
+    "doc": "node_modules/.bin/typedoc --out docs src"
   },
   "repository": {
     "type": "git",
@@ -43,9 +44,11 @@
     "less-loader": "^5.0.0",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^8.0.0",
+    "src": "^1.1.2",
     "style-loader": "^1.0.1",
     "ts-loader": "^6.2.1",
     "tslint": "^5.20.1",
+    "typedoc": "^0.15.4",
     "typescript": "^3.7.3",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
