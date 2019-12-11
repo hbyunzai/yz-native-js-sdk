@@ -1,0 +1,598 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>yz-native-js-sdk</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">yz-native-js-sdk</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1> yz-native-js-sdk</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#native-js-sdk" id="native-js-sdk" style="color: inherit; text-decoration: none;">
+					<h1>native-js-sdk</h1>
+				</a>
+				<p>provide the native function call API of yunzai mobile platform for the third party</p>
+				<a href="#how-to-user" id="how-to-user" style="color: inherit; text-decoration: none;">
+					<h1>How to user</h1>
+				</a>
+				<a href="#in-html" id="in-html" style="color: inherit; text-decoration: none;">
+					<h2>IN HTML</h2>
+				</a>
+				<pre><code class="language-html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>NativePage<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"sdk.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">ol</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"openWindow()"</span>&gt;</span>跳页面<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"setNavigationBarTitle()"</span>&gt;</span>设置标题<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"setNavigationBarRightItems()"</span>&gt;</span>设置按钮们<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"webShare()"</span>&gt;</span>设置分享<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"webCantShare()"</span>&gt;</span>设置不能分享<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"tokenasync"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"getTokenAsync()"</span>&gt;</span>异步获取Token<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"tokensync"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"getTokenSync()"</span>&gt;</span>同步获取Token<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"userAsync"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"getUserAsync()"</span>&gt;</span>异步获取User<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"userSync"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"getUserSync()"</span>&gt;</span>同步获取User<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"mediaCamera"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"openMediaCamera()"</span>&gt;</span>开启你的摄像头<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"qrcode"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"scanQrCodeAsync()"</span>&gt;</span>扫个二维码<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"userList"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"chooseUser()"</span>&gt;</span>调用联系人<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"contactUserInfo"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"getContactsInfoAsync()"</span>&gt;</span>获取联系人详细信息<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"photos"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"uploadPhotoAsync()"</span>&gt;</span>上传图像们<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"deflocation"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"userLocationAsync()"</span>&gt;</span>获取位置<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"wifimaclocation"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"userLocationWifiAsync()"</span>&gt;</span>WIFI MAC地址验证<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"wifiinfo"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"getWifiInfoAsync()"</span>&gt;</span>获取WIFI信息<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"wifimac"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"getWifiMacAsync()"</span>&gt;</span>获取WIFIMAC地址<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"caiji"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"faceLiveCollection()"</span>&gt;</span>人脸采集<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"duibi"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"faceCompareAsync()"</span>&gt;</span>人脸对比<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"paywechat"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"wechatPayAsync()"</span>&gt;</span>微信支付<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"payali"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"aliPayAsync()"</span>&gt;</span>支付宝支付<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"readnumber"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"openReadWithTimer()"</span>&gt;</span>计时阅读<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"deviceinfo"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"getDeviceInfo()"</span>&gt;</span>设备信息<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"main.bundle.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+    <span class="hljs-keyword">const</span> device = <span class="hljs-keyword">new</span> YzDevice();
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getDeviceInfo</span>(<span class="hljs-params"></span>) </span>{
+        device.getDeviceInfo().then(<span class="hljs-function">(<span class="hljs-params">info</span>) =&gt;</span> {
+            <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'deviceinfo'</span>).innerHTML = <span class="hljs-built_in">JSON</span>.stringify(info);
+        });
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">openReadWithTimer</span>(<span class="hljs-params"></span>) </span>{
+        device.openReadWithTimer({
+            <span class="hljs-attr">url</span>: <span class="hljs-string">'http://www.baidu.com'</span>,
+            <span class="hljs-attr">openType</span>: <span class="hljs-string">"web"</span>,
+            <span class="hljs-attr">title</span>: <span class="hljs-string">'百度'</span>,
+            <span class="hljs-attr">id</span>: <span class="hljs-string">'baidu'</span>,
+            <span class="hljs-attr">type</span>: <span class="hljs-string">'web'</span>
+        }).then(<span class="hljs-function">(<span class="hljs-params">info</span>) =&gt;</span> {
+            alert(info);
+            <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'readnumber'</span>).innerHTML = <span class="hljs-built_in">JSON</span>.stringify(info);
+        })
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">aliPayAsync</span>(<span class="hljs-params"></span>) </span>{
+        device.aliPayAsync().then(<span class="hljs-function">(<span class="hljs-params">info</span>) =&gt;</span> {
+            <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'payali'</span>).innerHTML = <span class="hljs-built_in">JSON</span>.stringify(info);
+        })
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">wechatPayAsync</span>(<span class="hljs-params"></span>) </span>{
+        device.wechatPayAsync({
+            <span class="hljs-string">"appid"</span>: <span class="hljs-string">"wx105c666575c89f9a"</span>,
+            <span class="hljs-string">"partnerid"</span>: <span class="hljs-string">"1439124702"</span>,
+            <span class="hljs-string">"prepayid"</span>: <span class="hljs-string">"wx04111944463057cc6b7954d61634639200"</span>,
+            <span class="hljs-string">"package"</span>: <span class="hljs-string">"Sign=WXPay"</span>,
+            <span class="hljs-string">"noncestr"</span>: <span class="hljs-string">"1cbfb3efb1de4fd186d85367f893d233"</span>,
+            <span class="hljs-string">"timestamp"</span>: <span class="hljs-string">"1567567183"</span>,
+            <span class="hljs-string">"sign"</span>: <span class="hljs-string">"FF993B12EE67DF76FD1E34FD26471454"</span>
+        }).then(<span class="hljs-function">(<span class="hljs-params">info</span>) =&gt;</span> {
+            <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'paywechat'</span>).innerHTML = <span class="hljs-built_in">JSON</span>.stringify(info);
+        })
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">faceCompareAsync</span>(<span class="hljs-params"></span>) </span>{
+        device.getUserAsync().then(<span class="hljs-function">(<span class="hljs-params">user</span>) =&gt;</span> {
+            device.faceCompareAsync({<span class="hljs-attr">live</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">userId</span>: user.userId}).then(<span class="hljs-function">(<span class="hljs-params">data</span>) =&gt;</span> {
+                <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"duibi"</span>).innerHTML = <span class="hljs-built_in">JSON</span>.stringify(data);
+            })
+        });
+
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">faceLiveCollection</span>(<span class="hljs-params"></span>) </span>{
+        device.getUserAsync().then(<span class="hljs-function">(<span class="hljs-params">user</span>) =&gt;</span> {
+            device.faceCollectionAsync({<span class="hljs-attr">live</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">userId</span>: user.userId}).then(<span class="hljs-function">(<span class="hljs-params">data</span>) =&gt;</span> {
+                <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"caiji"</span>).innerHTML = <span class="hljs-built_in">JSON</span>.stringify(data);
+            })
+        });
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getWifiMacAsync</span>(<span class="hljs-params"></span>) </span>{
+        device.getWifiMacAsync().then(<span class="hljs-function">(<span class="hljs-params">mac</span>) =&gt;</span> {
+            <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"wifimac"</span>).innerHTML = mac;
+        })
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getWifiInfoAsync</span>(<span class="hljs-params"></span>) </span>{
+        device.getWifiInfoAsync().then(<span class="hljs-function">(<span class="hljs-params">info</span>) =&gt;</span> {
+            <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'wifiinfo'</span>).innerHTML = <span class="hljs-built_in">JSON</span>.stringify(info);
+        })
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">userLocationWifiAsync</span>(<span class="hljs-params"></span>) </span>{
+        device.userLocationWifiAsync({<span class="hljs-attr">bssids</span>: [<span class="hljs-string">'111.111.111.111'</span>, <span class="hljs-string">'222.222.222.222'</span>]}).then(<span class="hljs-function">(<span class="hljs-params">status</span>) =&gt;</span> {
+            <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'wifimaclocation'</span>).innerHTML = status;
+        })
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">userLocationAsync</span>(<span class="hljs-params"></span>) </span>{
+        device.userLocationAsync().then(<span class="hljs-function">(<span class="hljs-params">location</span>) =&gt;</span> {
+            <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'deflocation'</span>).innerHTML = <span class="hljs-built_in">JSON</span>.stringify(location);
+        })
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">uploadPhotoAsync</span>(<span class="hljs-params"></span>) </span>{
+        device.uploadPhotoAsync({<span class="hljs-attr">count</span>: <span class="hljs-number">100</span>}).then(<span class="hljs-function">(<span class="hljs-params">images</span>) =&gt;</span> {
+            <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'photos'</span>).innerHTML = <span class="hljs-built_in">JSON</span>.stringify(images);
+        })
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">chooseUser</span>(<span class="hljs-params"></span>) </span>{
+        device.chooseContactsAsync({<span class="hljs-attr">count</span>: <span class="hljs-number">1</span>}).then(<span class="hljs-function">(<span class="hljs-params">users</span>) =&gt;</span> {
+            <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"userList"</span>).innerHTML = <span class="hljs-built_in">JSON</span>.stringify(users);
+        })
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getContactsInfoAsync</span>(<span class="hljs-params"></span>) </span>{
+        device.chooseContactsAsync({<span class="hljs-attr">count</span>: <span class="hljs-number">1</span>}).then(<span class="hljs-function">(<span class="hljs-params">users</span>) =&gt;</span> {
+            device.getContactsInfoAsync({<span class="hljs-attr">targetUserId</span>: users[<span class="hljs-number">0</span>].id}).then(<span class="hljs-function">(<span class="hljs-params">userInfo</span>) =&gt;</span> {
+                <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'contactUserInfo'</span>).innerHTML = <span class="hljs-built_in">JSON</span>.stringify(userInfo);
+            })
+        })
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">scanQrCodeAsync</span>(<span class="hljs-params"></span>) </span>{
+        device.scanQrCodeAsync().then(<span class="hljs-function">(<span class="hljs-params">code</span>) =&gt;</span> {
+            <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"qrcode"</span>).innerHTML = code;
+        });
+    }
+
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">openMediaCamera</span>(<span class="hljs-params"></span>) </span>{
+        device.openMediaCameraAsync().then(<span class="hljs-function">(<span class="hljs-params">camera</span>) =&gt;</span> {
+            <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"mediaCamera"</span>).innerHTML = camera;
+        })
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getUserAsync</span>(<span class="hljs-params"></span>) </span>{
+        device.getUserAsync().then(<span class="hljs-function">(<span class="hljs-params">user</span>) =&gt;</span> {
+            <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'userAsync'</span>).innerHTML = <span class="hljs-built_in">JSON</span>.stringify(user);
+        })
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getUserSync</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">let</span> user = device.getUserSync();
+        <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'userSync'</span>).innerHTML = <span class="hljs-built_in">JSON</span>.stringify(user);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getTokenSync</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">let</span> token = device.getTokenSync();
+        <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'tokensync'</span>).innerHTML = <span class="hljs-built_in">JSON</span>.stringify(token);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getTokenAsync</span>(<span class="hljs-params"></span>) </span>{
+        device.getTokenAsync({<span class="hljs-attr">refresh</span>: <span class="hljs-literal">true</span>}).then(<span class="hljs-function">(<span class="hljs-params">token</span>) =&gt;</span> {
+            <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'tokenasync'</span>).innerHTML = <span class="hljs-built_in">JSON</span>.stringify(token);
+        });
+    };
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">webCantShare</span>(<span class="hljs-params"></span>) </span>{
+        device.setWebCanshare({<span class="hljs-attr">shareFlag</span>: <span class="hljs-literal">false</span>});
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">webShare</span>(<span class="hljs-params"></span>) </span>{
+        device.setWebCanshare({<span class="hljs-attr">shareFlag</span>: <span class="hljs-literal">true</span>});
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">openWindow</span>(<span class="hljs-params"></span>) </span>{
+        device.openWindow({
+            <span class="hljs-attr">type</span>: <span class="hljs-string">"url"</span>,
+            <span class="hljs-attr">url</span>: <span class="hljs-string">"http://www.baidu.com"</span>,
+            <span class="hljs-attr">shareFlag</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">success</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">msg</span>) </span>{
+                alert(<span class="hljs-built_in">JSON</span>.stringify(msg));
+            },
+            <span class="hljs-attr">fail</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">msg</span>) </span>{
+                alert(<span class="hljs-built_in">JSON</span>.stringify(msg));
+            },
+            <span class="hljs-attr">complete</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">msg</span>) </span>{
+                alert(<span class="hljs-built_in">JSON</span>.stringify(msg));
+            }
+        });
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setNavigationBarTitle</span>(<span class="hljs-params"></span>) </span>{
+        device.setNavigationBarTitle({
+            <span class="hljs-attr">title</span>: <span class="hljs-string">"哈哈哈哈哈"</span>,
+            <span class="hljs-attr">success</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">msg</span>) </span>{
+                alert(<span class="hljs-built_in">JSON</span>.stringify(msg));
+            },
+            <span class="hljs-attr">fail</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">msg</span>) </span>{
+                alert(<span class="hljs-built_in">JSON</span>.stringify(msg));
+            },
+            <span class="hljs-attr">complete</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">msg</span>) </span>{
+                alert(<span class="hljs-built_in">JSON</span>.stringify(msg));
+            }
+        });
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setNavigationBarRightItems</span>(<span class="hljs-params"></span>) </span>{
+        device.setNavigationBarRightItems({
+            <span class="hljs-attr">showMenu</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">shareFlag</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">items</span>: [
+                {
+                    <span class="hljs-attr">type</span>: <span class="hljs-string">"icon"</span>, <span class="hljs-comment">//显示类型：图标，文字</span>
+                    <span class="hljs-attr">title</span>: <span class="hljs-string">""</span>,
+                    <span class="hljs-attr">icon</span>: <span class="hljs-string">"edit"</span>, <span class="hljs-comment">// 目前支持图标按钮：add添加, edit编辑, delete删除, search搜索, done完成, send发送</span>
+                    <span class="hljs-attr">clickId</span>: <span class="hljs-string">"edit"</span> <span class="hljs-comment">//点击Id</span>
+                },
+                {
+                    <span class="hljs-attr">type</span>: <span class="hljs-string">"icon"</span>, <span class="hljs-comment">//显示类型：图标，文字</span>
+                    <span class="hljs-attr">title</span>: <span class="hljs-string">""</span>,
+                    <span class="hljs-attr">icon</span>: <span class="hljs-string">"delete"</span>, <span class="hljs-comment">// 目前支持图标按钮：add添加, edit编辑, delete删除, search搜索, done完成, send发送</span>
+                    <span class="hljs-attr">clickId</span>: <span class="hljs-string">"123123"</span> <span class="hljs-comment">//点击Id</span>
+                },
+                {
+                    <span class="hljs-attr">type</span>: <span class="hljs-string">"icon"</span>, <span class="hljs-comment">//显示类型：图标，文字</span>
+                    <span class="hljs-attr">title</span>: <span class="hljs-string">""</span>,
+                    <span class="hljs-attr">icon</span>: <span class="hljs-string">"search"</span>, <span class="hljs-comment">// 目前支持图标按钮：add添加, edit编辑, delete删除, search搜索, done完成, send发送</span>
+                    <span class="hljs-attr">clickId</span>: <span class="hljs-string">"hahah"</span> <span class="hljs-comment">//点击Id</span>
+                },
+                {
+                    <span class="hljs-attr">type</span>: <span class="hljs-string">"icon"</span>, <span class="hljs-comment">//显示类型：图标，文字</span>
+                    <span class="hljs-attr">title</span>: <span class="hljs-string">""</span>,
+                    <span class="hljs-attr">icon</span>: <span class="hljs-string">"done"</span>, <span class="hljs-comment">// 目前支持图标按钮：add添加, edit编辑, delete删除, search搜索, done完成, send发送</span>
+                    <span class="hljs-attr">clickId</span>: <span class="hljs-string">"hahah"</span> <span class="hljs-comment">//点击Id</span>
+                },
+                {
+                    <span class="hljs-attr">type</span>: <span class="hljs-string">"icon"</span>, <span class="hljs-comment">//显示类型：图标，文字</span>
+                    <span class="hljs-attr">title</span>: <span class="hljs-string">""</span>,
+                    <span class="hljs-attr">icon</span>: <span class="hljs-string">"send"</span>, <span class="hljs-comment">// 目前支持图标按钮：add添加, edit编辑, delete删除, search搜索, done完成, send发送</span>
+                    <span class="hljs-attr">clickId</span>: <span class="hljs-string">"hahah"</span> <span class="hljs-comment">//点击Id</span>
+                }
+            ],
+            <span class="hljs-attr">onClick</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">clickId</span>) </span>{
+                alert(clickId + <span class="hljs-string">"按钮1被点击了"</span>);
+            }
+        });
+    }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+				<a href="#in-typescript" id="in-typescript" style="color: inherit; text-decoration: none;">
+					<h2>IN TYPESCRIPT</h2>
+				</a>
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> yz <span class="hljs-keyword">from</span> <span class="hljs-string">'yz-natice-js-sdk'</span>;
+<span class="hljs-keyword">const</span> device = <span class="hljs-keyword">new</span> YzDevice();
+device.***</code></pre>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_device_alipay_.html">&quot;device/alipay&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_device_base_device_.html">&quot;device/base.device&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_device_browser_.html">&quot;device/browser&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_device_platform_.html">&quot;device/platform&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_device_wechat_micro_.html">&quot;device/wechat.micro&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_device_wechat_office_.html">&quot;device/wechat.office&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_device_yzmobile_.html">&quot;device/yzmobile&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_index_.html">&quot;index&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_operation_contact_userinfo_.html">&quot;operation/contact.userinfo&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_operation_contact_users_.html">&quot;operation/contact.users&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_operation_device_info_.html">&quot;operation/device.info&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_operation_device_mac_.html">&quot;operation/device.mac&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_operation_face_collection_.html">&quot;operation/face.collection&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_operation_face_compare_.html">&quot;operation/face.compare&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_operation_media_camera_.html">&quot;operation/media.camera&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_operation_media_location_.html">&quot;operation/media.location&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_operation_media_photo_.html">&quot;operation/media.photo&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_operation_media_qrcode_.html">&quot;operation/media.qrcode&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_operation_media_wifi_info_.html">&quot;operation/media.wifi.info&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_operation_media_wifi_location_.html">&quot;operation/media.wifi.location&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_operation_media_wifi_mac_.html">&quot;operation/media.wifi.mac&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_operation_navigation_.html">&quot;operation/navigation&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_operation_pay_alipay_.html">&quot;operation/pay.alipay&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_operation_pay_wechat_.html">&quot;operation/pay.wechat&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_operation_read_with_number_.html">&quot;operation/read.with.number&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_operation_share_.html">&quot;operation/share&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_operation_token_.html">&quot;operation/token&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_operation_user_.html">&quot;operation/user&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_umd_.html">&quot;umd&quot;</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>
