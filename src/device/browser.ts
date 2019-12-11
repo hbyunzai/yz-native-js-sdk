@@ -6,6 +6,7 @@ import {
 } from "../operation/navigation";
 
 import {WebCanShare} from '../operation/share';
+import {Token, TokenParam} from "../operation/token";
 
 export class Browser extends BaseDevice {
     setNavigationBarRightItems(param: NavigationBarRightItems): void {
@@ -18,5 +19,9 @@ export class Browser extends BaseDevice {
     }
 
     setWebCanShare(param: WebCanShare): void {
+    }
+
+    getTokenSync(param: TokenParam): Promise<Token> {
+        return Promise.resolve(null);
     }
 }

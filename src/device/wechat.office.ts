@@ -5,6 +5,7 @@ import {
     NavigationBarRightItems
 } from "../operation/navigation";
 import {WebCanShare} from "../operation/share";
+import {Token, TokenParam} from "../operation/token";
 
 export class WechatOffice extends BaseDevice {
     setNavigationBarRightItems(param: NavigationBarRightItems): void {
@@ -17,5 +18,9 @@ export class WechatOffice extends BaseDevice {
     }
 
     setWebCanShare(param: WebCanShare): void {
+    }
+
+    getTokenSync(param: TokenParam): Promise<Token> {
+        return Promise.resolve(null);
     }
 }

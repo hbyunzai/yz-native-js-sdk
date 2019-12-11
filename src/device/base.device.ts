@@ -5,6 +5,7 @@ import {
 } from "../operation/navigation";
 
 import {WebCanShare} from "../operation/share";
+import {Token, TokenParam} from "../operation/token";
 
 export abstract class BaseDevice {
     abstract openWindow(param: Navigation): void;
@@ -14,4 +15,6 @@ export abstract class BaseDevice {
     abstract setNavigationBarRightItems(param: NavigationBarRightItems): void;
 
     abstract setWebCanShare(param: WebCanShare): void;
+
+    abstract getTokenSync(param: TokenParam): Promise<Token>;
 }

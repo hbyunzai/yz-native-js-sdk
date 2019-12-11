@@ -24,11 +24,21 @@
     <li>
         <button onclick="webCantShare()">设置不能分享</button>
     </li>
+    <li>
+        <div id="token"></div>
+        <button onclick="getToken()">获取Token</button>
+    </li>
 
 </ol>
 </body>
 <script>
     const device = new YzDevice();
+
+    function getToken() {
+        device.getTokenSync({refresh: true}).then((token) => {
+            document.getElementById('token').innerHTML = JSON.stringify(token);
+        });
+    };
 
     function webCantShare() {
         device.setWebCanshare({shareFlag: false});
