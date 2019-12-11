@@ -2,7 +2,6 @@ import {BaseDevice} from "./base.device";
 import {
     YzNavigation,
     YzNavigationBarTitle,
-    NavigationBarRightItems,
     YzNavigationBarRightItems
 } from "../operation/navigation";
 import {YzWebCanShare} from "../operation/share";
@@ -27,7 +26,7 @@ export class YzMobile extends BaseDevice {
         yz.setWebCanShare(param);
     }
 
-    getTokenSync(param: YzTokenParam): Promise<YzToken> {
+    getTokenAsync(param: YzTokenParam): Promise<YzToken> {
         return new Promise<YzToken>((resolve, reject) => {
             yz.getToken({
                 refresh: param.refresh,

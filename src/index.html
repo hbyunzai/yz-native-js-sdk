@@ -35,7 +35,7 @@
     const device = new YzDevice();
 
     function getToken() {
-        device.getTokenSync({refresh: true}).then((token) => {
+        device.getTokenAsync({refresh: true}).then((token) => {
             document.getElementById('token').innerHTML = JSON.stringify(token);
         });
     };

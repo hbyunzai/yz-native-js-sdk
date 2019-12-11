@@ -36,7 +36,7 @@ export class PlatForm extends BaseDevice {
         this.proxy.setWebCanShare(param);
     }
 
-    getTokenSync(param: TokenParam): Promise<Token> {
-        return this.proxy.getTokenSync(param);
+    getTokenAsync(param: TokenParam): Promise<Token> {
+        return this.proxy.getTokenAsync(param);
     }
 }

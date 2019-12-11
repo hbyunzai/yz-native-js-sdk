@@ -21,7 +21,7 @@ export class Alipay extends BaseDevice {
     setWebCanShare(param: WebCanShare): void {
     }
 
-    getTokenSync(param: TokenParam): Promise<Token> {
+    getTokenAsync(param: TokenParam): Promise<Token> {
         return Promise.resolve(null);
     }
 }
