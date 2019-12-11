@@ -12,6 +12,8 @@ import {QRcode, QRcodeParam} from "../operation/media.qrcode";
 import {ContactUser, ContactUserParam} from "../operation/contact.users";
 import {ContactUserInfo, ContactUserInfoParam} from "../operation/contact.userinfo";
 import {MediaPhoto, MediaPhotoParam} from "../operation/media.photo";
+import {MediaLocation, MediaLocationParam} from "../operation/media.location";
+import {MediaWifiLocation, MediaWifiLocationParam} from "../operation/media.wifi.location";
 
 export class WechatMicro extends BaseDevice {
     setNavigationBarRightItems(param?: NavigationBarRightItems): void {
@@ -59,6 +61,14 @@ export class WechatMicro extends BaseDevice {
     }
 
     uploadPhotoAsync(param?: MediaPhotoParam): Promise<MediaPhoto> {
+        return undefined;
+    }
+
+    userLocationAsync(param?: MediaLocationParam): Promise<MediaLocation> {
+        return undefined;
+    }
+
+    userLocationWifiAsync(param?: MediaWifiLocationParam): Promise<MediaWifiLocation> {
         return undefined;
     }
 

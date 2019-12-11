@@ -7,6 +7,8 @@ import {QRcode, QRcodeParam} from "../operation/media.qrcode";
 import {ContactUser, ContactUserParam} from "../operation/contact.users";
 import {ContactUserInfo, ContactUserInfoParam} from "../operation/contact.userinfo";
 import {MediaPhoto, MediaPhotoParam} from "../operation/media.photo";
+import {MediaLocation, MediaLocationParam} from "../operation/media.location";
+import {MediaWifiLocation, MediaWifiLocationParam} from "../operation/media.wifi.location";
 
 export abstract class BaseDevice {
     /**
@@ -86,4 +88,16 @@ export abstract class BaseDevice {
      * @param param 参数
      */
     abstract uploadPhotoAsync(param?: MediaPhotoParam): Promise<MediaPhoto>;
+
+    /**
+     * 异步获取经纬度地址
+     * @param param 参数
+     */
+    abstract userLocationAsync(param?: MediaLocationParam): Promise<MediaLocation>;
+
+    /**
+     * 通过获取附近WiFi列表判断是否在制定范围内
+     * @param param 参数
+     */
+    abstract userLocationWifiAsync(param?: MediaWifiLocationParam): Promise<MediaWifiLocation>;
 }

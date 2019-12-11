@@ -13,6 +13,8 @@ import {QRcode, QRcodeParam} from '../operation/media.qrcode';
 import {ContactUser, ContactUserParam} from "../operation/contact.users";
 import {ContactUserInfo, ContactUserInfoParam} from "../operation/contact.userinfo";
 import {MediaPhoto, MediaPhotoParam} from "../operation/media.photo";
+import {MediaLocation, MediaLocationParam} from "../operation/media.location";
+import {MediaWifiLocation, MediaWifiLocationParam} from "../operation/media.wifi.location";
 
 export class PlatForm extends BaseDevice {
     private proxy: BaseDevice;
@@ -76,6 +78,14 @@ export class PlatForm extends BaseDevice {
 
     uploadPhotoAsync(param?: MediaPhotoParam): Promise<MediaPhoto> {
         return this.proxy.uploadPhotoAsync(param);
+    }
+
+    userLocationAsync(param?: MediaLocationParam): Promise<MediaLocation> {
+        return this.proxy.userLocationAsync(param);
+    }
+
+    userLocationWifiAsync(param?: MediaWifiLocationParam): Promise<MediaWifiLocation> {
+        return this.proxy.userLocationWifiAsync(param);
     }
 
 

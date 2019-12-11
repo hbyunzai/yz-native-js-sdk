@@ -1,9 +1,4 @@
 import {BaseDevice} from "./base.device";
-import {
-    YzNavigation,
-    YzNavigationBarTitle,
-    YzNavigationBarRightItems
-} from "../operation/navigation";
 import {YzWebCanShare} from "../operation/share";
 import {YzToken, YzTokenAsyncParam} from "../operation/token";
 import {YzUser, YzUserParam} from "../operation/user";
@@ -11,7 +6,10 @@ import {YzMediaCamera, YzMediaCameraParam} from "../operation/media.camera";
 import {QRcode, YzQrcode, YzQrcodeParam} from "../operation/media.qrcode";
 import {YzContactUser, YzContactUserParam} from "../operation/contact.users";
 import {YzConcatUserInfoParam, YzContactUserInfo} from "../operation/contact.userinfo";
-import {MediaPhoto, MediaPhotoParam, YzMediaPhoto, YzMediaPhotoParam, YzMediaPhotoType} from "../operation/media.photo";
+import {YzMediaPhoto, YzMediaPhotoParam, YzMediaPhotoType} from "../operation/media.photo";
+import {YzNavigation, YzNavigationBarTitle, YzNavigationBarRightItems} from "../operation/navigation";
+import {YzMediaLocation, YzMediaLocationParam} from "../operation/media.location";
+import {YzMediaWifiLocation, YzMediaWifiLocationParam} from "../operation/media.wifi.location";
 
 declare let yz: any;
 
@@ -225,4 +223,52 @@ export class YzMobile extends BaseDevice {
             yz.uploadImage(temp);
         });
     }
+
+    userLocationAsync(param?: YzMediaLocationParam): Promise<YzMediaLocation> {
+        return new Promise<YzMediaLocation>((resolve, reject) => {
+            yz.userLocation({
+                success: (data: YzMediaLocation) => {
+                    if (param && param.success) {
+                        param.success(data);
+                    }
+                    resolve(data);
+                },
+                fail: (error: any) => {
+                    if (param && param.fail) {
+                        param.fail(error)
+                    }
+                    reject(false);
+                },
+                complete: (msg: any) => {
+                    if (param && param.complete) {
+                        param.complete(msg);
+                    }
+                    reject(false);
+                }
+            });
+        });
+    }
+
+    userLocationWifiAsync(param?: YzMediaWifiLocationParam): Promise<YzMediaWifiLocation> {
+        return new Promise<YzMediaWifiLocation>((resolve, reject) => {
+            yz.userLocationContainAp({
+                bssids: param.bssids,
+                success: function (data: YzMediaWifiLocation) {
+                    if (param && param.success) {
+                        param.success(data);
+                    }
+                    ;
+                    resolve(data);
+                },
+                fail: function (errMsg: any) {
+                    param.fail(errMsg);
+                },
+                complete: function (msg: any) {
+                    param.complete(msg);
+                }
+            });
+        });
+    }
+
+
 }
