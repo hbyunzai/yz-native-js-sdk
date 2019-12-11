@@ -59,15 +59,29 @@
         <button onclick="chooseUser()">调用联系人</button>
     </li>
 
+    <li>
+        <div id="contactUserInfo"></div>
+        <button onclick="getContactsInfoAsync()">获取联系人详细信息</button>
+    </li>
+
 
 </ol>
 </body>
 <script>
     const device = new YzDevice();
 
+
     function chooseUser() {
-        device.chooseContacts({count: 1}).then((users) => {
+        device.chooseContactsAsync({count: 1}).then((users) => {
             document.getElementById("userList").innerHTML = JSON.stringify(users);
+        })
+    }
+
+    function getContactsInfoAsync() {
+        device.chooseContactsAsync({count: 1}).then((users) => {
+            device.getContactsInfoAsync({targetUserId: users[0].id}).then((userInfo) => {
+                document.getElementById('contactUserInfo').innerHTML = JSON.stringify(userInfo);
+            })
         })
     }
 

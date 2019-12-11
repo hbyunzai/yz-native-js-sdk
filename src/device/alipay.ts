@@ -11,6 +11,7 @@ import {User, UserParam} from "../operation/user";
 import {MediaCamera, MediaCameraParam} from "../operation/media.camera";
 import {QRcode, QRcodeParam} from "../operation/media.qrcode";
 import {ContactUser, ContactUserParam} from "../operation/contact.users";
+import {ContactUserInfo, ContactUserInfoParam} from "../operation/contact.userinfo";
 
 export class Alipay extends BaseDevice {
     setNavigationBarRightItems(param?: NavigationBarRightItems): void {
@@ -49,7 +50,11 @@ export class Alipay extends BaseDevice {
         return undefined;
     }
 
-    chooseContacts(param?: ContactUserParam): Promise<Array<ContactUser>> {
+    chooseContactsAsync(param?: ContactUserParam): Promise<Array<ContactUser>> {
+        return undefined;
+    }
+
+    getContactsInfoAsync(param?: ContactUserInfoParam): Promise<ContactUserInfo> {
         return undefined;
     }
 

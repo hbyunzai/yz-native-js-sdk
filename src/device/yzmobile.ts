@@ -10,6 +10,7 @@ import {YzUser, YzUserParam} from "../operation/user";
 import {YzMediaCamera, YzMediaCameraParam} from "../operation/media.camera";
 import {QRcode, YzQrcode, YzQrcodeParam} from "../operation/media.qrcode";
 import {YzContactUser, YzContactUserParam} from "../operation/contact.users";
+import {YzConcatUserInfoParam, YzContactUserInfo} from "../operation/contact.userinfo";
 
 declare let yz: any;
 
@@ -137,7 +138,7 @@ export class YzMobile extends BaseDevice {
         });
     }
 
-    chooseContacts(param?: YzContactUserParam): Promise<Array<YzContactUser>> {
+    chooseContactsAsync(param?: YzContactUserParam): Promise<Array<YzContactUser>> {
         return new Promise<Array<YzContactUser>>((resolve, reject) => {
             let temp = {
                 success: (contacts: Array<YzContactUser>) => {
@@ -163,6 +164,31 @@ export class YzMobile extends BaseDevice {
                 temp = Object.defineProperties(temp, {count: {value: param.count}});
             }
             yz.chooseContacts(temp)
+        });
+    }
+
+    getContactsInfoAsync(param?: YzConcatUserInfoParam): Promise<YzContactUserInfo> {
+        return new Promise<YzContactUserInfo>((resolve, reject) => {
+            yz.getUserInfo({
+                success: function (userInfo: YzContactUserInfo) {
+                    if (param && param.success) {
+                        param.success(userInfo);
+                    }
+                    resolve(userInfo);
+                },
+                fail: function (errMsg: any) {
+                    if (param && param.fail) {
+                        param.fail(errMsg);
+                    }
+                    reject(false);
+                },
+                complete: function (msg: any) {
+                    if (param && param.complete) {
+                        param.complete(msg);
+                    }
+                    reject(false);
+                }
+            });
         });
     }
 }

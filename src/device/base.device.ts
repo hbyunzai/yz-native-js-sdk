@@ -5,27 +5,78 @@ import {User, UserParam} from "../operation/user";
 import {MediaCamera, MediaCameraParam} from "../operation/media.camera";
 import {QRcode, QRcodeParam} from "../operation/media.qrcode";
 import {ContactUser, ContactUserParam} from "../operation/contact.users";
+import {ContactUserInfo, ContactUserInfoParam} from "../operation/contact.userinfo";
 
 export abstract class BaseDevice {
+    /**
+     * 打开新窗口
+     * @param param 参数
+     */
     abstract openWindow(param?: Navigation): void;
 
+    /**
+     * 设置标题
+     * @param param 参数
+     */
     abstract setNavigationBarTitle(param?: NavigationBarTitle): void;
 
+    /**
+     * 设置标题右侧按钮
+     * @param param 参数
+     */
     abstract setNavigationBarRightItems(param?: NavigationBarRightItems): void;
 
+    /**
+     * 设置网页是否可以被分享
+     * @param param 参数
+     */
     abstract setWebCanShare(param?: WebCanShare): void;
 
+    /**
+     * 异步获取用户token
+     * @param param 参数
+     */
     abstract getTokenAsync(param?: TokenParam): Promise<Token>;
 
+    /**
+     * 同步获取用户token
+     */
     abstract getTokenSync(): Token;
 
+    /**
+     * 异步获取用户信息
+     * @param param 参数
+     */
     abstract getUserAsync(param?: UserParam): Promise<User>;
 
+    /**
+     * 同步获取用户信息
+     * @return User 用户信息
+     */
     abstract getUserSync(): User;
 
+    /**
+     * 异步打开媒体照相机
+     * @param param 参数
+     */
     abstract openMediaCameraAsync(param?: MediaCameraParam): Promise<MediaCamera>;
 
+    /**
+     * 异步扫码
+     * @param param 参数
+     */
     abstract scanQrCodeAsync(param?: QRcodeParam): Promise<QRcode>;
 
-    abstract chooseContacts(param?: ContactUserParam): Promise<Array<ContactUser>>
+    /**
+     * 异步选择联系人
+     * @param param 参数
+     */
+    abstract chooseContactsAsync(param?: ContactUserParam): Promise<Array<ContactUser>>
+
+
+    /**
+     * 异步获取联系人详情 参数
+     * @param param
+     */
+    abstract getContactsInfoAsync(param?: ContactUserInfoParam): Promise<ContactUserInfo>;
 }

@@ -11,6 +11,7 @@ import {User, UserParam} from "../operation/user";
 import {MediaCamera, MediaCameraParam} from "../operation/media.camera";
 import {QRcode, QRcodeParam} from '../operation/media.qrcode';
 import {ContactUser, ContactUserParam} from "../operation/contact.users";
+import {ContactUserInfo, ContactUserInfoParam} from "../operation/contact.userinfo";
 
 export class PlatForm extends BaseDevice {
     private proxy: BaseDevice;
@@ -64,8 +65,12 @@ export class PlatForm extends BaseDevice {
         return this.proxy.scanQrCodeAsync(param);
     }
 
-    chooseContacts(param?: ContactUserParam): Promise<Array<ContactUser>> {
-        return this.proxy.chooseContacts(param);
+    chooseContactsAsync(param?: ContactUserParam): Promise<Array<ContactUser>> {
+        return this.proxy.chooseContactsAsync(param);
+    }
+
+    getContactsInfoAsync(param?: ContactUserInfoParam): Promise<ContactUserInfo> {
+        return this.proxy.getContactsInfoAsync(param);
     }
 
 
