@@ -39,4 +39,9 @@ export class PlatForm extends BaseDevice {
     getTokenAsync(param: TokenParam): Promise<Token> {
         return this.proxy.getTokenAsync(param);
     }
+
+    getTokenSync(): Token {
+        return this.proxy.getTokenSync();
+    }
+
 }

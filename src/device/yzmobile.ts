@@ -42,4 +42,9 @@ export class YzMobile extends BaseDevice {
             });
         });
     }
+
+    getTokenSync(): YzToken {
+        return yz.getTokenSync();
+    }
+
 }

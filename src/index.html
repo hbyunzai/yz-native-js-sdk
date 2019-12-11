@@ -25,18 +25,29 @@
         <button onclick="webCantShare()">设置不能分享</button>
     </li>
     <li>
-        <div id="token"></div>
-        <button onclick="getToken()">获取Token</button>
+        <div id="tokenasync"></div>
+        <button onclick="getTokenAsync()">异步获取Token</button>
     </li>
+
+    <li>
+        <div id="tokensync"></div>
+        <button onclick="getTokenSync()">同步获取Token</button>
+    </li>
+
 
 </ol>
 </body>
 <script>
     const device = new YzDevice();
 
-    function getToken() {
+    function getTokenSync() {
+        let token = device.getTokenSync();
+        document.getElementById('tokensync').innerHTML = JSON.stringify(token);
+    }
+
+    function getTokenAsync() {
         device.getTokenAsync({refresh: true}).then((token) => {
-            document.getElementById('token').innerHTML = JSON.stringify(token);
+            document.getElementById('tokenasync').innerHTML = JSON.stringify(token);
         });
     };
 

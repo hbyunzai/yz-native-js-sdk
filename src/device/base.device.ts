@@ -17,4 +17,6 @@ export abstract class BaseDevice {
     abstract setWebCanShare(param: WebCanShare): void;
 
     abstract getTokenAsync(param: TokenParam): Promise<Token>;
+
+    abstract getTokenSync(): Token;
 }

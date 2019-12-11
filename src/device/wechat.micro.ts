@@ -23,4 +23,9 @@ export class WechatMicro extends BaseDevice {
     getTokenAsync(param: TokenParam): Promise<Token> {
         return Promise.resolve(null);
     }
+
+    getTokenSync(): Token {
+        return undefined;
+    }
+
 }
