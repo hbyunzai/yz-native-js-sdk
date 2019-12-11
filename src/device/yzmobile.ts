@@ -17,6 +17,7 @@ import {YzFaceCompare, YzFaceCompareParam} from "../operation/face.compare";
 import {YzPayWechat, YzPayWechatParam} from "../operation/pay.wechat";
 import {YzAlipay, YzAlipayParam} from "../operation/pay.alipay";
 import {YzReadWithNumber, YzReadWithNumberParam} from "../operation/read.with.number";
+import {YzDeviceInfo, YzDeviceInfoParam} from "../operation/device.info";
 
 declare let yz: any;
 
@@ -454,6 +455,31 @@ export class YzMobile extends BaseDevice {
                 id: param.id,
                 type: param.type,
                 success: function (data: YzReadWithNumber) {
+                    if (param && param.success) {
+                        param.success(data);
+                    }
+                    resolve(data);
+                },
+                fail: (error: any) => {
+                    if (param && param.fail) {
+                        param.fail(error)
+                    }
+                    reject(false);
+                },
+                complete: (msg: any) => {
+                    if (param && param.complete) {
+                        param.complete(msg);
+                    }
+                    reject(false);
+                }
+            })
+        });
+    }
+
+    getDeviceInfo(param?: YzDeviceInfoParam): Promise<YzDeviceInfo> {
+        return new Promise<YzDeviceInfo>((resolve, reject) => {
+            yz.getDeviceInfo({
+                success: function (data: YzDeviceInfo) {
                     if (param && param.success) {
                         param.success(data);
                     }

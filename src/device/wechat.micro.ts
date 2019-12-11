@@ -21,6 +21,7 @@ import {FaceCompare, FaceCompareParam} from "../operation/face.compare";
 import {PayWechat, PayWechatParam} from "../operation/pay.wechat";
 import {PayAlipay, PayAlipayParam} from "../operation/pay.alipay";
 import {ReadWithNumber, ReadWithNumberParam} from "../operation/read.with.number";
+import {DeviceInfo, DeviceInfoParam} from "../operation/device.info";
 
 export class WechatMicro extends BaseDevice {
     setNavigationBarRightItems(param?: NavigationBarRightItems): void {
@@ -104,6 +105,10 @@ export class WechatMicro extends BaseDevice {
     }
 
     openReadWithTimer(param?: ReadWithNumberParam): Promise<ReadWithNumber> {
+        return undefined;
+    }
+
+    getDeviceInfo(param?: DeviceInfoParam): Promise<DeviceInfo> {
         return undefined;
     }
 

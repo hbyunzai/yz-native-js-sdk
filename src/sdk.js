@@ -453,6 +453,12 @@ var yz = {
             yz._private.handlerResult(resultData, option)
         })
     },
+    // 9.设备信息
+    getDeviceInfo: function (option) {
+        yz._private.call('JsV6.getDeviceInfo', {}, function (data) {
+            yz._private.handlerResult(data, option)
+        })
+    },
     // 18.综合训练读物时间统计时间
     openReadWithTimer: function (option) {
         if (!option.url) {

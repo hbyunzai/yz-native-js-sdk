@@ -113,11 +113,22 @@
         <button onclick="openReadWithTimer()">计时阅读</button>
     </li>
 
+    <li>
+        <div id="deviceinfo"></div>
+        <button onclick="getDeviceInfo()">设备信息</button>
+    </li>
+
 
 </ol>
 </body>
 <script>
     const device = new YzDevice();
+
+    function getDeviceInfo() {
+        device.getDeviceInfo().then((info) => {
+            document.getElementById('deviceinfo').innerHTML = JSON.stringify(info);
+        });
+    }
 
     function openReadWithTimer() {
         device.openReadWithTimer({

@@ -22,6 +22,7 @@ import {FaceCompare, FaceCompareParam} from "../operation/face.compare";
 import {PayWechat, PayWechatParam} from "../operation/pay.wechat";
 import {PayAlipay, PayAlipayParam} from "../operation/pay.alipay";
 import {ReadWithNumber, ReadWithNumberParam} from "../operation/read.with.number";
+import {DeviceInfo, DeviceInfoParam} from "../operation/device.info";
 
 export class PlatForm extends BaseDevice {
     private proxy: BaseDevice;
@@ -121,6 +122,10 @@ export class PlatForm extends BaseDevice {
 
     openReadWithTimer(param?: ReadWithNumberParam): Promise<ReadWithNumber> {
         return this.proxy.openReadWithTimer(param);
+    }
+
+    getDeviceInfo(param?: DeviceInfoParam): Promise<DeviceInfo> {
+        return this.proxy.getDeviceInfo(param);
     }
 
 
