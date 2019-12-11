@@ -9,6 +9,7 @@ import {YzMobile} from "./yzmobile";
 import {Token, TokenParam} from "../operation/token";
 import {User, UserParam} from "../operation/user";
 import {MediaCamera, MediaCameraParam} from "../operation/media.camera";
+import {QRcode, QRcodeParam} from "../operation/media.qrcode";
 
 export class PlatForm extends BaseDevice {
     private proxy: BaseDevice;
@@ -56,6 +57,10 @@ export class PlatForm extends BaseDevice {
 
     openMediaCameraAsync(param?: MediaCameraParam): Promise<MediaCamera> {
         return this.proxy.openMediaCameraAsync(param);
+    }
+
+    scanQrCodeAsync(param?: QRcodeParam): Promise<QRcode> {
+        return this.proxy.scanQrCodeAsync(param);
     }
 
 

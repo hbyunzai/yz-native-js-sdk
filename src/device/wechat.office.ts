@@ -8,6 +8,7 @@ import {WebCanShare} from "../operation/share";
 import {Token, TokenParam} from "../operation/token";
 import {User, UserParam} from "../operation/user";
 import {MediaCamera, MediaCameraParam} from "../operation/media.camera";
+import {QRcode, QRcodeParam} from "../operation/media.qrcode";
 
 export class WechatOffice extends BaseDevice {
     setNavigationBarRightItems(param?: NavigationBarRightItems): void {
@@ -39,6 +40,10 @@ export class WechatOffice extends BaseDevice {
     }
 
     openMediaCameraAsync(param?: MediaCameraParam): Promise<MediaCamera> {
+        return undefined;
+    }
+
+    scanQrCodeAsync(param?: QRcodeParam): Promise<QRcode> {
         return undefined;
     }
 

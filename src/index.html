@@ -49,11 +49,24 @@
         <button onclick="openMediaCamera()">开启你的摄像头</button>
     </li>
 
+    <li>
+        <div id="qrcode"></div>
+        <button onclick="scanQrCodeAsync()">扫个二维码</button>
+    </li>
+
+
 
 </ol>
 </body>
 <script>
     const device = new YzDevice();
+
+    function scanQrCodeAsync(){
+        device.scanQrCodeAsync().then((code)=>{
+            document.getElementById("qrcode").innerHTML = code;
+        });
+    }
+
 
     function openMediaCamera() {
         device.openMediaCameraAsync().then((camera) => {

@@ -8,6 +8,7 @@ import {YzWebCanShare} from "../operation/share";
 import {YzToken, YzTokenAsyncParam} from "../operation/token";
 import {YzUser, YzUserParam} from "../operation/user";
 import {YzMediaCamera, YzMediaCameraParam} from "../operation/media.camera";
+import {QRcode, QRcodeParam, YzQrcode, YzQrcodeParam} from "../operation/media.qrcode";
 
 declare let yz: any;
 
@@ -109,6 +110,29 @@ export class YzMobile extends BaseDevice {
                     reject(false);
                 }
             });
+        });
+    }
+
+    scanQrCodeAsync(param?: YzQrcodeParam): Promise<QRcode> {
+        return new Promise<YzQrcode>((resolve, reject) => {
+            yz.scanCode({
+                success: (data: YzQrcode) => {
+                    if (param && param.success) {
+                        param.success(data);
+                    }
+                    resolve(data);
+                },
+                fail: (errMsg: any) => {
+                    if (param && param.fail) {
+                        param.fail(errMsg);
+                    }
+                },
+                complete: (msg: any) => {
+                    if (param && param.complete) {
+                        param.complete(msg);
+                    }
+                }
+            })
         });
     }
 }

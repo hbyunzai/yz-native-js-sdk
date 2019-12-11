@@ -8,6 +8,7 @@ import {WebCanShare} from "../operation/share";
 import {Token, TokenParam} from "../operation/token";
 import {User, UserParam} from "../operation/user";
 import {MediaCamera, MediaCameraParam} from "../operation/media.camera";
+import {QRcode, QRcodeParam} from "../operation/media.qrcode";
 
 export abstract class BaseDevice {
     abstract openWindow(param?: Navigation): void;
@@ -27,4 +28,6 @@ export abstract class BaseDevice {
     abstract getUserSync(): User;
 
     abstract openMediaCameraAsync(param?: MediaCameraParam): Promise<MediaCamera>;
+
+    abstract scanQrCodeAsync(param?: QRcodeParam): Promise<QRcode>;
 }
