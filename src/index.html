@@ -260,27 +260,18 @@
     };
 
     function webCantShare() {
-        device.setWebCanshare({shareFlag: false});
+        device.setWebCanShare({shareFlag: false});
     }
 
     function webShare() {
-        device.setWebCanshare({shareFlag: true});
+        device.setWebCanShare({shareFlag: true});
     }
 
     function openWindow() {
         device.openWindow({
             type: "url",
             url: "http://www.baidu.com",
-            shareFlag: true,
-            success: function (msg) {
-                alert(JSON.stringify(msg));
-            },
-            fail: function (msg) {
-                alert(JSON.stringify(msg));
-            },
-            complete: function (msg) {
-                alert(JSON.stringify(msg));
-            }
+            shareFlag: true
         });
     }
 
