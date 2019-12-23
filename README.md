@@ -2,7 +2,7 @@
 provide the native function call API of yunzai mobile platform for the third party
 
 
-# How to user
+# How to use
 
 ## IN HTML
 
@@ -353,10 +353,190 @@ provide the native function call API of yunzai mobile platform for the third par
 </html>
 ```
 
-## IN TYPESCRIPT
+## IN ANGULAR
+
+### Install
+```bash
+npm install yz-native-js-sdk@latest
+```
+
+### index.html
+clear your html to this
+
+```html
+<!--
+ * @Createdby: Microsoft Visual Code
+ * @Author: ferried
+ * @Email: harlancui@outlook.com
+ * @LastEditors: ferried
+ * @Version: 1.0.0-SNAPSHOT
+ * @Description: none
+ * @Date: 2019-05-06 14:43:40
+ * @LastEditTime: 2019-05-11 10:16:13
+ -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>AngularYuznaiMobile</title>
+    <base href="./" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <script type="text/javascript"src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js" ></script>
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <style type="text/css">
+      .preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #49a9ee;
+        z-index: 9999;
+        transition: opacity 0.65s;
+      }
+
+      .preloader-hidden-add {
+        opacity: 1;
+        display: block;
+      }
+
+      .preloader-hidden-add-active {
+        opacity: 0;
+      }
+
+      .preloader-hidden {
+        display: none;
+      }
+
+      .cs-loader {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+      }
+
+      .cs-loader-inner {
+        transform: translateY(-50%);
+        top: 50%;
+        position: absolute;
+        width: 100%;
+        color: #fff;
+        text-align: center;
+      }
+
+      .cs-loader-inner label {
+        font-size: 20px;
+        opacity: 0;
+        display: inline-block;
+      }
+
+      @keyframes lol {
+        0% {
+          opacity: 0;
+          transform: translateX(-300px);
+        }
+
+        33% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+
+        66% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+
+        100% {
+          opacity: 0;
+          transform: translateX(300px);
+        }
+      }
+
+      .cs-loader-inner label:nth-child(6) {
+        animation: lol 3s infinite ease-in-out;
+      }
+
+      .cs-loader-inner label:nth-child(5) {
+        animation: lol 3s 0.1s infinite ease-in-out;
+      }
+
+      .cs-loader-inner label:nth-child(4) {
+        animation: lol 3s 0.2s infinite ease-in-out;
+      }
+
+      .cs-loader-inner label:nth-child(3) {
+        animation: lol 3s 0.3s infinite ease-in-out;
+      }
+
+      .cs-loader-inner label:nth-child(2) {
+        animation: lol 3s 0.4s infinite ease-in-out;
+      }
+
+      .cs-loader-inner label:nth-child(1) {
+        animation: lol 3s 0.5s infinite ease-in-out;
+      }
+    </style>
+  </head>
+
+  <body>
+    <app-root></app-root>
+    <div class="preloader">
+      <div class="cs-loader">
+        <div class="cs-loader-inner">
+          <label> ●</label>
+          <label> ●</label>
+          <label> ●</label>
+          <label> ●</label>
+          <label> ●</label>
+          <label> ●</label>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>
+```
+
+### Angular.json
+```json
+            "scripts": [
+              "node_modules/yz-native-js-sdk/sdk.js"
+            ],
+```
+
+### Now To Use
 
 ```typescript
-import * as yz from 'yz-natice-js-sdk';
-const device = new YzDevice();
-device.***
+import { Component, OnInit } from "@angular/core";
+import { PlatForm } from "yz-native-js-sdk";
+
+@Component({
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.less"]
+})
+export class AppComponent implements OnInit {
+  // new a device to use
+  device: PlatForm = new PlatForm();
+
+  ngOnInit(): void {
+    this.device.openWindow({ type: "url", url: "http://www.baidu.com" });
+    this.device
+      .getUserAsync()
+      .then(user => {
+        alert(JSON.stringify(user));
+      })
+      .catch(error => {
+        alert(JSON.stringify(error));
+      });
+  }
+
+  constructor() {}
+}
+
 ```
+
+
