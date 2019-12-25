@@ -177,7 +177,7 @@ export class YzMobile extends BaseDevice {
     getContactsInfoAsync(param?: YzConcatUserInfoParam): void {
         yz.ContactDetails({
             targetUserId: param.targetUserId,
-            success: function (userInfo) {
+            success: function (userInfo: any) {
                 if (param && param.success) {
                     param.success(userInfo);
                 }
