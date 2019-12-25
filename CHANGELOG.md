@@ -1,3 +1,6 @@
+# 0.1.4 2019-12-25
+## fix
+1.修复查看联系人详情function
 # 0.1.2 2019-12-17
 ## fix
 1.修复index.html调用函数webCanshare 为 webCanShare,解决调用不到函数的问题

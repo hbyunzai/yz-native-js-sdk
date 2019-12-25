@@ -68,8 +68,8 @@
 					<h1>native-js-sdk</h1>
 				</a>
 				<p>provide the native function call API of yunzai mobile platform for the third party</p>
-				<a href="#how-to-user" id="how-to-user" style="color: inherit; text-decoration: none;">
-					<h1>How to user</h1>
+				<a href="#how-to-use" id="how-to-use" style="color: inherit; text-decoration: none;">
+					<h1>How to use</h1>
 				</a>
 				<a href="#in-html" id="in-html" style="color: inherit; text-decoration: none;">
 					<h2>IN HTML</h2>
@@ -418,12 +418,187 @@
     }
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
-				<a href="#in-typescript" id="in-typescript" style="color: inherit; text-decoration: none;">
-					<h2>IN TYPESCRIPT</h2>
+				<a href="#in-angular" id="in-angular" style="color: inherit; text-decoration: none;">
+					<h2>IN ANGULAR</h2>
 				</a>
-				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> yz <span class="hljs-keyword">from</span> <span class="hljs-string">'yz-natice-js-sdk'</span>;
-<span class="hljs-keyword">const</span> device = <span class="hljs-keyword">new</span> YzDevice();
-device.***</code></pre>
+				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
+					<h3>Install</h3>
+				</a>
+				<pre><code class="language-bash">npm install yz-native-js-sdk@latest</code></pre>
+				<a href="#indexhtml" id="indexhtml" style="color: inherit; text-decoration: none;">
+					<h3>index.html</h3>
+				</a>
+				<p>clear your html to this</p>
+				<pre><code class="language-html"><span class="hljs-comment">&lt;!--
+ * @Createdby: Microsoft Visual Code
+ * @Author: ferried
+ * @Email: harlancui@outlook.com
+ * @LastEditors: ferried
+ * @Version: 1.0.0-SNAPSHOT
+ * @Description: none
+ * @Date: 2019-05-06 14:43:40
+ * @LastEditTime: 2019-05-11 10:16:13
+ --&gt;</span>
+<span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"utf-8"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>AngularYuznaiMobile<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">base</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"./"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span><span class="hljs-attr">src</span>=<span class="hljs-string">"http://res.wx.qq.com/open/js/jweixin-1.4.0.js"</span> &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"icon"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"image/x-icon"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"favicon.ico"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>&gt;</span><span class="css">
+      <span class="hljs-selector-class">.preloader</span> {
+        <span class="hljs-attribute">position</span>: fixed;
+        <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+        <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+        <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+        <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+        <span class="hljs-attribute">overflow</span>: hidden;
+        <span class="hljs-attribute">background</span>: <span class="hljs-number">#49a9ee</span>;
+        <span class="hljs-attribute">z-index</span>: <span class="hljs-number">9999</span>;
+        <span class="hljs-attribute">transition</span>: opacity <span class="hljs-number">0.65s</span>;
+      }
+
+      <span class="hljs-selector-class">.preloader-hidden-add</span> {
+        <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>;
+        <span class="hljs-attribute">display</span>: block;
+      }
+
+      <span class="hljs-selector-class">.preloader-hidden-add-active</span> {
+        <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;
+      }
+
+      <span class="hljs-selector-class">.preloader-hidden</span> {
+        <span class="hljs-attribute">display</span>: none;
+      }
+
+      <span class="hljs-selector-class">.cs-loader</span> {
+        <span class="hljs-attribute">position</span>: absolute;
+        <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+        <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+        <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+        <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+      }
+
+      <span class="hljs-selector-class">.cs-loader-inner</span> {
+        <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateY</span>(-50%);
+        <span class="hljs-attribute">top</span>: <span class="hljs-number">50%</span>;
+        <span class="hljs-attribute">position</span>: absolute;
+        <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+        <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;
+        <span class="hljs-attribute">text-align</span>: center;
+      }
+
+      <span class="hljs-selector-class">.cs-loader-inner</span> <span class="hljs-selector-tag">label</span> {
+        <span class="hljs-attribute">font-size</span>: <span class="hljs-number">20px</span>;
+        <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;
+        <span class="hljs-attribute">display</span>: inline-block;
+      }
+
+      @<span class="hljs-keyword">keyframes</span> lol {
+        0% {
+          <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;
+          <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateX</span>(-300px);
+        }
+
+        33% {
+          <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>;
+          <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateX</span>(0);
+        }
+
+        66% {
+          <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>;
+          <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateX</span>(0);
+        }
+
+        100% {
+          <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;
+          <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateX</span>(300px);
+        }
+      }
+
+      <span class="hljs-selector-class">.cs-loader-inner</span> <span class="hljs-selector-tag">label</span><span class="hljs-selector-pseudo">:nth-child(6)</span> {
+        <span class="hljs-attribute">animation</span>: lol <span class="hljs-number">3s</span> infinite ease-in-out;
+      }
+
+      <span class="hljs-selector-class">.cs-loader-inner</span> <span class="hljs-selector-tag">label</span><span class="hljs-selector-pseudo">:nth-child(5)</span> {
+        <span class="hljs-attribute">animation</span>: lol <span class="hljs-number">3s</span> <span class="hljs-number">0.1s</span> infinite ease-in-out;
+      }
+
+      <span class="hljs-selector-class">.cs-loader-inner</span> <span class="hljs-selector-tag">label</span><span class="hljs-selector-pseudo">:nth-child(4)</span> {
+        <span class="hljs-attribute">animation</span>: lol <span class="hljs-number">3s</span> <span class="hljs-number">0.2s</span> infinite ease-in-out;
+      }
+
+      <span class="hljs-selector-class">.cs-loader-inner</span> <span class="hljs-selector-tag">label</span><span class="hljs-selector-pseudo">:nth-child(3)</span> {
+        <span class="hljs-attribute">animation</span>: lol <span class="hljs-number">3s</span> <span class="hljs-number">0.3s</span> infinite ease-in-out;
+      }
+
+      <span class="hljs-selector-class">.cs-loader-inner</span> <span class="hljs-selector-tag">label</span><span class="hljs-selector-pseudo">:nth-child(2)</span> {
+        <span class="hljs-attribute">animation</span>: lol <span class="hljs-number">3s</span> <span class="hljs-number">0.4s</span> infinite ease-in-out;
+      }
+
+      <span class="hljs-selector-class">.cs-loader-inner</span> <span class="hljs-selector-tag">label</span><span class="hljs-selector-pseudo">:nth-child(1)</span> {
+        <span class="hljs-attribute">animation</span>: lol <span class="hljs-number">3s</span> <span class="hljs-number">0.5s</span> infinite ease-in-out;
+      }
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">app-root</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">app-root</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"preloader"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"cs-loader"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"cs-loader-inner"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span> ●<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span> ●<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span> ●<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span> ●<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span> ●<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span> ●<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+				<a href="#angularjson" id="angularjson" style="color: inherit; text-decoration: none;">
+					<h3>Angular.json</h3>
+				</a>
+				<pre><code class="language-json">            &quot;scripts&quot;: [
+              &quot;node_modules/yz-native-js-sdk/sdk.js&quot;
+            ],</code></pre>
+				<a href="#now-to-use" id="now-to-use" style="color: inherit; text-decoration: none;">
+					<h3>Now To Use</h3>
+				</a>
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { Component, OnInit } <span class="hljs-keyword">from</span> <span class="hljs-string">"@angular/core"</span>;
+<span class="hljs-keyword">import</span> { PlatForm } <span class="hljs-keyword">from</span> <span class="hljs-string">"yz-native-js-sdk"</span>;
+
+<span class="hljs-meta">@Component</span>({
+  selector: <span class="hljs-string">"app-root"</span>,
+  templateUrl: <span class="hljs-string">"./app.component.html"</span>,
+  styleUrls: [<span class="hljs-string">"./app.component.less"</span>]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppComponent <span class="hljs-keyword">implements</span> OnInit {
+  <span class="hljs-comment">// new a device to use</span>
+  device: PlatForm = <span class="hljs-keyword">new</span> PlatForm();
+
+  ngOnInit(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">this</span>.device.openWindow({ <span class="hljs-keyword">type</span>: <span class="hljs-string">"url"</span>, url: <span class="hljs-string">"http://www.baidu.com"</span> });
+    <span class="hljs-keyword">this</span>.device
+      .getUserAsync()
+      .then(<span class="hljs-function"><span class="hljs-params">user</span> =&gt;</span> {
+        alert(<span class="hljs-built_in">JSON</span>.stringify(user));
+      })
+      .catch(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> {
+        alert(<span class="hljs-built_in">JSON</span>.stringify(error));
+      });
+  }
+
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) {}
+}
+</code></pre>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
