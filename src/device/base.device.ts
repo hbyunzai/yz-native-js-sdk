@@ -89,7 +89,7 @@ export abstract class BaseDevice {
      * 异步获取联系人详情 参数
      * @param param
      */
-    abstract getContactsInfoAsync(param?: ContactUserInfoParam): Promise<ContactUserInfo>;
+    abstract getContactsInfoAsync(param?: ContactUserInfoParam): void;
 
     /**
      * 异步上传图像

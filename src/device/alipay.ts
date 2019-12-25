@@ -65,7 +65,7 @@ export class Alipay extends BaseDevice {
         return undefined;
     }
 
-    getContactsInfoAsync(param?: ContactUserInfoParam): Promise<ContactUserInfo> {
+    getContactsInfoAsync(param?: ContactUserInfoParam): void {
         return undefined;
     }
 

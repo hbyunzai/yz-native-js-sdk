@@ -64,8 +64,7 @@ export class WechatMicro extends BaseDevice {
         return undefined;
     }
 
-    getContactsInfoAsync(param?: ContactUserInfoParam): Promise<ContactUserInfo> {
-        return undefined;
+    getContactsInfoAsync(param?: ContactUserInfoParam): void {
     }
 
     uploadPhotoAsync(param?: MediaPhotoParam): Promise<MediaPhoto> {

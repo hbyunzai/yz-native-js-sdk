@@ -218,7 +218,7 @@
 
     function getContactsInfoAsync() {
         device.chooseContactsAsync({count: 1}).then((users) => {
-            device.getContactsInfoAsync({targetUserId: users[0].id}).then((userInfo) => {
+            device.getContactsInfoAsync({targetUserId: users[0].userId,success:((msg)=>{alert(JSON.stringify(msg))})}).then((userInfo) => {
                 document.getElementById('contactUserInfo').innerHTML = JSON.stringify(userInfo);
             })
         })

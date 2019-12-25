@@ -80,8 +80,8 @@ export class PlatForm extends BaseDevice {
         return this.proxy.chooseContactsAsync(param);
     }
 
-    getContactsInfoAsync(param?: ContactUserInfoParam): Promise<ContactUserInfo> {
-        return this.proxy.getContactsInfoAsync(param);
+    getContactsInfoAsync(param?: ContactUserInfoParam): void {
+        this.proxy.getContactsInfoAsync(param);
     }
 
     uploadPhotoAsync(param?: MediaPhotoParam): Promise<MediaPhoto> {
