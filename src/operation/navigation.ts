@@ -113,4 +113,9 @@ export interface YzNavigationBarRightItems extends NavigationBarRightItems {
 export interface AliPayNavigation extends Navigation {}
 export interface BrowserNavigation extends Navigation {}
 export interface WechatMicroNavigation extends Navigation {}
-export interface WechatOfficeNavigation extends Navigation {}
+export interface WechatOfficeNavigation extends Navigation {
+  /**
+   * 跳转路径
+   */
+  url?: string;
+}
