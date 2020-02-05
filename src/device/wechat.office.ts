@@ -6,7 +6,7 @@ import {
 } from "../operation/navigation";
 import { WebCanShare } from "../operation/share";
 import { Token, TokenParam } from "../operation/token";
-import { User, UserParam } from "../operation/user";
+import { User, UserParam, YzUser } from "../operation/user";
 import { MediaCamera, MediaCameraParam } from "../operation/media.camera";
 import { QRcode, YzQrcode, YzQrcodeParam } from "../operation/media.qrcode";
 import { ContactUser, ContactUserParam } from "../operation/contact.users";
@@ -53,17 +53,14 @@ export class WechatOffice extends BaseDevice {
   registerWechat() {
     http(
       "GET",
-      window.location.protocol +
-        "//" +
-        this.option.WECHAT_URI +
-        "?url=" +
-        window.location.href.split("#")[0],
+      this.option.WECHAT_URI + "?url=" + window.location.href.split("#")[0],
       function(data: string) {
         const wechatOfficeInfo: WechatOfficeInfo = JSON.parse(data);
-        wechatOfficeInfo.debug = true;
+        wechatOfficeInfo.debug = false;
         wechatOfficeInfo.jsApiList = WECHAT_JSSDK_LIST;
         wx.config({ ...wechatOfficeInfo });
-      }
+      },
+      this.option
     );
   }
 
@@ -111,10 +108,20 @@ export class WechatOffice extends BaseDevice {
   }
 
   getUserAsync(param?: UserParam): Promise<User> {
-    return undefined;
+    return new Promise<YzUser>((resolve, reject) => {
+      http(
+        "GET",
+        this.option.GATE_WAY + '/auth/user',
+        function(data: YzUser) {
+          resolve(data.principal);
+        },
+        this.option
+      );
+    });
   }
 
   getUserSync(): User {
+    console.error("Native Error: Wechat can't getUserBySync");
     return undefined;
   }
 

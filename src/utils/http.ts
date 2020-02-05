@@ -2,8 +2,8 @@
  * @Date: 2020-02-03 16:11:51
  * @Author: ferried
  * @Email: harlancui@outlook.com
- * @LastEditors: ferried
- * @LastEditTime: 2020-02-03 16:15:59
+ * @LastEditors  : ferried
+ * @LastEditTime : 2020-02-05 19:31:17
  * @Editor: Visual Studio Code
  * @Desc: nil
  * @License: nil
@@ -11,11 +11,15 @@
 export const http = (
   method: "GET" | "POST",
   url: string,
-  success: (response: any) => void
+  success: (response: any) => void,
+  options?: any
 ) => {
   const xmlHttp = new XMLHttpRequest();
   if (method.toUpperCase() === "GET") {
-    xmlHttp.open(method, url);
+    xmlHttp.open(method, window.location.protocol + "//" + url);
+    if (options && options.TOKEN_TYPE && options.TOKEN_VALUE) {
+      xmlHttp.setRequestHeader(options.TOKEN_TYPE, options.TOKEN_VALUE);
+    }
     xmlHttp.send(null);
   }
   xmlHttp.onreadystatechange = function() {

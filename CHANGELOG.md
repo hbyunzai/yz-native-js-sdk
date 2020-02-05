@@ -1,3 +1,7 @@
+# 0.1.5 2020-02-05
+## feature
+1.加入微信支持
+2.加入微信User/Location/Qrcode
 # 0.1.4 2019-12-25
 ## fix
 1.修复查看联系人详情function

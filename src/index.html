@@ -126,7 +126,10 @@
 </body>
 <script>
     const device = new YzDevice({
-        WECHAT_URI:"127.0.0.1/wqs/validate/jssdk"
+        WECHAT_URI: "127.0.0.1/wqs/validate/jssdk",
+        TOKEN_TYPE: "Authorization",
+        TOKEN_VALUE: "Bearer xxxxxxxxx",
+        GATE_WAY: "127.0.0.1"
     });
     device.wechatMpConfig =
         function getDeviceInfo() {
@@ -204,7 +207,7 @@
     }
 
     function userLocationAsync() {
-        device.userLocationAsync().then((location) => {
+        device.userLocationAsync({complete:(data)=>{console.log(data)}}).then((location) => {
             document.getElementById('deflocation').innerHTML = JSON.stringify(location);
         })
     }
