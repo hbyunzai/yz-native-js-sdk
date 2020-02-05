@@ -12,7 +12,10 @@ import { QRcode, QRcodeParam } from "../operation/media.qrcode";
 import { ContactUser, ContactUserParam } from "../operation/contact.users";
 import { ContactUserInfoParam } from "../operation/contact.userinfo";
 import { MediaPhoto, MediaPhotoParam } from "../operation/media.photo";
-import { MediaLocation, MediaLocationParam } from "../operation/media.location";
+import {
+  YzMediaLocationParam,
+  YzMediaLocation
+} from "../operation/media.location";
 import {
   MediaWifiLocation,
   MediaWifiLocationParam
@@ -36,23 +39,57 @@ import {
 import { DeviceInfo, DeviceInfoParam } from "../operation/device.info";
 import { DeviceOption } from "./device.option";
 import { http } from "../utils/http";
+import { WechatOfficeInfo, WECHAT_JSSDK_LIST } from "./wechat.office.info";
 
 declare let wx: any;
 
 export class WechatOffice extends BaseDevice {
   constructor(option?: DeviceOption) {
     super(option);
+    this.registerWechat();
+    this.validateWechat();
+  }
+
+  registerWechat() {
     http(
       "GET",
       window.location.protocol +
         "//" +
-        option.WECHAT_URI +
+        this.option.WECHAT_URI +
         "?url=" +
-        window.location.href,
-      data => {
-        console.log(data);
+        window.location.href.split("#")[0],
+      function(data: string) {
+        const wechatOfficeInfo: WechatOfficeInfo = JSON.parse(data);
+        wechatOfficeInfo.debug = true;
+        wechatOfficeInfo.jsApiList = WECHAT_JSSDK_LIST;
+        wx.config({ ...wechatOfficeInfo });
       }
     );
+  }
+
+  validateWechat() {
+    wx.ready(() => {
+      wx.checkJsApi({
+        jsApiList: WECHAT_JSSDK_LIST, // 需要检测的JS接口列表，所有JS接口列表见附录2,
+        success: function(res: any) {
+          if (!res.errMsg.includes("ok")) {
+            alert("微信JSSDK可用性检测失败!");
+          } else {
+            sessionStorage.setItem(
+              "JssdkCheckResult",
+              JSON.stringify(res.checkResult)
+            );
+          }
+        }
+      });
+    });
+  }
+
+  validateWechatSdkByFuncName(name: string) {
+    const JssdkCheckResult = JSON.parse(
+      sessionStorage.getItem("JssdkCheckResult")
+    );
+    return JssdkCheckResult[name];
   }
 
   setNavigationBarRightItems(param?: NavigationBarRightItems): void {}
@@ -60,7 +97,6 @@ export class WechatOffice extends BaseDevice {
   setNavigationBarTitle(param?: NavigationBarTitle): void {}
 
   openWindow(param?: WechatOfficeNavigation): void {
-    alert(this.option.WECHAT_URI);
     window.location.href = param.url;
   }
 
@@ -102,8 +138,37 @@ export class WechatOffice extends BaseDevice {
     return undefined;
   }
 
-  userLocationAsync(param?: MediaLocationParam): Promise<MediaLocation> {
-    return undefined;
+  userLocationAsync(param?: YzMediaLocationParam): Promise<YzMediaLocation> {
+    return new Promise<YzMediaLocation>((resolve, reject) => {
+      wx.ready(() => {
+        if (this.validateWechatSdkByFuncName("getLocation")) {
+          wx.getLocation({
+            type: "wgs84", // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
+            success: function(res: any) {
+              if (res.errMsg === 'getLocation:ok') {
+                var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+                var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+                var address = "微信无address";
+                resolve({ latitude, longitude, address });
+                if (param && param.success) {
+                  param.success({ latitude, longitude, address });
+                }
+              } else {
+                if (param && param.fail) {
+                  param.fail("NativeJSSDK Error:error to get location!");
+                }
+                reject("NativeJSSDK Error:error to get location!");
+              }
+            }
+          });
+        } else {
+          if (param && param.fail) {
+            param.fail("JSSDK Error:checked api error named getLocation!");
+          }
+          reject("JSSDK Error:checked api error named getLocation!");
+        }
+      });
+    });
   }
 
   userLocationWifiAsync(
