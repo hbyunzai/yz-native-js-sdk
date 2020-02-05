@@ -8,7 +8,7 @@ import { WebCanShare } from "../operation/share";
 import { Token, TokenParam } from "../operation/token";
 import { User, UserParam } from "../operation/user";
 import { MediaCamera, MediaCameraParam } from "../operation/media.camera";
-import { QRcode, QRcodeParam } from "../operation/media.qrcode";
+import { QRcode, YzQrcode, YzQrcodeParam } from "../operation/media.qrcode";
 import { ContactUser, ContactUserParam } from "../operation/contact.users";
 import { ContactUserInfoParam } from "../operation/contact.userinfo";
 import { MediaPhoto, MediaPhotoParam } from "../operation/media.photo";
@@ -122,8 +122,31 @@ export class WechatOffice extends BaseDevice {
     return undefined;
   }
 
-  scanQrCodeAsync(param?: QRcodeParam): Promise<QRcode> {
-    return undefined;
+  scanQrCodeAsync(param?: YzQrcodeParam): Promise<QRcode> {
+    return new Promise<YzQrcode>((resovle, reject) => {
+      wx.ready(() => {
+        if (this.validateWechatSdkByFuncName("scanQRCode")) {
+          if (param && param.success) {
+            wx.scanQRCode({
+              needResult: 1,
+              scanType: ["qrCode", "barCode"],
+              success: (res: any) => {
+                if (res.errMsg === "scanQRCode:ok") {
+                  resovle(res.resultStr);
+                } else {
+                  reject("NativeJSSDK Error:error to scan qrcode");
+                }
+              }
+            });
+          }
+        } else {
+          if (param && param.fail) {
+            param.fail("JSSDK Error:checked api error named scanQRCode");
+          }
+          reject("JSSDK Error:checked api error named scanQRCode");
+        }
+      });
+    });
   }
 
   chooseContactsAsync(param?: ContactUserParam): Promise<Array<ContactUser>> {
@@ -145,7 +168,7 @@ export class WechatOffice extends BaseDevice {
           wx.getLocation({
             type: "wgs84", // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
             success: function(res: any) {
-              if (res.errMsg === 'getLocation:ok') {
+              if (res.errMsg === "getLocation:ok") {
                 var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
                 var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
                 var address = "微信无address";
