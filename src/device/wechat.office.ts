@@ -53,7 +53,10 @@ export class WechatOffice extends BaseDevice {
   registerWechat() {
     http(
       "GET",
-      this.option.WECHAT_URI + "?url=" + window.location.href.split("#")[0],
+      this.option.GATE_WAY +
+        "/wechat/mp/jssdk" +
+        "?url=" +
+        window.location.href.split("#")[0],
       function(data: string) {
         const wechatOfficeInfo: WechatOfficeInfo = JSON.parse(data);
         wechatOfficeInfo.debug = false;
@@ -111,7 +114,7 @@ export class WechatOffice extends BaseDevice {
     return new Promise<YzUser>((resolve, reject) => {
       http(
         "GET",
-        this.option.GATE_WAY + '/auth/user',
+        this.option.GATE_WAY + "/auth/user",
         function(data: YzUser) {
           resolve(data.principal);
         },

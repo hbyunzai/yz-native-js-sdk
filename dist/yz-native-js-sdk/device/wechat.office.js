@@ -34,7 +34,10 @@ var WechatOffice = /** @class */ (function (_super) {
         return _this;
     }
     WechatOffice.prototype.registerWechat = function () {
-        http("GET", this.option.WECHAT_URI + "?url=" + window.location.href.split("#")[0], function (data) {
+        http("GET", this.option.GATE_WAY +
+            "/wechat/mp/jssdk" +
+            "?url=" +
+            window.location.href.split("#")[0], function (data) {
             var wechatOfficeInfo = JSON.parse(data);
             wechatOfficeInfo.debug = false;
             wechatOfficeInfo.jsApiList = WECHAT_JSSDK_LIST;
@@ -75,7 +78,7 @@ var WechatOffice = /** @class */ (function (_super) {
     WechatOffice.prototype.getUserAsync = function (param) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            http("GET", _this.option.GATE_WAY + '/auth/user', function (data) {
+            http("GET", _this.option.GATE_WAY + "/auth/user", function (data) {
                 resolve(data.principal);
             }, _this.option);
         });

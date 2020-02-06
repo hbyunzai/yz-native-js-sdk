@@ -1,6 +1,6 @@
 {
   "name": "yz-native-js-sdk",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "provide the native function call API of yunzai mobile platform for the third party\n",
   "scripts": {
     "start": "webpack-dev-server",

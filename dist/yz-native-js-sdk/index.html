@@ -126,10 +126,9 @@
 <script type="text/javascript" src="main.bundle.js"></script></body>
 <script>
     const device = new YzDevice({
-        WECHAT_URI: "127.0.0.1/wqs/validate/jssdk",
         TOKEN_TYPE: "Authorization",
         TOKEN_VALUE: "Bearer xxxxxxxxx",
-        GATE_WAY: "127.0.0.1"
+        GATE_WAY: "http://127.0.0.1"
     });
     device.wechatMpConfig =
         function getDeviceInfo() {
