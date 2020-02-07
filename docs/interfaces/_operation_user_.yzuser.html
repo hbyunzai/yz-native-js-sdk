@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>YzUser | yz-native-js-sdk - v0.1.7</title>
+	<title>YzUser | yz-native-js-sdk - v0.1.11</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">yz-native-js-sdk - v0.1.7</a>
+					<a href="../index.html" class="title">yz-native-js-sdk - v0.1.11</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -73,18 +73,9 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="_operation_user_.user.html" class="tsd-signature-type">User</a>
-						<ul class="tsd-hierarchy">
-							<li>
-								<span class="target">YzUser</span>
-							</li>
-						</ul>
+						<span class="target">YzUser</span>
 					</li>
 				</ul>
-			</section>
-			<section class="tsd-panel tsd-kind-interface tsd-parent-kind-external-module">
-				<h3 class="tsd-before-signature">Indexable</h3>
-				<div class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">any</span></div>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
@@ -93,13 +84,23 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_operation_user_.yzuser.html#account" class="tsd-kind-icon">account</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_operation_user_.yzuser.html#accountnonexpired" class="tsd-kind-icon">account<wbr>Non<wbr>Expired</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_operation_user_.yzuser.html#accountnonlocked" class="tsd-kind-icon">account<wbr>Non<wbr>Locked</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_operation_user_.yzuser.html#authorities" class="tsd-kind-icon">authorities</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_operation_user_.yzuser.html#avatarid" class="tsd-kind-icon">avatar<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_operation_user_.yzuser.html#credentialsnonexpired" class="tsd-kind-icon">credentials<wbr>Non<wbr>Expired</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_operation_user_.yzuser.html#deptid" class="tsd-kind-icon">dept<wbr>Id</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_operation_user_.yzuser.html#deptname" class="tsd-kind-icon">dept<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_operation_user_.yzuser.html#enabled" class="tsd-kind-icon">enabled</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_operation_user_.yzuser.html#id" class="tsd-kind-icon">id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_operation_user_.yzuser.html#menu" class="tsd-kind-icon">menu</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_operation_user_.yzuser.html#password" class="tsd-kind-icon">password</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_operation_user_.yzuser.html#realname" class="tsd-kind-icon">real<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_operation_user_.yzuser.html#realname" class="tsd-kind-icon">realname</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_operation_user_.yzuser.html#roles" class="tsd-kind-icon">roles</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_operation_user_.yzuser.html#usercode" class="tsd-kind-icon">user<wbr>Code</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_operation_user_.yzuser.html#userid" class="tsd-kind-icon">user<wbr>Id</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_operation_user_.yzuser.html#usertype" class="tsd-kind-icon">user<wbr>Type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_operation_user_.yzuser.html#username" class="tsd-kind-icon">username</a></li>
 							</ul>
 						</section>
 					</div>
@@ -108,109 +109,174 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="account" class="tsd-anchor"></a>
-					<h3>account</h3>
-					<div class="tsd-signature tsd-kind-icon">account<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="accountnonexpired" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> account<wbr>Non<wbr>Expired</h3>
+					<div class="tsd-signature tsd-kind-icon">account<wbr>Non<wbr>Expired<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/hbyunzai/yz-native-js-sdk/blob/44d6061/src/operation/user.ts#L19">operation/user.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/hbyunzai/yz-native-js-sdk/blob/5d9e855/src/operation/user.ts#L20">operation/user.ts:20</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>账号</p>
-						</div>
-					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="accountnonlocked" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> account<wbr>Non<wbr>Locked</h3>
+					<div class="tsd-signature tsd-kind-icon">account<wbr>Non<wbr>Locked<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/hbyunzai/yz-native-js-sdk/blob/5d9e855/src/operation/user.ts#L21">operation/user.ts:21</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="authorities" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> authorities</h3>
+					<div class="tsd-signature tsd-kind-icon">authorities<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/hbyunzai/yz-native-js-sdk/blob/5d9e855/src/operation/user.ts#L22">operation/user.ts:22</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="avatarid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> avatar<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">avatar<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/hbyunzai/yz-native-js-sdk/blob/5d9e855/src/operation/user.ts#L35">operation/user.ts:35</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="credentialsnonexpired" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> credentials<wbr>Non<wbr>Expired</h3>
+					<div class="tsd-signature tsd-kind-icon">credentials<wbr>Non<wbr>Expired<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/hbyunzai/yz-native-js-sdk/blob/5d9e855/src/operation/user.ts#L23">operation/user.ts:23</a></li>
+						</ul>
+					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="deptid" class="tsd-anchor"></a>
-					<h3>dept<wbr>Id</h3>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> dept<wbr>Id</h3>
 					<div class="tsd-signature tsd-kind-icon">dept<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/hbyunzai/yz-native-js-sdk/blob/44d6061/src/operation/user.ts#L37">operation/user.ts:37</a></li>
+							<li>Defined in <a href="https://github.com/hbyunzai/yz-native-js-sdk/blob/5d9e855/src/operation/user.ts#L24">operation/user.ts:24</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>部门唯一标识</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="deptname" class="tsd-anchor"></a>
-					<h3>dept<wbr>Name</h3>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> dept<wbr>Name</h3>
 					<div class="tsd-signature tsd-kind-icon">dept<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/hbyunzai/yz-native-js-sdk/blob/44d6061/src/operation/user.ts#L41">operation/user.ts:41</a></li>
+							<li>Defined in <a href="https://github.com/hbyunzai/yz-native-js-sdk/blob/5d9e855/src/operation/user.ts#L25">operation/user.ts:25</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>部门名称</p>
-						</div>
-					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="enabled" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> enabled</h3>
+					<div class="tsd-signature tsd-kind-icon">enabled<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/hbyunzai/yz-native-js-sdk/blob/5d9e855/src/operation/user.ts#L26">operation/user.ts:26</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="id" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> id</h3>
+					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/hbyunzai/yz-native-js-sdk/blob/5d9e855/src/operation/user.ts#L27">operation/user.ts:27</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="menu" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> menu</h3>
+					<div class="tsd-signature tsd-kind-icon">menu<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="_operation_user_.sider.html" class="tsd-signature-type">Sider</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/hbyunzai/yz-native-js-sdk/blob/5d9e855/src/operation/user.ts#L36">operation/user.ts:36</a></li>
+						</ul>
+					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="password" class="tsd-anchor"></a>
-					<h3>password</h3>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> password</h3>
 					<div class="tsd-signature tsd-kind-icon">password<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/hbyunzai/yz-native-js-sdk/blob/44d6061/src/operation/user.ts#L23">operation/user.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/hbyunzai/yz-native-js-sdk/blob/5d9e855/src/operation/user.ts#L28">operation/user.ts:28</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>密码</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="realname" class="tsd-anchor"></a>
-					<h3>real<wbr>Name</h3>
-					<div class="tsd-signature tsd-kind-icon">real<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> realname</h3>
+					<div class="tsd-signature tsd-kind-icon">realname<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/hbyunzai/yz-native-js-sdk/blob/44d6061/src/operation/user.ts#L32">operation/user.ts:32</a></li>
+							<li>Defined in <a href="https://github.com/hbyunzai/yz-native-js-sdk/blob/5d9e855/src/operation/user.ts#L29">operation/user.ts:29</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>用户姓名</p>
-						</div>
-					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="roles" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> roles</h3>
+					<div class="tsd-signature tsd-kind-icon">roles<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/hbyunzai/yz-native-js-sdk/blob/5d9e855/src/operation/user.ts#L30">operation/user.ts:30</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="usercode" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> user<wbr>Code</h3>
+					<div class="tsd-signature tsd-kind-icon">user<wbr>Code<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/hbyunzai/yz-native-js-sdk/blob/5d9e855/src/operation/user.ts#L31">operation/user.ts:31</a></li>
+						</ul>
+					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="userid" class="tsd-anchor"></a>
-					<h3>user<wbr>Id</h3>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> user<wbr>Id</h3>
 					<div class="tsd-signature tsd-kind-icon">user<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/hbyunzai/yz-native-js-sdk/blob/44d6061/src/operation/user.ts#L27">operation/user.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/hbyunzai/yz-native-js-sdk/blob/5d9e855/src/operation/user.ts#L32">operation/user.ts:32</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>用户唯一标识</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="usertype" class="tsd-anchor"></a>
-					<h3>user<wbr>Type</h3>
-					<div class="tsd-signature tsd-kind-icon">user<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> user<wbr>Type</h3>
+					<div class="tsd-signature tsd-kind-icon">user<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/hbyunzai/yz-native-js-sdk/blob/44d6061/src/operation/user.ts#L45">operation/user.ts:45</a></li>
+							<li>Defined in <a href="https://github.com/hbyunzai/yz-native-js-sdk/blob/5d9e855/src/operation/user.ts#L33">operation/user.ts:33</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>用户类型</p>
-						</div>
-					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="username" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> username</h3>
+					<div class="tsd-signature tsd-kind-icon">username<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/hbyunzai/yz-native-js-sdk/blob/5d9e855/src/operation/user.ts#L34">operation/user.ts:34</a></li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 		</div>
@@ -227,6 +293,18 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
+						<a href="../enums/_operation_user_.badge_status.html" class="tsd-kind-icon">BADGE_<wbr>STATUS</a>
+					</li>
+					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
+						<a href="../enums/_operation_user_.sider_mode.html" class="tsd-kind-icon">SIDER_<wbr>MODE</a>
+					</li>
+					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
+						<a href="../enums/_operation_user_.sider_theme.html" class="tsd-kind-icon">SIDER_<wbr>THEME</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_operation_user_.sider.html" class="tsd-kind-icon">Sider</a>
+					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="_operation_user_.user.html" class="tsd-kind-icon">User</a>
 					</li>
@@ -239,7 +317,19 @@
 						<a href="_operation_user_.yzuser.html" class="tsd-kind-icon">Yz<wbr>User</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_operation_user_.yzuser.html#account" class="tsd-kind-icon">account</a>
+								<a href="_operation_user_.yzuser.html#accountnonexpired" class="tsd-kind-icon">account<wbr>Non<wbr>Expired</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_operation_user_.yzuser.html#accountnonlocked" class="tsd-kind-icon">account<wbr>Non<wbr>Locked</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_operation_user_.yzuser.html#authorities" class="tsd-kind-icon">authorities</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_operation_user_.yzuser.html#avatarid" class="tsd-kind-icon">avatar<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_operation_user_.yzuser.html#credentialsnonexpired" class="tsd-kind-icon">credentials<wbr>Non<wbr>Expired</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="_operation_user_.yzuser.html#deptid" class="tsd-kind-icon">dept<wbr>Id</a>
@@ -248,10 +338,25 @@
 								<a href="_operation_user_.yzuser.html#deptname" class="tsd-kind-icon">dept<wbr>Name</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_operation_user_.yzuser.html#enabled" class="tsd-kind-icon">enabled</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_operation_user_.yzuser.html#id" class="tsd-kind-icon">id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_operation_user_.yzuser.html#menu" class="tsd-kind-icon">menu</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="_operation_user_.yzuser.html#password" class="tsd-kind-icon">password</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_operation_user_.yzuser.html#realname" class="tsd-kind-icon">real<wbr>Name</a>
+								<a href="_operation_user_.yzuser.html#realname" class="tsd-kind-icon">realname</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_operation_user_.yzuser.html#roles" class="tsd-kind-icon">roles</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_operation_user_.yzuser.html#usercode" class="tsd-kind-icon">user<wbr>Code</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="_operation_user_.yzuser.html#userid" class="tsd-kind-icon">user<wbr>Id</a>
@@ -259,13 +364,13 @@
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="_operation_user_.yzuser.html#usertype" class="tsd-kind-icon">user<wbr>Type</a>
 							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_operation_user_.yzuser.html#username" class="tsd-kind-icon">username</a>
+							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_operation_user_.yzuserparam.html" class="tsd-kind-icon">Yz<wbr>User<wbr>Param</a>
-					</li>
 				</ul>
 			</nav>
 		</div>
