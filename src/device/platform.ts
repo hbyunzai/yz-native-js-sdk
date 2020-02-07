@@ -87,22 +87,6 @@ export class PlatForm extends BaseDevice {
     this.proxy.setWebCanShare(param);
   }
 
-  getTokenAsync(param?: TokenParam): Promise<Token> {
-    return this.proxy.getTokenAsync(param);
-  }
-
-  getTokenSync(): Token {
-    return this.proxy.getTokenSync();
-  }
-
-  getUserAsync(param?: UserParam): Promise<User> {
-    return this.proxy.getUserAsync(param);
-  }
-
-  getUserSync(): User {
-    return this.proxy.getUserSync();
-  }
-
   openMediaCameraAsync(param?: MediaCameraParam): Promise<MediaCamera> {
     return this.proxy.openMediaCameraAsync(param);
   }

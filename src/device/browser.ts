@@ -91,21 +91,6 @@ export class Browser extends BaseDevice {
 
   setWebCanShare(param?: WebCanShare): void {}
 
-  getTokenAsync(param?: TokenParam): Promise<Token> {
-    return undefined;
-  }
-
-  getTokenSync(): Token {
-    return undefined;
-  }
-
-  getUserAsync(param?: UserParam): Promise<User> {
-    return undefined;
-  }
-
-  getUserSync(): User {
-    return undefined;
-  }
 
   openMediaCameraAsync(param?: MediaCameraParam): Promise<MediaCamera> {
     return undefined;

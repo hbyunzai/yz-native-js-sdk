@@ -54,7 +54,10 @@ export class YzMobile extends BaseDevice {
   }
 
   auth(): Promise<YzToken> {
-    return this.getTokenAsync();
+    return new Promise<YzToken>((resolve, reject) => {
+      const token = yz.getTokenSync();
+      resolve(token);
+    });
   }
   apiRegister(): void {}
   setNavigationBarRightItems(param?: YzNavigationBarRightItems): void {
@@ -71,65 +74,6 @@ export class YzMobile extends BaseDevice {
 
   setWebCanShare(param?: YzWebCanShare): void {
     yz.setWebCanShare(param);
-  }
-
-  getTokenAsync(param?: YzTokenAsyncParam): Promise<YzToken> {
-    return new Promise<YzToken>((resolve, reject) => {
-      yz.getToken({
-        refresh: param.refresh,
-        success: (token: YzToken) => {
-          if (param && param.success) {
-            param.success(token);
-          }
-          resolve(token);
-        },
-        fail: (msg: any) => {
-          if (param && param.fail) {
-            param.fail(msg);
-          }
-          reject(false);
-        },
-        complete: (msg: any) => {
-          if (param && param.complete) {
-            param.complete(msg);
-          }
-          reject(false);
-        }
-      });
-    });
-  }
-
-  getTokenSync(): YzToken {
-    return yz.getTokenSync();
-  }
-
-  getUserAsync(param?: YzUserParam): Promise<YzUser> {
-    return new Promise<YzUser>((resolve, reject) => {
-      yz.getUserInfo({
-        success: (user: YzUser) => {
-          if (param && param.success) {
-            param.success(user);
-          }
-          resolve(user);
-        },
-        fail: (msg: any) => {
-          if (param && param.fail) {
-            param.fail(msg);
-          }
-          reject(false);
-        },
-        complete: (msg: any) => {
-          if (param && param.complete) {
-            param.complete(msg);
-          }
-          reject(false);
-        }
-      });
-    });
-  }
-
-  getUserSync(): YzUser {
-    return yz.getUserInfoSync();
   }
 
   openMediaCameraAsync(param?: YzMediaCameraParam): Promise<YzMediaCamera> {

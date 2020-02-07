@@ -53,48 +53,21 @@ export abstract class BaseDevice {
    * @param param 参数
    */
   abstract openWindow(param?: Navigation): void;
-
   /**
    * 设置标题
    * @param param 参数
    */
   abstract setNavigationBarTitle(param?: NavigationBarTitle): void;
-
   /**
    * 设置标题右侧按钮
    * @param param 参数
    */
   abstract setNavigationBarRightItems(param?: NavigationBarRightItems): void;
-
   /**
    * 设置网页是否可以被分享
    * @param param 参数
    */
   abstract setWebCanShare(param?: WebCanShare): void;
-
-  /**
-   * 异步获取用户token
-   * @param param 参数
-   */
-  abstract getTokenAsync(param?: TokenParam): Promise<Token>;
-
-  /**
-   * 同步获取用户token
-   */
-  abstract getTokenSync(): Token;
-
-  /**
-   * 异步获取用户信息
-   * @param param 参数
-   */
-  abstract getUserAsync(param?: UserParam): Promise<User>;
-
-  /**
-   * 同步获取用户信息
-   * @return User 用户信息
-   */
-  abstract getUserSync(): User;
-
   /**
    * 异步打开媒体照相机
    * @param param 参数

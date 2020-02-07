@@ -46,15 +46,18 @@ declare let wx: any;
 export class WechatOffice extends BaseDevice {
   constructor(option?: DeviceOption) {
     super(option);
-    this.registerWechat();
-    this.validateWechat();
   }
   auth(): Promise<Token> {
-    return Promise.resolve(null);
+    return new Promise<Token>((resolve, reject) => {
+      let authurl = this.option.GATE_WAY + "/wechat/mp/token";
+      http("GET", authurl, token => {
+        const realToken = { accessToken: JSON.parse(token).message };
+        resolve(realToken);
+      });
+    });
   }
-  apiRegister(): void {}
 
-  registerWechat() {
+  apiRegister(): void {
     http(
       "GET",
       this.option.GATE_WAY +
@@ -66,27 +69,24 @@ export class WechatOffice extends BaseDevice {
         wechatOfficeInfo.debug = false;
         wechatOfficeInfo.jsApiList = WECHAT_JSSDK_LIST;
         wx.config({ ...wechatOfficeInfo });
+        wx.ready(() => {
+          wx.checkJsApi({
+            jsApiList: WECHAT_JSSDK_LIST, // 需要检测的JS接口列表，所有JS接口列表见附录2,
+            success: function(res: any) {
+              if (!res.errMsg.includes("ok")) {
+                alert("微信JSSDK可用性检测失败!");
+              } else {
+                sessionStorage.setItem(
+                  "JssdkCheckResult",
+                  JSON.stringify(res.checkResult)
+                );
+              }
+            }
+          });
+        });
       },
       this.option
     );
-  }
-
-  validateWechat() {
-    wx.ready(() => {
-      wx.checkJsApi({
-        jsApiList: WECHAT_JSSDK_LIST, // 需要检测的JS接口列表，所有JS接口列表见附录2,
-        success: function(res: any) {
-          if (!res.errMsg.includes("ok")) {
-            alert("微信JSSDK可用性检测失败!");
-          } else {
-            sessionStorage.setItem(
-              "JssdkCheckResult",
-              JSON.stringify(res.checkResult)
-            );
-          }
-        }
-      });
-    });
   }
 
   validateWechatSdkByFuncName(name: string) {
