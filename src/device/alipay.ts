@@ -6,15 +6,12 @@ import {
 } from "../operation/navigation";
 
 import { WebCanShare } from "../operation/share";
-import { Token, TokenParam } from "../operation/token";
-import { User, UserParam } from "../operation/user";
+import { Token } from "../operation/token";
+import { User } from "../operation/user";
 import { MediaCamera, MediaCameraParam } from "../operation/media.camera";
 import { QRcode, QRcodeParam } from "../operation/media.qrcode";
 import { ContactUser, ContactUserParam } from "../operation/contact.users";
-import {
-  ContactUserInfo,
-  ContactUserInfoParam
-} from "../operation/contact.userinfo";
+import { ContactUserInfoParam } from "../operation/contact.userinfo";
 import { MediaPhoto, MediaPhotoParam } from "../operation/media.photo";
 import { MediaLocation, MediaLocationParam } from "../operation/media.location";
 import {
@@ -45,6 +42,9 @@ export class Alipay extends BaseDevice {
     super(option);
   }
   auth(): Promise<Token> {
+    return Promise.resolve(null);
+  }
+  getUser(): Promise<User> {
     return Promise.resolve(null);
   }
   apiRegister(): void {}

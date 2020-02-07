@@ -64,6 +64,9 @@ export class PlatForm extends BaseDevice {
       return new Browser(option);
     }
   }
+  getUser(): Promise<User> {
+    return this.proxy.getUser();
+  }
   auth(): Promise<Token> {
     return this.proxy.auth();
   }

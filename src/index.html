@@ -127,10 +127,12 @@
 <script>
     const device = new YzDevice({ GATE_WAY: "http://222.30.195.53:8080/backstage" });
     device.auth().then((token) => {
-        alert(JSON.stringify(token));
         device.option.TOKEN_TYPE = "Authority"
         device.option.TOKEN_VALUE = "Bearer " + token.accessToken;
-    device.apiRegister();
+        device.apiRegister();
+        device.getUser().then((user)=>{
+            console.log(user);
+        })
     });
     function openReadWithTimer() {
         device.openReadWithTimer({

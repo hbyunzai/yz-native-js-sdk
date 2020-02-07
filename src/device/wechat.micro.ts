@@ -5,8 +5,8 @@ import {
   NavigationBarRightItems
 } from "../operation/navigation";
 import { WebCanShare } from "../operation/share";
-import { Token, TokenParam } from "../operation/token";
-import { User, UserParam } from "../operation/user";
+import { Token } from "../operation/token";
+import { User } from "../operation/user";
 import { MediaCamera, MediaCameraParam } from "../operation/media.camera";
 import { QRcode, QRcodeParam } from "../operation/media.qrcode";
 import { ContactUser, ContactUserParam } from "../operation/contact.users";
@@ -46,6 +46,9 @@ export class WechatMicro extends BaseDevice {
     return Promise.resolve(null);
   }
   apiRegister(): void {}
+  getUser(): Promise<User> {
+    return Promise.resolve(null);
+  }
   setNavigationBarRightItems(param?: NavigationBarRightItems): void {}
 
   setNavigationBarTitle(param?: NavigationBarTitle): void {}

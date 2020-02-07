@@ -4,8 +4,7 @@ import {
   NavigationBarRightItems
 } from "../operation/navigation";
 import { WebCanShare } from "../operation/share";
-import { Token, TokenParam } from "../operation/token";
-import { User, UserParam } from "../operation/user";
+import { Token } from "../operation/token";
 import { MediaCamera, MediaCameraParam } from "../operation/media.camera";
 import { QRcode, QRcodeParam } from "../operation/media.qrcode";
 import { ContactUser, ContactUserParam } from "../operation/contact.users";
@@ -34,12 +33,18 @@ import {
 } from "../operation/read.with.number";
 import { DeviceInfo, DeviceInfoParam } from "../operation/device.info";
 import { DeviceOption } from "./device.option";
+import { User } from "../operation/user";
 
 export abstract class BaseDevice {
   option: DeviceOption;
   constructor(option?: DeviceOption) {
     this.option = option;
   }
+  /**
+   * 获取用户
+   */
+  abstract getUser(): Promise<User>;
+
   /**
    * 设备认证获取token
    */

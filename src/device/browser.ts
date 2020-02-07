@@ -6,8 +6,8 @@ import {
 } from "../operation/navigation";
 
 import { WebCanShare } from "../operation/share";
-import { Token, TokenParam } from "../operation/token";
-import { User, UserParam } from "../operation/user";
+import { Token } from "../operation/token";
+import { YzUser } from "../operation/user";
 import { MediaCamera, MediaCameraParam } from "../operation/media.camera";
 import { QRcode, QRcodeParam } from "../operation/media.qrcode";
 import { ContactUser, ContactUserParam } from "../operation/contact.users";
@@ -80,6 +80,18 @@ export class Browser extends BaseDevice {
       );
     });
   }
+  getUser(): Promise<YzUser> {
+    return new Promise<YzUser>((resolve, reject) => {
+      http(
+        "GET",
+        this.option.GATE_WAY + "/auth/user",
+        function(data: any) {
+          resolve(data.principal);
+        },
+        this.option
+      );
+    });
+  }
   apiRegister(): void {
     console.warn("browser hasn't api register");
   }
@@ -90,7 +102,6 @@ export class Browser extends BaseDevice {
   openWindow(param?: BrowserNavigation): void {}
 
   setWebCanShare(param?: WebCanShare): void {}
-
 
   openMediaCameraAsync(param?: MediaCameraParam): Promise<MediaCamera> {
     return undefined;

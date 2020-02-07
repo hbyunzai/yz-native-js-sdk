@@ -1,7 +1,7 @@
 import { BaseDevice } from "./base.device";
 import { YzWebCanShare } from "../operation/share";
-import { YzToken, YzTokenAsyncParam, Token } from "../operation/token";
-import { YzUser, YzUserParam } from "../operation/user";
+import { YzToken } from "../operation/token";
+import { YzUser } from "../operation/user";
 import { YzMediaCamera, YzMediaCameraParam } from "../operation/media.camera";
 import { QRcode, YzQrcode, YzQrcodeParam } from "../operation/media.qrcode";
 import { YzContactUser, YzContactUserParam } from "../operation/contact.users";
@@ -45,12 +45,26 @@ import {
 } from "../operation/read.with.number";
 import { YzDeviceInfo, YzDeviceInfoParam } from "../operation/device.info";
 import { DeviceOption } from "../device/device.option";
+import { http } from "../utils/http";
 
 declare let yz: any;
 
 export class YzMobile extends BaseDevice {
   constructor(option?: DeviceOption) {
     super(option);
+  }
+
+  getUser(): Promise<YzUser> {
+    return new Promise<YzUser>((resolve, reject) => {
+      http(
+        "GET",
+        this.option.GATE_WAY + "/auth/user",
+        function(data: any) {
+          resolve(data.principal);
+        },
+        this.option
+      );
+    });
   }
 
   auth(): Promise<YzToken> {

@@ -84,30 +84,17 @@ export class WechatOffice extends BaseDevice {
 
   setWebCanShare(param?: WebCanShare): void {}
 
-  getTokenAsync(param?: TokenParam): Promise<Token> {
-    return undefined;
-  }
-
-  getTokenSync(): Token {
-    return undefined;
-  }
-
-  getUserAsync(param?: UserParam): Promise<User> {
+  getUser(): Promise<YzUser> {
     return new Promise<YzUser>((resolve, reject) => {
       http(
         "GET",
         this.option.GATE_WAY + "/auth/user",
-        function(data: YzUser) {
+        function(data: any) {
           resolve(data.principal);
         },
         this.option
       );
     });
-  }
-
-  getUserSync(): User {
-    console.error("Native Error: Wechat can't getUserBySync");
-    return undefined;
   }
 
   openMediaCameraAsync(param?: MediaCameraParam): Promise<MediaCamera> {
