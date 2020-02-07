@@ -125,8 +125,13 @@
     </ol>
 <script type="text/javascript" src="main.bundle.js"></script></body>
 <script>
-    const device = new YzDevice({GATE_WAY: "http://222.30.195.53:8080/backstage"});
-    device.auth();
+    const device = new YzDevice({ GATE_WAY: "http://222.30.195.53:8080/backstage" });
+    device.auth().then((token) => {
+        alert(JSON.stringify(token));
+        device.option.TOKEN_TYPE = "Authority"
+        device.option.TOKEN_VALUE = "Bearer " + token.accessToken;
+    device.apiRegister();
+    });
     function openReadWithTimer() {
         device.openReadWithTimer({
             url: 'http://www.baidu.com',
@@ -196,7 +201,7 @@
     }
 
     function userLocationAsync() {
-        device.userLocationAsync({complete:(data)=>{console.log(data)}}).then((location) => {
+        device.userLocationAsync({ complete: (data) => { console.log(data) } }).then((location) => {
             document.getElementById('deflocation').innerHTML = JSON.stringify(location);
         })
     }
@@ -235,25 +240,15 @@
     }
 
     function getUserAsync() {
-        device.getUserAsync().then((user) => {
-            document.getElementById('userAsync').innerHTML = JSON.stringify(user);
-        })
     }
 
     function getUserSync() {
-        let user = device.getUserSync();
-        document.getElementById('userSync').innerHTML = JSON.stringify(user);
     }
 
     function getTokenSync() {
-        let token = device.getTokenSync();
-        document.getElementById('tokensync').innerHTML = JSON.stringify(token);
     }
 
     function getTokenAsync() {
-        device.getTokenAsync({ refresh: true }).then((token) => {
-            document.getElementById('tokenasync').innerHTML = JSON.stringify(token);
-        });
     };
 
     function webCantShare() {

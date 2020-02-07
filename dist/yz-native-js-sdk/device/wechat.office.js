@@ -49,24 +49,7 @@ var WechatOffice = /** @class */ (function (_super) {
             wechatOfficeInfo.debug = false;
             wechatOfficeInfo.jsApiList = WECHAT_JSSDK_LIST;
             wx.config(__assign({}, wechatOfficeInfo));
-            wx.ready(function () {
-                wx.checkJsApi({
-                    jsApiList: WECHAT_JSSDK_LIST,
-                    success: function (res) {
-                        if (!res.errMsg.includes("ok")) {
-                            alert("微信JSSDK可用性检测失败!");
-                        }
-                        else {
-                            sessionStorage.setItem("JssdkCheckResult", JSON.stringify(res.checkResult));
-                        }
-                    }
-                });
-            });
         }, this.option);
-    };
-    WechatOffice.prototype.validateWechatSdkByFuncName = function (name) {
-        var JssdkCheckResult = JSON.parse(sessionStorage.getItem("JssdkCheckResult"));
-        return JssdkCheckResult[name];
     };
     WechatOffice.prototype.setNavigationBarRightItems = function (param) { };
     WechatOffice.prototype.setNavigationBarTitle = function (param) { };
@@ -96,30 +79,21 @@ var WechatOffice = /** @class */ (function (_super) {
         return undefined;
     };
     WechatOffice.prototype.scanQrCodeAsync = function (param) {
-        var _this = this;
         return new Promise(function (resovle, reject) {
             wx.ready(function () {
-                if (_this.validateWechatSdkByFuncName("scanQRCode")) {
-                    if (param && param.success) {
-                        wx.scanQRCode({
-                            needResult: 1,
-                            scanType: ["qrCode", "barCode"],
-                            success: function (res) {
-                                if (res.errMsg === "scanQRCode:ok") {
-                                    resovle(res.resultStr);
-                                }
-                                else {
-                                    reject("NativeJSSDK Error:error to scan qrcode");
-                                }
+                if (param && param.success) {
+                    wx.scanQRCode({
+                        needResult: 1,
+                        scanType: ["qrCode", "barCode"],
+                        success: function (res) {
+                            if (res.errMsg === "scanQRCode:ok") {
+                                resovle(res.resultStr);
                             }
-                        });
-                    }
-                }
-                else {
-                    if (param && param.fail) {
-                        param.fail("JSSDK Error:checked api error named scanQRCode");
-                    }
-                    reject("JSSDK Error:checked api error named scanQRCode");
+                            else {
+                                reject("NativeJSSDK Error:error to scan qrcode");
+                            }
+                        }
+                    });
                 }
             });
         });
@@ -134,37 +108,28 @@ var WechatOffice = /** @class */ (function (_super) {
         return undefined;
     };
     WechatOffice.prototype.userLocationAsync = function (param) {
-        var _this = this;
         return new Promise(function (resolve, reject) {
             wx.ready(function () {
-                if (_this.validateWechatSdkByFuncName("getLocation")) {
-                    wx.getLocation({
-                        type: "wgs84",
-                        success: function (res) {
-                            if (res.errMsg === "getLocation:ok") {
-                                var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
-                                var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
-                                var address = "微信无address";
-                                resolve({ latitude: latitude, longitude: longitude, address: address });
-                                if (param && param.success) {
-                                    param.success({ latitude: latitude, longitude: longitude, address: address });
-                                }
-                            }
-                            else {
-                                if (param && param.fail) {
-                                    param.fail("NativeJSSDK Error:error to get location!");
-                                }
-                                reject("NativeJSSDK Error:error to get location!");
+                wx.getLocation({
+                    type: "wgs84",
+                    success: function (res) {
+                        if (res.errMsg === "getLocation:ok") {
+                            var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+                            var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+                            var address = "微信无address";
+                            resolve({ latitude: latitude, longitude: longitude, address: address });
+                            if (param && param.success) {
+                                param.success({ latitude: latitude, longitude: longitude, address: address });
                             }
                         }
-                    });
-                }
-                else {
-                    if (param && param.fail) {
-                        param.fail("JSSDK Error:checked api error named getLocation!");
+                        else {
+                            if (param && param.fail) {
+                                param.fail("NativeJSSDK Error:error to get location!");
+                            }
+                            reject("NativeJSSDK Error:error to get location!");
+                        }
                     }
-                    reject("JSSDK Error:checked api error named getLocation!");
-                }
+                });
             });
         });
     };

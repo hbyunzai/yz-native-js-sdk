@@ -23,7 +23,6 @@ export declare class WechatOffice extends BaseDevice {
     constructor(option?: DeviceOption);
     auth(): Promise<Token>;
     apiRegister(): void;
-    validateWechatSdkByFuncName(name: string): any;
     setNavigationBarRightItems(param?: NavigationBarRightItems): void;
     setNavigationBarTitle(param?: NavigationBarTitle): void;
     openWindow(param?: WechatOfficeNavigation): void;
