@@ -1,6 +1,6 @@
 import { BaseDevice } from "./base.device";
 import { YzWebCanShare } from "../operation/share";
-import { YzToken, YzTokenAsyncParam } from "../operation/token";
+import { YzToken, YzTokenAsyncParam, Token } from "../operation/token";
 import { YzUser, YzUserParam } from "../operation/user";
 import { YzMediaCamera, YzMediaCameraParam } from "../operation/media.camera";
 import { QRcode, YzQrcode, YzQrcodeParam } from "../operation/media.qrcode";
@@ -44,7 +44,7 @@ import {
   YzReadWithNumberParam
 } from "../operation/read.with.number";
 import { YzDeviceInfo, YzDeviceInfoParam } from "../operation/device.info";
-import { DeviceOption } from "./device.option";
+import { DeviceOption } from "../device/device.option";
 
 declare let yz: any;
 
@@ -52,6 +52,11 @@ export class YzMobile extends BaseDevice {
   constructor(option?: DeviceOption) {
     super(option);
   }
+
+  auth(): Promise<YzToken> {
+    return this.getTokenAsync();
+  }
+  apiRegister(): void {}
   setNavigationBarRightItems(param?: YzNavigationBarRightItems): void {
     yz.setNavigationBarRightItems(param);
   }

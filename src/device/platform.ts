@@ -64,6 +64,12 @@ export class PlatForm extends BaseDevice {
       return new Browser(option);
     }
   }
+  auth(): Promise<Token> {
+    return this.proxy.auth();
+  }
+  apiRegister(): void {
+    this.proxy.apiRegister();
+  }
 
   openWindow(param?: Navigation): void {
     this.proxy.openWindow(param);

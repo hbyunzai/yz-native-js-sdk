@@ -49,6 +49,10 @@ export class WechatOffice extends BaseDevice {
     this.registerWechat();
     this.validateWechat();
   }
+  auth(): Promise<Token> {
+    return Promise.resolve(null);
+  }
+  apiRegister(): void {}
 
   registerWechat() {
     http(

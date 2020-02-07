@@ -41,6 +41,14 @@ export abstract class BaseDevice {
     this.option = option;
   }
   /**
+   * 设备认证获取token
+   */
+  abstract auth(): Promise<Token>;
+  /**
+   * API注册
+   */
+  abstract apiRegister(): void;
+  /**
    * 打开新窗口
    * @param param 参数
    */

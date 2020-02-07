@@ -44,6 +44,10 @@ export class Alipay extends BaseDevice {
   constructor(option?: DeviceOption) {
     super(option);
   }
+  auth(): Promise<Token> {
+    return Promise.resolve(null);
+  }
+  apiRegister(): void {}
   setNavigationBarRightItems(param?: NavigationBarRightItems): void {}
 
   setNavigationBarTitle(param?: NavigationBarTitle): void {}

@@ -11,9 +11,7 @@ import { User, UserParam } from "../operation/user";
 import { MediaCamera, MediaCameraParam } from "../operation/media.camera";
 import { QRcode, QRcodeParam } from "../operation/media.qrcode";
 import { ContactUser, ContactUserParam } from "../operation/contact.users";
-import {
-  ContactUserInfoParam
-} from "../operation/contact.userinfo";
+import { ContactUserInfoParam } from "../operation/contact.userinfo";
 import { MediaPhoto, MediaPhotoParam } from "../operation/media.photo";
 import { MediaLocation, MediaLocationParam } from "../operation/media.location";
 import {
@@ -38,10 +36,52 @@ import {
 } from "../operation/read.with.number";
 import { DeviceInfo, DeviceInfoParam } from "../operation/device.info";
 import { DeviceOption } from "./device.option";
+import { http } from "../utils";
 
 export class Browser extends BaseDevice {
   constructor(option?: DeviceOption) {
     super(option);
+  }
+  auth(): Promise<Token> {
+    const url = encodeURIComponent(window.location.href.toString());
+    return new Promise<Token>((resolve, reject) => {
+      http(
+        "GET",
+        this.option.GATE_WAY +
+          "/cas-proxy/app/validate_full?callback=" +
+          url +
+          new Date().getTime(),
+        response => {
+          const res = JSON.parse(response);
+          switch (res.errcode) {
+            case 2000:
+              resolve({
+                accessToken: res.data.access_token,
+                tokenType: res.data.token_type,
+                scope: res.data.scope,
+                tokenDateLine: res.data.expires_in
+              });
+              break;
+            case 2001:
+              window.location.href = res.msg;
+              break;
+            case 2002:
+              alert(res.data);
+              break;
+            case 2003:
+            case 5000:
+            case 5001:
+              alert(res.msg);
+              break;
+            default:
+              break;
+          }
+        }
+      );
+    });
+  }
+  apiRegister(): void {
+    console.warn("browser hasn't api register");
   }
   setNavigationBarRightItems(param?: NavigationBarRightItems): void {}
 
