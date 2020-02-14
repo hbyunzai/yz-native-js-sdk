@@ -3,7 +3,7 @@
  * @Author: ferried
  * @Email: harlancui@outlook.com
  * @LastEditors  : ferried
- * @LastEditTime : 2020-02-06 12:03:45
+ * @LastEditTime : 2020-02-14 18:42:22
  * @Editor: Visual Studio Code
  * @Desc: nil
  * @License: nil
@@ -17,6 +17,7 @@ export const http = (
   const xmlHttp = new XMLHttpRequest();
   if (method.toUpperCase() === "GET") {
     xmlHttp.open(method, url);
+    xmlHttp.withCredentials = true;
     if (options && options.TOKEN_TYPE && options.TOKEN_VALUE) {
       xmlHttp.setRequestHeader(options.TOKEN_TYPE, options.TOKEN_VALUE);
     }

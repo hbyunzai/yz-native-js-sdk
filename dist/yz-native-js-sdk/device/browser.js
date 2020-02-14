@@ -85,7 +85,13 @@ var Browser = /** @class */ (function (_super) {
         return undefined;
     };
     Browser.prototype.userLocationAsync = function (param) {
-        return undefined;
+        return new Promise(function (reslove, reject) {
+            reslove({
+                address: "brwoser hasn't location",
+                latitude: 0,
+                longitude: 0
+            });
+        });
     };
     Browser.prototype.userLocationWifiAsync = function (param) {
         return undefined;

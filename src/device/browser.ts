@@ -125,7 +125,13 @@ export class Browser extends BaseDevice {
   }
 
   userLocationAsync(param?: MediaLocationParam): Promise<MediaLocation> {
-    return undefined;
+    return new Promise<MediaLocation>((reslove, reject) => {
+      reslove({
+        address: "brwoser hasn't location",
+        latitude: 0,
+        longitude: 0
+      });
+    });
   }
 
   userLocationWifiAsync(
