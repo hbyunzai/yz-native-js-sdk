@@ -50,6 +50,7 @@ export class Browser extends BaseDevice {
         this.option.GATE_WAY +
           "/cas-proxy/app/validate_full?callback=" +
           url +
+          "&timestamp=" +
           new Date().getTime(),
         response => {
           const res = JSON.parse(response);
