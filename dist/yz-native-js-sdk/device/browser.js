@@ -25,6 +25,7 @@ var Browser = /** @class */ (function (_super) {
             http("GET", _this.option.GATE_WAY +
                 "/cas-proxy/app/validate_full?callback=" +
                 url +
+                "&timestamp=" +
                 new Date().getTime(), function (response) {
                 var res = JSON.parse(response);
                 switch (res.errcode) {
