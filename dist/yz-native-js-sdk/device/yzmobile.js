@@ -22,8 +22,8 @@ var YzMobile = /** @class */ (function (_super) {
     YzMobile.prototype.getUser = function () {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            http("GET", _this.option.GATE_WAY + "/auth/user", function (data) {
-                resolve(data.principal);
+            return http("GET", _this.option.GATE_WAY + "/auth/user", function (data) {
+                resolve(data);
             }, _this.option);
         });
     };

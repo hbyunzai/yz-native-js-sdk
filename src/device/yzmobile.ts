@@ -56,11 +56,11 @@ export class YzMobile extends BaseDevice {
 
   getUser(): Promise<YzUser> {
     return new Promise<YzUser>((resolve, reject) => {
-      http(
+      return http(
         "GET",
         this.option.GATE_WAY + "/auth/user",
         function(data: any) {
-          resolve(data.principal);
+          resolve(data);
         },
         this.option
       );

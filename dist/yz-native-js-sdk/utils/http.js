@@ -2,8 +2,8 @@
  * @Date: 2020-02-03 16:11:51
  * @Author: ferried
  * @Email: harlancui@outlook.com
- * @LastEditors  : ferried
- * @LastEditTime : 2020-02-14 18:42:22
+ * @LastEditors: ferried
+ * @LastEditTime: 2020-04-07 11:15:47
  * @Editor: Visual Studio Code
  * @Desc: nil
  * @License: nil
@@ -20,7 +20,7 @@ export var http = function (method, url, success, options) {
     }
     xmlHttp.onreadystatechange = function () {
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
-            success(xmlHttp.responseText);
+            return success(xmlHttp.responseText);
         }
     };
 };
