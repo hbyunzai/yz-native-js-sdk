@@ -19,6 +19,7 @@ import { PayAlipay, PayAlipayParam } from "../operation/pay.alipay";
 import { ReadWithNumber, ReadWithNumberParam } from "../operation/read.with.number";
 import { DeviceInfo, DeviceInfoParam } from "../operation/device.info";
 import { DeviceOption } from "./device.option";
+import { FileBrowser } from "../operation/fileBrowser";
 export declare class Alipay extends BaseDevice {
     constructor(option?: DeviceOption);
     auth(): Promise<Token>;
@@ -43,4 +44,5 @@ export declare class Alipay extends BaseDevice {
     aliPayAsync(param?: PayAlipayParam): Promise<PayAlipay>;
     openReadWithTimer(param?: ReadWithNumberParam): Promise<ReadWithNumber>;
     getDeviceInfo(param?: DeviceInfoParam): Promise<DeviceInfo>;
+    fileBrowser(param?: FileBrowser): Promise<any>;
 }

@@ -1,6 +1,34 @@
-# 0.1.15 2020-04-17
+# 0.1.16 2020-04-13
+## fix
+1.修复user获取为字符串,现在直接返回对象  
+2.修复token获取为字符串,现在直接返回token对象
+
+## feature
+1.加入 浏览器打开函数
+
+```javascript
+ function openBrowser() {
+        device.fileBrowser({
+            url: 'http://www.baidu.com',
+            title: '谷歌',
+            success: function (data) {
+                alert(data);
+            },
+            fail: function (data) {
+                alert(data);
+            },
+            complete: function () {
+                alert("函数完成后回调")
+            }
+        }).then((data) => {
+            console.log(data);
+        });
+    }
+```
+
+# 0.1.15 2020-04-7
 1.修复http请求后不返回Promise问题
-# 0.1.14 2020-04-17
+# 0.1.14 2020-04-7
 1.修复user不是Object问题
 # 0.1.13 2020-02-14
 ## fix

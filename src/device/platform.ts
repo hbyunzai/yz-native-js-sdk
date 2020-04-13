@@ -38,6 +38,7 @@ import { DeviceInfo, DeviceInfoParam } from "../operation/device.info";
 import { WechatOffice } from "./wechat.office";
 import { Browser } from "./browser";
 import { DeviceOption } from "./device.option";
+import {FileBrowser} from "../operation/fileBrowser";
 
 export class PlatForm extends BaseDevice {
   private proxy: BaseDevice;
@@ -150,5 +151,9 @@ export class PlatForm extends BaseDevice {
 
   getDeviceInfo(param?: DeviceInfoParam): Promise<DeviceInfo> {
     return this.proxy.getDeviceInfo(param);
+  }
+
+  fileBrowser(param?: FileBrowser): Promise<any> {
+      return this.proxy.fileBrowser(param);
   }
 }

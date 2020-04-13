@@ -19,6 +19,7 @@ import { YzAlipay, YzAlipayParam } from "../operation/pay.alipay";
 import { YzReadWithNumber, YzReadWithNumberParam } from "../operation/read.with.number";
 import { YzDeviceInfo, YzDeviceInfoParam } from "../operation/device.info";
 import { DeviceOption } from "../device/device.option";
+import { YzFileBrowser } from "../operation/fileBrowser";
 export declare class YzMobile extends BaseDevice {
     constructor(option?: DeviceOption);
     getUser(): Promise<YzUser>;
@@ -43,4 +44,5 @@ export declare class YzMobile extends BaseDevice {
     aliPayAsync(param?: YzAlipayParam): Promise<YzAlipay>;
     openReadWithTimer(param?: YzReadWithNumberParam): Promise<YzReadWithNumber>;
     getDeviceInfo(param?: YzDeviceInfoParam): Promise<YzDeviceInfo>;
+    fileBrowser(param?: YzFileBrowser): Promise<any>;
 }

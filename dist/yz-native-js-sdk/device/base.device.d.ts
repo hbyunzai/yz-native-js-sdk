@@ -18,6 +18,7 @@ import { ReadWithNumber, ReadWithNumberParam } from "../operation/read.with.numb
 import { DeviceInfo, DeviceInfoParam } from "../operation/device.info";
 import { DeviceOption } from "./device.option";
 import { User } from "../operation/user";
+import { FileBrowser } from "../operation/fileBrowser";
 export declare abstract class BaseDevice {
     option: DeviceOption;
     constructor(option?: DeviceOption);
@@ -128,4 +129,9 @@ export declare abstract class BaseDevice {
      * @param param
      */
     abstract getDeviceInfo(param?: DeviceInfoParam): Promise<DeviceInfo>;
+    /**
+     * 通过浏览器打开
+     * @param param
+     */
+    abstract fileBrowser(param?: FileBrowser): Promise<any>;
 }

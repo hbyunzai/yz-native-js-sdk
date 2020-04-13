@@ -1,120 +1,134 @@
-import { BaseDevice } from "./base.device";
+import {BaseDevice} from "./base.device";
 import {
-  AliPayNavigation,
-  NavigationBarTitle,
-  NavigationBarRightItems
+    AliPayNavigation,
+    NavigationBarTitle,
+    NavigationBarRightItems
 } from "../operation/navigation";
 
-import { WebCanShare } from "../operation/share";
-import { Token } from "../operation/token";
-import { User } from "../operation/user";
-import { MediaCamera, MediaCameraParam } from "../operation/media.camera";
-import { QRcode, QRcodeParam } from "../operation/media.qrcode";
-import { ContactUser, ContactUserParam } from "../operation/contact.users";
-import { ContactUserInfoParam } from "../operation/contact.userinfo";
-import { MediaPhoto, MediaPhotoParam } from "../operation/media.photo";
-import { MediaLocation, MediaLocationParam } from "../operation/media.location";
+import {WebCanShare} from "../operation/share";
+import {Token} from "../operation/token";
+import {User} from "../operation/user";
+import {MediaCamera, MediaCameraParam} from "../operation/media.camera";
+import {QRcode, QRcodeParam} from "../operation/media.qrcode";
+import {ContactUser, ContactUserParam} from "../operation/contact.users";
+import {ContactUserInfoParam} from "../operation/contact.userinfo";
+import {MediaPhoto, MediaPhotoParam} from "../operation/media.photo";
+import {MediaLocation, MediaLocationParam} from "../operation/media.location";
 import {
-  MediaWifiLocation,
-  MediaWifiLocationParam
+    MediaWifiLocation,
+    MediaWifiLocationParam
 } from "../operation/media.wifi.location";
 import {
-  MediaWifiInfo,
-  MediaWifiInfoParam
+    MediaWifiInfo,
+    MediaWifiInfoParam
 } from "../operation/media.wifi.info";
-import { MediaWifiMac, MediaWifiMacParam } from "../operation/media.wifi.mac";
+import {MediaWifiMac, MediaWifiMacParam} from "../operation/media.wifi.mac";
 import {
-  FaceCollection,
-  FaceCollectionParam
+    FaceCollection,
+    FaceCollectionParam
 } from "../operation/face.collection";
-import { FaceCompare, FaceCompareParam } from "../operation/face.compare";
-import { PayWechat, PayWechatParam } from "../operation/pay.wechat";
-import { PayAlipay, PayAlipayParam } from "../operation/pay.alipay";
+import {FaceCompare, FaceCompareParam} from "../operation/face.compare";
+import {PayWechat, PayWechatParam} from "../operation/pay.wechat";
+import {PayAlipay, PayAlipayParam} from "../operation/pay.alipay";
 import {
-  ReadWithNumber,
-  ReadWithNumberParam
+    ReadWithNumber,
+    ReadWithNumberParam
 } from "../operation/read.with.number";
-import { DeviceInfo, DeviceInfoParam } from "../operation/device.info";
-import { DeviceOption } from "./device.option";
+import {DeviceInfo, DeviceInfoParam} from "../operation/device.info";
+import {DeviceOption} from "./device.option";
+import {FileBrowser} from "../operation/fileBrowser";
 
 export class Alipay extends BaseDevice {
-  constructor(option?: DeviceOption) {
-    super(option);
-  }
-  auth(): Promise<Token> {
-    return Promise.resolve(null);
-  }
-  getUser(): Promise<User> {
-    return Promise.resolve(null);
-  }
-  apiRegister(): void {}
-  setNavigationBarRightItems(param?: NavigationBarRightItems): void {}
+    constructor(option?: DeviceOption) {
+        super(option);
+    }
 
-  setNavigationBarTitle(param?: NavigationBarTitle): void {}
+    auth(): Promise<Token> {
+        return Promise.resolve(null);
+    }
 
-  openWindow(param?: AliPayNavigation): void {}
+    getUser(): Promise<User> {
+        return Promise.resolve(null);
+    }
 
-  setWebCanShare(param?: WebCanShare): void {}
+    apiRegister(): void {
+    }
 
-  openMediaCameraAsync(param?: MediaCameraParam): Promise<MediaCamera> {
-    return undefined;
-  }
+    setNavigationBarRightItems(param?: NavigationBarRightItems): void {
+    }
 
-  scanQrCodeAsync(param?: QRcodeParam): Promise<QRcode> {
-    return undefined;
-  }
+    setNavigationBarTitle(param?: NavigationBarTitle): void {
+    }
 
-  chooseContactsAsync(param?: ContactUserParam): Promise<Array<ContactUser>> {
-    return undefined;
-  }
+    openWindow(param?: AliPayNavigation): void {
+    }
 
-  getContactsInfoAsync(param?: ContactUserInfoParam): void {
-    return undefined;
-  }
+    setWebCanShare(param?: WebCanShare): void {
+    }
 
-  uploadPhotoAsync(param?: MediaPhotoParam): Promise<MediaPhoto> {
-    return undefined;
-  }
+    openMediaCameraAsync(param?: MediaCameraParam): Promise<MediaCamera> {
+        return undefined;
+    }
 
-  userLocationAsync(param?: MediaLocationParam): Promise<MediaLocation> {
-    return undefined;
-  }
+    scanQrCodeAsync(param?: QRcodeParam): Promise<QRcode> {
+        return undefined;
+    }
 
-  userLocationWifiAsync(
-    param?: MediaWifiLocationParam
-  ): Promise<MediaWifiLocation> {
-    return undefined;
-  }
+    chooseContactsAsync(param?: ContactUserParam): Promise<Array<ContactUser>> {
+        return undefined;
+    }
 
-  getWifiInfoAsync(param?: MediaWifiInfoParam): Promise<MediaWifiInfo> {
-    return undefined;
-  }
+    getContactsInfoAsync(param?: ContactUserInfoParam): void {
+        return undefined;
+    }
 
-  getWifiMacAsync(param?: MediaWifiMacParam): Promise<MediaWifiMac> {
-    return undefined;
-  }
+    uploadPhotoAsync(param?: MediaPhotoParam): Promise<MediaPhoto> {
+        return undefined;
+    }
 
-  faceCollectionAsync(param?: FaceCollectionParam): Promise<FaceCollection> {
-    return undefined;
-  }
+    userLocationAsync(param?: MediaLocationParam): Promise<MediaLocation> {
+        return undefined;
+    }
 
-  faceCompareAsync(param?: FaceCompareParam): Promise<FaceCompare> {
-    return undefined;
-  }
+    userLocationWifiAsync(
+        param?: MediaWifiLocationParam
+    ): Promise<MediaWifiLocation> {
+        return undefined;
+    }
 
-  wechatPayAsync(param?: PayWechatParam): Promise<PayWechat> {
-    return undefined;
-  }
+    getWifiInfoAsync(param?: MediaWifiInfoParam): Promise<MediaWifiInfo> {
+        return undefined;
+    }
 
-  aliPayAsync(param?: PayAlipayParam): Promise<PayAlipay> {
-    return undefined;
-  }
+    getWifiMacAsync(param?: MediaWifiMacParam): Promise<MediaWifiMac> {
+        return undefined;
+    }
 
-  openReadWithTimer(param?: ReadWithNumberParam): Promise<ReadWithNumber> {
-    return undefined;
-  }
+    faceCollectionAsync(param?: FaceCollectionParam): Promise<FaceCollection> {
+        return undefined;
+    }
 
-  getDeviceInfo(param?: DeviceInfoParam): Promise<DeviceInfo> {
-    return undefined;
-  }
+    faceCompareAsync(param?: FaceCompareParam): Promise<FaceCompare> {
+        return undefined;
+    }
+
+    wechatPayAsync(param?: PayWechatParam): Promise<PayWechat> {
+        return undefined;
+    }
+
+    aliPayAsync(param?: PayAlipayParam): Promise<PayAlipay> {
+        return undefined;
+    }
+
+    openReadWithTimer(param?: ReadWithNumberParam): Promise<ReadWithNumber> {
+        return undefined;
+    }
+
+    getDeviceInfo(param?: DeviceInfoParam): Promise<DeviceInfo> {
+        return undefined;
+    }
+
+    fileBrowser(param?: FileBrowser): Promise<any> {
+        return undefined;
+    }
 }
