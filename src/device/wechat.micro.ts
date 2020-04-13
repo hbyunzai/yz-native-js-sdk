@@ -38,6 +38,7 @@ import {
 import {DeviceInfo, DeviceInfoParam} from "../operation/device.info";
 import {DeviceOption} from "./device.option";
 import {FileBrowser} from "../operation/fileBrowser";
+import {DownloadBrowserParam} from "../operation";
 
 export class WechatMicro extends BaseDevice {
     constructor(option?: DeviceOption) {
@@ -130,6 +131,11 @@ export class WechatMicro extends BaseDevice {
     }
 
     fileBrowser(param?: FileBrowser): Promise<any> {
+        alert("微信请在右上角选择浏览器打开!")
+        return Promise.resolve(true);
+    }
+
+    downloadByBrowser(param?: DownloadBrowserParam): Promise<any> {
         alert("微信请在右上角选择浏览器打开!")
         return Promise.resolve(true);
     }

@@ -47,6 +47,7 @@ import {YzDeviceInfo, YzDeviceInfoParam} from "../operation/device.info";
 import {DeviceOption} from "../device/device.option";
 import {http} from "../utils/http";
 import {YzFileBrowser} from "../operation/fileBrowser";
+import {YzDownloadBrowserParam} from "../operation";
 
 declare let yz: any;
 
@@ -517,6 +518,26 @@ export class YzMobile extends BaseDevice {
                 },
                 fail: function (error: any) {
                     param.fail(error)
+                    reject(error);
+                },
+                complete: function () {
+                    param.complete();
+                    resolve("complete");
+                }
+            })
+        });
+    }
+
+    downloadByBrowser(param?: YzDownloadBrowserParam): Promise<any> {
+        return new Promise<any>((resolve, reject) => {
+            yz.downloadByBrowser({
+                url: param.url,
+                success: function () {
+                    param.success();
+                    resolve(true);
+                },
+                fail: function (error: any) {
+                    param.fail(error);
                     reject(error);
                 },
                 complete: function () {

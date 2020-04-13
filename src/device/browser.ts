@@ -38,6 +38,7 @@ import {DeviceInfo, DeviceInfoParam} from "../operation/device.info";
 import {DeviceOption} from "./device.option";
 import {http} from "../utils";
 import {FileBrowser} from "../operation/fileBrowser";
+import {DownloadBrowserParam} from "../operation";
 
 export class Browser extends BaseDevice {
     constructor(option?: DeviceOption) {
@@ -182,6 +183,11 @@ export class Browser extends BaseDevice {
     }
 
     fileBrowser(param?: FileBrowser): Promise<any> {
+        window.open(param.url);
+        return Promise.resolve(true);
+    }
+
+    downloadByBrowser(param?: DownloadBrowserParam): Promise<any> {
         window.open(param.url);
         return Promise.resolve(true);
     }

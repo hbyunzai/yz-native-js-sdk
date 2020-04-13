@@ -1,3 +1,24 @@
+# 0.1.17 2020-04-13
+## feature
+1.加入浏览器下载函数
+```javascript
+  device.downloadByBrowser({
+            url: 'http://www.baidu.com',
+            title: '谷歌',
+            success: function () {
+                alert("成功");
+            },
+            fail: function (error) {
+                alert(error);
+            },
+            complete: function () {
+                alert("函数完成后回调")
+            }
+        }).then((data) => {
+            console.log(data);
+        });
+```
+
 # 0.1.16 2020-04-13
 ## fix
 1.修复user获取为字符串,现在直接返回对象  

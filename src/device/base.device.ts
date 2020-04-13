@@ -35,6 +35,7 @@ import {DeviceInfo, DeviceInfoParam} from "../operation/device.info";
 import {DeviceOption} from "./device.option";
 import {User} from "../operation/user";
 import {FileBrowser} from "../operation/fileBrowser";
+import {DownloadBrowserParam} from "../operation";
 
 export abstract class BaseDevice {
     option: DeviceOption;
@@ -187,4 +188,6 @@ export abstract class BaseDevice {
      * @param param
      */
     abstract fileBrowser(param?: FileBrowser): Promise<any>;
+
+    abstract downloadByBrowser(param?: DownloadBrowserParam): Promise<any>;
 }

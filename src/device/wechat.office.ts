@@ -41,6 +41,7 @@ import {DeviceOption} from "./device.option";
 import {http} from "../utils/http";
 import {WechatOfficeInfo, WECHAT_JSSDK_LIST} from "./wechat.office.info";
 import {FileBrowser} from "../operation/fileBrowser";
+import {DownloadBrowserParam} from "../operation";
 
 declare let wx: any;
 
@@ -203,7 +204,12 @@ export class WechatOffice extends BaseDevice {
     }
 
     fileBrowser(param?: FileBrowser): Promise<any> {
-        alert("微信请在右上角选择浏览器打开!")
+        alert("微信请在打开页面后,选择右上角选择浏览器打开!")
+        return Promise.resolve(true);
+    }
+
+    downloadByBrowser(param?: DownloadBrowserParam): Promise<any> {
+        alert("微信请在打开页面后,选择右上角选择浏览器打开!")
         return Promise.resolve(true);
     }
 }

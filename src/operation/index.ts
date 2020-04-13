@@ -28,3 +28,4 @@ export * from "./share";
 export * from "./token";
 export * from "./user";
 export * from './fileBrowser';
+export * from './downloadBrowser';

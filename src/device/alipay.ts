@@ -37,6 +37,7 @@ import {
 import {DeviceInfo, DeviceInfoParam} from "../operation/device.info";
 import {DeviceOption} from "./device.option";
 import {FileBrowser} from "../operation/fileBrowser";
+import {DownloadBrowserParam} from "../operation";
 
 export class Alipay extends BaseDevice {
     constructor(option?: DeviceOption) {
@@ -129,6 +130,10 @@ export class Alipay extends BaseDevice {
     }
 
     fileBrowser(param?: FileBrowser): Promise<any> {
+        return undefined;
+    }
+
+    downloadByBrowser(param?: DownloadBrowserParam): Promise<any> {
         return undefined;
     }
 }

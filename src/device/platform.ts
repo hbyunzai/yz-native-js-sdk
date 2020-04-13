@@ -39,6 +39,7 @@ import { WechatOffice } from "./wechat.office";
 import { Browser } from "./browser";
 import { DeviceOption } from "./device.option";
 import {FileBrowser} from "../operation/fileBrowser";
+import {DownloadBrowserParam} from "../operation";
 
 export class PlatForm extends BaseDevice {
   private proxy: BaseDevice;
@@ -155,5 +156,9 @@ export class PlatForm extends BaseDevice {
 
   fileBrowser(param?: FileBrowser): Promise<any> {
       return this.proxy.fileBrowser(param);
+  }
+
+  downloadByBrowser(param?: DownloadBrowserParam): Promise<any> {
+    return this.proxy.downloadByBrowser(param);
   }
 }
