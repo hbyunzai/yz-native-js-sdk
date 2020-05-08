@@ -1,79 +1,7 @@
-(function() {
-    var src = "//cdn.jsdelivr.net/npm/eruda";
-    if (
-        !/eruda=true/.test(window.location) &&
-        localStorage.getItem("active-eruda") != "true"
-    )
-        return;
-    document.write("<scr" + 'ipt src="' + src + '"></scr' + "ipt>");
-    document.write("<scr" + "ipt>eruda.init();</scr" + "ipt>");
-})();
-
-
-var bridge = {
-    default: this, call: function (b, a, c) {
-        var e = "";
-        "function" == typeof a && (c = a, a = {});
-        a = {data: void 0 === a ? null : a};
-        if ("function" == typeof c) {
-            var g = "dscb" + window.dscb++;
-            window[g] = c;
-            a._dscbstub = g
-        }
-        a = JSON.stringify(a);
-        if (window._dsbridge) e = _dsbridge.call(b, a); else if (window._dswk || -1 != navigator.userAgent.indexOf("_dsbridge")) e = prompt("_dsbridge=" + b, a);
-        return JSON.parse(e || "{}").data
-    }, register: function (b, a, c) {
-        c = c ? window._dsaf : window._dsf;
-        window._dsInit || (window._dsInit = !0, setTimeout(function () {
-                bridge.call("_dsb.dsinit")
-            },
-            0));
-        "object" == typeof a ? c._obs[b] = a : c[b] = a
-    }, registerAsyn: function (b, a) {
-        this.register(b, a, !0)
-    }, hasNativeMethod: function (b, a) {
-        return this.call("_dsb.hasNativeMethod", {name: b, type: a || "all"})
-    }, disableJavascriptDialogBlock: function (b) {
-        this.call("_dsb.disableJavascriptDialogBlock", {disable: !1 !== b})
-    }
-};
-!function () {
-    if (!window._dsf) {
-        var b = {
-            _dsf: {_obs: {}}, _dsaf: {_obs: {}}, dscb: 0, dsBridge: bridge, close: function () {
-                bridge.call("_dsb.closePage")
-            }, _handleMessageFromNative: function (a) {
-                var e = JSON.parse(a.data), b = {id: a.callbackId, complete: !0}, c = this._dsf[a.method],
-                    d = this._dsaf[a.method], h = function (a, c) {
-                        b.data = a.apply(c, e);
-                        bridge.call("_dsb.returnValue", b)
-                    }, k = function (a, c) {
-                        e.push(function (a, c) {
-                            b.data = a;
-                            b.complete = !1 !== c;
-                            bridge.call("_dsb.returnValue", b)
-                        });
-                        a.apply(c, e)
-                    };
-                if (c) h(c, this._dsf); else if (d) k(d, this._dsaf);
-                else if (c = a.method.split("."), !(2 > c.length)) {
-                    a = c.pop();
-                    var c = c.join("."), d = this._dsf._obs, d = d[c] || {}, f = d[a];
-                    f && "function" == typeof f ? h(f, d) : (d = this._dsaf._obs, d = d[c] || {}, (f = d[a]) && "function" == typeof f && k(f, d))
-                }
-            }
-        }, a;
-        for (a in b) window[a] = b[a];
-        bridge.register("_hasJavascriptMethod", function (a, b) {
-            b = a.split(".");
-            if (2 > b.length) return !(!_dsf[b] && !_dsaf[b]);
-            a = b.pop();
-            b = b.join(".");
-            return (b = _dsf._obs[b] || _dsaf._obs[b]) && !!b[a]
-        })
-    }
-}();
+var bridge={default:this,call:function(b,a,c){var e="";"function"==typeof a&&(c=a,a={});a={data:void 0===a?null:a};if("function"==typeof c){var g="dscb"+window.dscb++;window[g]=c;a._dscbstub=g}a=JSON.stringify(a);if(window._dsbridge)e=_dsbridge.call(b,a);else if(window._dswk||-1!=navigator.userAgent.indexOf("_dsbridge"))e=prompt("_dsbridge="+b,a);return JSON.parse(e||"{}").data},register:function(b,a,c){c=c?window._dsaf:window._dsf;window._dsInit||(window._dsInit=!0,setTimeout(function(){bridge.call("_dsb.dsinit")},
+        0));"object"==typeof a?c._obs[b]=a:c[b]=a},registerAsyn:function(b,a){this.register(b,a,!0)},hasNativeMethod:function(b,a){return this.call("_dsb.hasNativeMethod",{name:b,type:a||"all"})},disableJavascriptDialogBlock:function(b){this.call("_dsb.disableJavascriptDialogBlock",{disable:!1!==b})}};
+!function(){if(!window._dsf){var b={_dsf:{_obs:{}},_dsaf:{_obs:{}},dscb:0,dsBridge:bridge,close:function(){bridge.call("_dsb.closePage")},_handleMessageFromNative:function(a){var e=JSON.parse(a.data),b={id:a.callbackId,complete:!0},c=this._dsf[a.method],d=this._dsaf[a.method],h=function(a,c){b.data=a.apply(c,e);bridge.call("_dsb.returnValue",b)},k=function(a,c){e.push(function(a,c){b.data=a;b.complete=!1!==c;bridge.call("_dsb.returnValue",b)});a.apply(c,e)};if(c)h(c,this._dsf);else if(d)k(d,this._dsaf);
+    else if(c=a.method.split("."),!(2>c.length)){a=c.pop();var c=c.join("."),d=this._dsf._obs,d=d[c]||{},f=d[a];f&&"function"==typeof f?h(f,d):(d=this._dsaf._obs,d=d[c]||{},(f=d[a])&&"function"==typeof f&&k(f,d))}}},a;for(a in b)window[a]=b[a];bridge.register("_hasJavascriptMethod",function(a,b){b=a.split(".");if(2>b.length)return!(!_dsf[b]&&!_dsaf[b]);a=b.pop();b=b.join(".");return(b=_dsf._obs[b]||_dsaf._obs[b])&&!!b[a]})}}();
 
 var yz = {
     config: {
@@ -144,7 +72,7 @@ var yz = {
         });
     },
     // 1.3网页分享
-    setWebCanShare: function (option) {
+    setWebCanShare: function(option) {
         if (option.shareFlag == null || option.shareFlag == undefined) {
             option.shareFlag = false
         }
@@ -170,7 +98,7 @@ var yz = {
         });
     },
     // 同步获取Token
-    getTokenSync: function () {
+    getTokenSync: function() {
         var resultData = yz._private.callSync('JsV6.getTokenSync', {});
         if (resultData.status) {
             return resultData.data;
@@ -179,7 +107,7 @@ var yz = {
         }
     },
     // 2.2同步获取用户信息
-    getUserInfoSync: function () {
+    getUserInfoSync: function() {
         var resultData = yz._private.callSync('JsV6.getUserInfoSync', {});
         if (resultData.status) {
             return resultData.data;
@@ -188,7 +116,7 @@ var yz = {
         }
     },
     // 异步获取用户信息
-    getUserInfo: function (option) {
+    getUserInfo: function(option) {
         if (!option) {
             throw Error('lost option')
         }
@@ -237,7 +165,7 @@ var yz = {
         })
     },
     // 5.图片选择
-    selectImage: function (option) {
+    selectImage: function(option) {
         if (!option.success) {
             throw Error('lost success function')
         }
@@ -257,7 +185,7 @@ var yz = {
         })
     },
     // 6.上传图片
-    uploadImage: function (option) {
+    uploadImage: function(option) {
         if (!option.success) {
             throw Error('lost success function')
         }
@@ -277,7 +205,7 @@ var yz = {
         })
     },
     // 7.上传视频
-    uploadMovie: function (option) {
+    uploadMovie: function(option) {
         if (!option.success) {
             throw Error('lost success function')
         }
@@ -291,7 +219,7 @@ var yz = {
         })
     },
     // 8.顶部颜色
-    setNavigationBarColor: function (option) {
+    setNavigationBarColor: function(option) {
         if (!option.frontColor) {
             throw Error('lost frontColor param')
         }
@@ -306,7 +234,7 @@ var yz = {
         })
     },
     // 9.播放器
-    mediaPlayer: function (option) {
+    mediaPlayer: function(option) {
         if (!option.url) {
             throw Error('lost url param')
         }
@@ -329,7 +257,7 @@ var yz = {
         })
     },
     // 10.定位获取经纬度
-    userLocation: function (option) {
+    userLocation: function(option) {
         if (!option) {
             throw Error('lost option')
         }
@@ -341,7 +269,7 @@ var yz = {
         })
     },
     // 11.Ap定位
-    userLocationContainAp: function (option) {
+    userLocationContainAp: function(option) {
         if (!option.bssids) {
             throw Error('lost bssids param')
         }
@@ -352,7 +280,7 @@ var yz = {
         })
     },
     // 12.1获取已连接Wifi信息
-    getWifiInfo: function (option) {
+    getWifiInfo: function(option) {
         if (!option) {
             throw Error('lost option')
         }
@@ -364,7 +292,7 @@ var yz = {
         })
     },
     // 12.2获取已连接Wifi的Mac地址
-    getMac: function (option) {
+    getMac: function(option) {
         if (!option) {
             throw Error('lost option')
         }
@@ -453,12 +381,6 @@ var yz = {
             yz._private.handlerResult(resultData, option)
         })
     },
-    // 9.设备信息
-    getDeviceInfo: function (option) {
-        yz._private.call('JsV6.getDeviceInfo', {}, function (data) {
-            yz._private.handlerResult(data, option)
-        })
-    },
     // 18.综合训练读物时间统计时间
     openReadWithTimer: function (option) {
         if (!option.url) {
@@ -486,15 +408,41 @@ var yz = {
             yz._private.handlerResult(resultData, option)
         })
     },
+    // 19.文件浏览器
+    fileBrowser: function (option) {
+        if (!option.url) {
+            throw Error('lost url param')
+        }
+        if (!option.title) {
+            throw Error('lost title param')
+        }
+        yz._private.call('JsV6.fileBrowser', {
+            url: option.url,
+            title: option.title
+        }, function (resultData) {
+            yz._private.handlerResult(resultData, option)
+        })
+    },
+    // 20.打开系统浏览器下载文件
+    downloadByBrowser: function (option) {
+        if (!option.url) {
+            throw Error('lost url param')
+        }
+        yz._private.call('JsV6.downloadByBrowser', {
+            url: option.url
+        }, function (resultData) {
+            yz._private.handlerResult(resultData, option)
+        })
+    },
     // 注册监听
     listener: {
         // 下一个window返回上一个window触发
-        nBack: function (functionF) {
+        nBack: function(functionF) {
             yz._private.register("nBack", functionF);
         }
     },
     _private: {
-        register: function (functionName, functionF) {
+        register: function(functionName, functionF) {
             if (typeof functionF !== 'function') {
                 throw Error('param isNot function')
             }
@@ -514,7 +462,7 @@ var yz = {
             }
             return JSON.parse(data);
         },
-        call: function (functionName, param, callBack) {
+        call: function(functionName, param, callBack) {
             var paramString = JSON.stringify(param);
             if (yz.config.DEBUG) {
                 console.log('----- 调用原生方法async -----\n functionName:' + functionName + '\n param:' + paramString);
@@ -527,6 +475,13 @@ var yz = {
             });
         },
         handlerResult: function (resultData, option) {
+            /*
+               resultData = {
+                 status: true,
+                 msg: 'tip',
+                 data: {} or [] or string or number
+               }
+             */
             if (resultData.status) {
                 if (option.success && 'function' === typeof option.success) {
                     option.success(resultData.data)

@@ -16,7 +16,10 @@
         <button onclick="openWindow()">跳页面</button>
     </li>
     <li>
-        <button onclick="openBrowser()">跳浏览器</button>
+        <button onclick="openBrowser()">文件预览</button>
+    </li>
+    <li>
+        <button onclick="downloadByBrowser()">浏览器打开</button>
     </li>
     <li>
         <button onclick="setNavigationBarTitle()">设置标题</button>
@@ -137,6 +140,23 @@
             console.log(user);
         })
     });
+
+    function downloadByBrowser() {
+        device.downloadByBrowser({
+            url: 'http://www.baidu.com',
+            success: function () {
+                alert("成功");
+            },
+            fail: function (error) {
+                alert(error);
+            },
+            complete: function () {
+                alert("函数完成后回调")
+            }
+        }).then((data) => {
+            console.log(data);
+        });
+    }
 
     function openBrowser() {
         device.fileBrowser({

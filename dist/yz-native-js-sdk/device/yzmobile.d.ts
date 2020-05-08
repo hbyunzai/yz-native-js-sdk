@@ -20,6 +20,7 @@ import { YzReadWithNumber, YzReadWithNumberParam } from "../operation/read.with.
 import { YzDeviceInfo, YzDeviceInfoParam } from "../operation/device.info";
 import { DeviceOption } from "../device/device.option";
 import { YzFileBrowser } from "../operation/fileBrowser";
+import { YzDownloadBrowserParam } from "../operation";
 export declare class YzMobile extends BaseDevice {
     constructor(option?: DeviceOption);
     getUser(): Promise<YzUser>;
@@ -45,4 +46,5 @@ export declare class YzMobile extends BaseDevice {
     openReadWithTimer(param?: YzReadWithNumberParam): Promise<YzReadWithNumber>;
     getDeviceInfo(param?: YzDeviceInfoParam): Promise<YzDeviceInfo>;
     fileBrowser(param?: YzFileBrowser): Promise<any>;
+    downloadByBrowser(param?: YzDownloadBrowserParam): Promise<any>;
 }

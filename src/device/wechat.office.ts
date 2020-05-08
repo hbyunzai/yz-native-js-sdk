@@ -96,7 +96,7 @@ export class WechatOffice extends BaseDevice {
                 "GET",
                 this.option.GATE_WAY + "/auth/user",
                 function (data: any) {
-                    resolve(data.principal);
+                    resolve(JSON.parse(data).principal);
                 },
                 this.option
             );

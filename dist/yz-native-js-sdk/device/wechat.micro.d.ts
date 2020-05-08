@@ -20,6 +20,7 @@ import { ReadWithNumber, ReadWithNumberParam } from "../operation/read.with.numb
 import { DeviceInfo, DeviceInfoParam } from "../operation/device.info";
 import { DeviceOption } from "./device.option";
 import { FileBrowser } from "../operation/fileBrowser";
+import { DownloadBrowserParam } from "../operation";
 export declare class WechatMicro extends BaseDevice {
     constructor(option?: DeviceOption);
     auth(): Promise<Token>;
@@ -45,4 +46,5 @@ export declare class WechatMicro extends BaseDevice {
     openReadWithTimer(param?: ReadWithNumberParam): Promise<ReadWithNumber>;
     getDeviceInfo(param?: DeviceInfoParam): Promise<DeviceInfo>;
     fileBrowser(param?: FileBrowser): Promise<any>;
+    downloadByBrowser(param?: DownloadBrowserParam): Promise<any>;
 }
