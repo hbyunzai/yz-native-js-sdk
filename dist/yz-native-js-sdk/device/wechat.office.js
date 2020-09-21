@@ -74,20 +74,24 @@ var WechatOffice = /** @class */ (function (_super) {
     WechatOffice.prototype.scanQrCodeAsync = function (param) {
         return new Promise(function (resovle, reject) {
             wx.ready(function () {
-                if (param && param.success) {
-                    wx.scanQRCode({
-                        needResult: 1,
-                        scanType: ["qrCode", "barCode"],
-                        success: function (res) {
-                            if (res.errMsg === "scanQRCode:ok") {
-                                resovle(res.resultStr);
+                wx.scanQRCode({
+                    needResult: 1,
+                    scanType: ["qrCode", "barCode"],
+                    success: function (res) {
+                        if (res.errMsg === "scanQRCode:ok") {
+                            if (param && param.success) {
+                                param.success(res.resultStr);
                             }
-                            else {
-                                reject("NativeJSSDK Error:error to scan qrcode");
-                            }
+                            resovle(res.resultStr);
                         }
-                    });
-                }
+                        else {
+                            if (param && param.fail) {
+                                param.fail("NativeJSSDK Error:error to scan qrcode");
+                            }
+                            reject("NativeJSSDK Error:error to scan qrcode");
+                        }
+                    }
+                });
             });
         });
     };

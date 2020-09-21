@@ -84,6 +84,7 @@ var YzMobile = /** @class */ (function (_super) {
                     if (param && param.fail) {
                         param.fail(errMsg);
                     }
+                    reject(errMsg);
                 },
                 complete: function (msg) {
                     if (param && param.complete) {

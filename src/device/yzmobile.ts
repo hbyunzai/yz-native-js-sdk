@@ -133,6 +133,7 @@ export class YzMobile extends BaseDevice {
                     if (param && param.fail) {
                         param.fail(errMsg);
                     }
+                    reject(errMsg)
                 },
                 complete: (msg: any) => {
                     if (param && param.complete) {

@@ -1,17 +1,17 @@
-import {BaseDevice} from "./base.device";
+import { BaseDevice } from "./base.device";
 import {
     WechatOfficeNavigation,
     NavigationBarTitle,
     NavigationBarRightItems
 } from "../operation/navigation";
-import {WebCanShare} from "../operation/share";
-import {Token, TokenParam} from "../operation/token";
-import {User, UserParam, YzUser} from "../operation/user";
-import {MediaCamera, MediaCameraParam} from "../operation/media.camera";
-import {QRcode, YzQrcode, YzQrcodeParam} from "../operation/media.qrcode";
-import {ContactUser, ContactUserParam} from "../operation/contact.users";
-import {ContactUserInfoParam} from "../operation/contact.userinfo";
-import {MediaPhoto, MediaPhotoParam} from "../operation/media.photo";
+import { WebCanShare } from "../operation/share";
+import { Token, TokenParam } from "../operation/token";
+import { User, UserParam, YzUser } from "../operation/user";
+import { MediaCamera, MediaCameraParam } from "../operation/media.camera";
+import { QRcode, YzQrcode, YzQrcodeParam } from "../operation/media.qrcode";
+import { ContactUser, ContactUserParam } from "../operation/contact.users";
+import { ContactUserInfoParam } from "../operation/contact.userinfo";
+import { MediaPhoto, MediaPhotoParam } from "../operation/media.photo";
 import {
     YzMediaLocationParam,
     YzMediaLocation
@@ -24,24 +24,24 @@ import {
     MediaWifiInfo,
     MediaWifiInfoParam
 } from "../operation/media.wifi.info";
-import {MediaWifiMac, MediaWifiMacParam} from "../operation/media.wifi.mac";
+import { MediaWifiMac, MediaWifiMacParam } from "../operation/media.wifi.mac";
 import {
     FaceCollection,
     FaceCollectionParam
 } from "../operation/face.collection";
-import {FaceCompare, FaceCompareParam} from "../operation/face.compare";
-import {PayWechat, PayWechatParam} from "../operation/pay.wechat";
-import {PayAlipay, PayAlipayParam} from "../operation/pay.alipay";
+import { FaceCompare, FaceCompareParam } from "../operation/face.compare";
+import { PayWechat, PayWechatParam } from "../operation/pay.wechat";
+import { PayAlipay, PayAlipayParam } from "../operation/pay.alipay";
 import {
     ReadWithNumber,
     ReadWithNumberParam
 } from "../operation/read.with.number";
-import {DeviceInfo, DeviceInfoParam} from "../operation/device.info";
-import {DeviceOption} from "./device.option";
-import {http} from "../utils/http";
-import {WechatOfficeInfo, WECHAT_JSSDK_LIST} from "./wechat.office.info";
-import {FileBrowser} from "../operation/fileBrowser";
-import {DownloadBrowserParam} from "../operation";
+import { DeviceInfo, DeviceInfoParam } from "../operation/device.info";
+import { DeviceOption } from "./device.option";
+import { http } from "../utils/http";
+import { WechatOfficeInfo, WECHAT_JSSDK_LIST } from "./wechat.office.info";
+import { FileBrowser } from "../operation/fileBrowser";
+import { DownloadBrowserParam } from "../operation";
 
 declare let wx: any;
 
@@ -54,7 +54,7 @@ export class WechatOffice extends BaseDevice {
         return new Promise<Token>((resolve, reject) => {
             let authurl = this.option.GATE_WAY + "/wechat/mp/token";
             http("GET", authurl, token => {
-                const realToken = {accessToken: JSON.parse(token).message};
+                const realToken = { accessToken: JSON.parse(token).message };
                 resolve(realToken);
             });
         });
@@ -71,7 +71,7 @@ export class WechatOffice extends BaseDevice {
                 const wechatOfficeInfo: WechatOfficeInfo = JSON.parse(data);
                 wechatOfficeInfo.debug = false;
                 wechatOfficeInfo.jsApiList = WECHAT_JSSDK_LIST;
-                wx.config({...wechatOfficeInfo});
+                wx.config({ ...wechatOfficeInfo });
             },
             this.option
         );
@@ -110,19 +110,23 @@ export class WechatOffice extends BaseDevice {
     scanQrCodeAsync(param?: YzQrcodeParam): Promise<QRcode> {
         return new Promise<YzQrcode>((resovle, reject) => {
             wx.ready(() => {
-                if (param && param.success) {
-                    wx.scanQRCode({
-                        needResult: 1,
-                        scanType: ["qrCode", "barCode"],
-                        success: (res: any) => {
-                            if (res.errMsg === "scanQRCode:ok") {
-                                resovle(res.resultStr);
-                            } else {
-                                reject("NativeJSSDK Error:error to scan qrcode");
+                wx.scanQRCode({
+                    needResult: 1,
+                    scanType: ["qrCode", "barCode"],
+                    success: (res: any) => {
+                        if (res.errMsg === "scanQRCode:ok") {
+                            if (param && param.success) {
+                                param.success(res.resultStr)
                             }
+                            resovle(res.resultStr);
+                        } else {
+                            if (param && param.fail) {
+                                param.fail("NativeJSSDK Error:error to scan qrcode")
+                            }
+                            reject("NativeJSSDK Error:error to scan qrcode");
                         }
-                    });
-                }
+                    }
+                });
             });
         });
     }
@@ -149,9 +153,9 @@ export class WechatOffice extends BaseDevice {
                             var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
                             var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
                             var address = "微信无address";
-                            resolve({latitude, longitude, address});
+                            resolve({ latitude, longitude, address });
                             if (param && param.success) {
-                                param.success({latitude, longitude, address});
+                                param.success({ latitude, longitude, address });
                             }
                         } else {
                             if (param && param.fail) {
