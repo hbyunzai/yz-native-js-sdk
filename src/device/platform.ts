@@ -2,12 +2,12 @@ import { BaseDevice } from "./base.device";
 import {
   Navigation,
   NavigationBarTitle,
-  NavigationBarRightItems
+  NavigationBarRightItems,
 } from "../operation/navigation";
 import { WebCanShare } from "../operation/share";
 import { YzMobile } from "./yzmobile";
-import { Token, TokenParam } from "../operation/token";
-import { User, UserParam } from "../operation/user";
+import { Token } from "../operation/token";
+import { User } from "../operation/user";
 import { MediaCamera, MediaCameraParam } from "../operation/media.camera";
 import { QRcode, QRcodeParam } from "../operation/media.qrcode";
 import { ContactUser, ContactUserParam } from "../operation/contact.users";
@@ -16,30 +16,31 @@ import { MediaPhoto, MediaPhotoParam } from "../operation/media.photo";
 import { MediaLocation, MediaLocationParam } from "../operation/media.location";
 import {
   MediaWifiLocation,
-  MediaWifiLocationParam
+  MediaWifiLocationParam,
 } from "../operation/media.wifi.location";
 import {
   MediaWifiInfo,
-  MediaWifiInfoParam
+  MediaWifiInfoParam,
 } from "../operation/media.wifi.info";
 import { MediaWifiMac, MediaWifiMacParam } from "../operation/media.wifi.mac";
 import {
   FaceCollection,
-  FaceCollectionParam
+  FaceCollectionParam,
 } from "../operation/face.collection";
 import { FaceCompare, FaceCompareParam } from "../operation/face.compare";
 import { PayWechat, PayWechatParam } from "../operation/pay.wechat";
 import { PayAlipay, PayAlipayParam } from "../operation/pay.alipay";
 import {
   ReadWithNumber,
-  ReadWithNumberParam
+  ReadWithNumberParam,
 } from "../operation/read.with.number";
 import { DeviceInfo, DeviceInfoParam } from "../operation/device.info";
 import { WechatOffice } from "./wechat.office";
 import { Browser } from "./browser";
 import { DeviceOption } from "./device.option";
-import {FileBrowser} from "../operation/fileBrowser";
-import {DownloadBrowserParam} from "../operation";
+import { FileBrowser } from "../operation/fileBrowser";
+import { DownloadBrowserParam } from "../operation";
+import { WechatMicro } from "./wechat.micro";
 
 export class PlatForm extends BaseDevice {
   private proxy: BaseDevice;
@@ -50,7 +51,13 @@ export class PlatForm extends BaseDevice {
 
   distribute(option?: DeviceOption): BaseDevice {
     const agent = window.navigator.userAgent.toLowerCase();
-    if (/iphone/.test(agent) && /mobile/.test(agent) && /yunzai/.test(agent)) {
+    if (/miniprogram/.test(agent)) {
+      return new WechatMicro(option);
+    } else if (
+      /iphone/.test(agent) &&
+      /mobile/.test(agent) &&
+      /yunzai/.test(agent)
+    ) {
       return new YzMobile(option);
     } else if (
       /android/.test(agent) &&
@@ -155,7 +162,7 @@ export class PlatForm extends BaseDevice {
   }
 
   fileBrowser(param?: FileBrowser): Promise<any> {
-      return this.proxy.fileBrowser(param);
+    return this.proxy.fileBrowser(param);
   }
 
   downloadByBrowser(param?: DownloadBrowserParam): Promise<any> {
