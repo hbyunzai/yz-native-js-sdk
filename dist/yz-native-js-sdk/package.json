@@ -1,6 +1,6 @@
 {
   "name": "yz-native-js-sdk",
-  "version": "0.1.19",
+  "version": "0.2.0",
   "description": "provide the native function call API of yunzai mobile platform for the third party\n",
   "scripts": {
     "start": "webpack-dev-server",
@@ -10,16 +10,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ferried/yz-native-js-sdk"
+    "url": "https://github.com/devcui/yz-native-js-sdk"
   },
   "bugs": {
-    "url": "https://github.com/ferried/yz-native-js-sdk/issues",
-    "email": "harlancui@outlook.com"
+    "url": "https://github.com/devcui/yz-native-js-sdk/issues",
+    "email": "devcui@outlook.com"
   },
   "contributors": [
     {
-      "name": "ferried",
-      "email": "harlancui@outlook.com"
+      "name": "devcui",
+      "email": "devcui@outlook.com"
     }
   ],
   "keywords": [
@@ -29,7 +29,7 @@
     "native",
     "sdk"
   ],
-  "author": "ferried",
+  "author": "devcui",
   "typings": "./index.d.ts",
   "dependencies": {
     "@babel/core": "^7.7.5",
