@@ -45,7 +45,8 @@ export class WechatMicro extends BaseDevice {
   }
 
   auth(): Promise<Token> {
-    const accessToken = window.location.href.split("&")[1].split("=")[1];
+    // const accessToken = window.location.href.split("&")[1].split("=")[1];
+    const accessToken = window.location.href.split("accessToken=")[1].split("&")[0];
     const token: Token = { accessToken: accessToken };
     return Promise.resolve(token);
   }
