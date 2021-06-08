@@ -8,11 +8,16 @@ import { WebCanShare } from "../operation/share";
 import { Token } from "../operation/token";
 import { User } from "../operation/user";
 import { MediaCamera, MediaCameraParam } from "../operation/media.camera";
-import { QRcode, QRcodeParam } from "../operation/media.qrcode";
+import { QRcode, YzQrcode, YzQrcodeParam } from "../operation/media.qrcode";
 import { ContactUser, ContactUserParam } from "../operation/contact.users";
 import { ContactUserInfoParam } from "../operation/contact.userinfo";
 import { MediaPhoto, MediaPhotoParam } from "../operation/media.photo";
-import { MediaLocation, MediaLocationParam } from "../operation/media.location";
+import {
+  MediaLocation,
+  MediaLocationParam,
+  YzMediaLocation,
+  YzMediaLocationParam,
+} from "../operation/media.location";
 import {
   MediaWifiLocation,
   MediaWifiLocationParam,
@@ -38,6 +43,9 @@ import { DeviceOption } from "./device.option";
 import { FileBrowser } from "../operation/fileBrowser";
 import { DownloadBrowserParam } from "../operation";
 import { http } from "../utils/http";
+import { WechatOfficeInfo, WECHAT_JSSDK_LIST } from "./wechat.office.info";
+
+declare let wx: any;
 
 export class WechatMicro extends BaseDevice {
   constructor(option?: DeviceOption) {
@@ -45,13 +53,29 @@ export class WechatMicro extends BaseDevice {
   }
 
   auth(): Promise<Token> {
-    // const accessToken = window.location.href.split("&")[1].split("=")[1];
-    const accessToken = window.location.href.split("accessToken=")[1].split("&")[0];
+    const accessToken = window.location.href
+      .split("accessToken=")[1]
+      .split("&")[0];
     const token: Token = { accessToken: accessToken };
     return Promise.resolve(token);
   }
 
-  apiRegister(): void {}
+  apiRegister(): void {
+    http(
+      "GET",
+      this.option.GATE_WAY +
+        "/wechat/mp/jssdk" +
+        "?url=" +
+        window.location.href.split("#")[0],
+      function (data: string) {
+        const wechatOfficeInfo: WechatOfficeInfo = JSON.parse(data);
+        wechatOfficeInfo.debug = false;
+        wechatOfficeInfo.jsApiList = WECHAT_JSSDK_LIST;
+        wx.config({ ...wechatOfficeInfo });
+      },
+      this.option
+    );
+  }
 
   getUser(): Promise<User> {
     return new Promise<User>((resolve, reject) => {
@@ -68,7 +92,9 @@ export class WechatMicro extends BaseDevice {
 
   setNavigationBarRightItems(param?: NavigationBarRightItems): void {}
 
-  setNavigationBarTitle(param?: NavigationBarTitle): void {}
+  setNavigationBarTitle(param?: NavigationBarTitle): void {
+    document.getElementsByTagName("title")[0].innerText = param.title;
+  }
 
   openWindow(param?: WechatMicroNavigation): void {}
 
@@ -78,8 +104,28 @@ export class WechatMicro extends BaseDevice {
     return undefined;
   }
 
-  scanQrCodeAsync(param?: QRcodeParam): Promise<QRcode> {
-    return undefined;
+  scanQrCodeAsync(param?: YzQrcodeParam): Promise<QRcode> {
+    return new Promise<YzQrcode>((resovle, reject) => {
+      wx.ready(() => {
+        wx.scanQRCode({
+          needResult: 1,
+          scanType: ["qrCode", "barCode"],
+          success: (res: any) => {
+            if (res.errMsg === "scanQRCode:ok") {
+              if (param && param.success) {
+                param.success(res.resultStr);
+              }
+              resovle(res.resultStr);
+            } else {
+              if (param && param.fail) {
+                param.fail("NativeJSSDK Error:error to scan qrcode");
+              }
+              reject("NativeJSSDK Error:error to scan qrcode");
+            }
+          },
+        });
+      });
+    });
   }
 
   chooseContactsAsync(param?: ContactUserParam): Promise<Array<ContactUser>> {
@@ -92,8 +138,30 @@ export class WechatMicro extends BaseDevice {
     return undefined;
   }
 
-  userLocationAsync(param?: MediaLocationParam): Promise<MediaLocation> {
-    return undefined;
+  userLocationAsync(param?: YzMediaLocationParam): Promise<MediaLocation> {
+    return new Promise<YzMediaLocation>((resolve, reject) => {
+      wx.ready(() => {
+        wx.getLocation({
+          type: "wgs84", // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
+          success: function (res: any) {
+            if (res.errMsg === "getLocation:ok") {
+              var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+              var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+              var address = "微信无address";
+              resolve({ latitude, longitude, address });
+              if (param && param.success) {
+                param.success({ latitude, longitude, address });
+              }
+            } else {
+              if (param && param.fail) {
+                param.fail("NativeJSSDK Error:error to get location!");
+              }
+              reject("NativeJSSDK Error:error to get location!");
+            }
+          },
+        });
+      });
+    });
   }
 
   userLocationWifiAsync(

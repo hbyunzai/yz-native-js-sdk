@@ -81,6 +81,7 @@ export class WechatOffice extends BaseDevice {
     }
 
     setNavigationBarTitle(param?: NavigationBarTitle): void {
+        document.getElementsByTagName("title")[0].innerText = param.title;
     }
 
     openWindow(param?: WechatOfficeNavigation): void {
