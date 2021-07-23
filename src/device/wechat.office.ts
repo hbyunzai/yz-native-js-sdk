@@ -157,6 +157,7 @@ export class WechatOffice extends BaseDevice {
                             resolve({ latitude, longitude, address });
                             if (param && param.success) {
                                 param.success({ latitude, longitude, address });
+                                resolve({ latitude, longitude, address });
                             }
                         } else {
                             if (param && param.fail) {
