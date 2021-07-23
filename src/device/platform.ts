@@ -53,6 +53,8 @@ export class PlatForm extends BaseDevice {
     const agent = window.navigator.userAgent.toLowerCase();
     if (/miniprogram/.test(agent)) {
       return new WechatMicro(option);
+    } else if (/micromessenger/.test(agent)) {
+      return new WechatOffice(option);
     } else if (
       /iphone/.test(agent) &&
       /mobile/.test(agent) &&
@@ -67,8 +69,6 @@ export class PlatForm extends BaseDevice {
       return new YzMobile(option);
     } else if (/linux/.test(agent) && /yunzai/.test(agent)) {
       return new YzMobile(option);
-    } else if (/micromessenger/.test(agent)) {
-      return new WechatOffice(option);
     } else {
       return new Browser(option);
     }
