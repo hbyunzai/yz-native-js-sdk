@@ -52,7 +52,7 @@ export class WechatOffice extends BaseDevice {
 
     auth(): Promise<Token> {
         return new Promise<Token>((resolve, reject) => {
-            let authurl = this.option.GATE_WAY + "/wechat/mp/token?url=" + window.location.href;
+            let authurl = this.option.GATE_WAY + "/wechat/mp/token?url=" + encodeURIComponent(window.location.href);
             http("GET", authurl, token => {
                 if (JSON.parse(token).error_code === 500) {
                     window.location.href = JSON.parse(token).path
