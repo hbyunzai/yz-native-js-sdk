@@ -13,7 +13,7 @@ const banner = new webpack.BannerPlugin({
     entryOnly: true
 });
 module.exports = {
-    watch: true,
+    watch: false,
     mode: "production",
     entry: "./src/umd.ts",
     output: {

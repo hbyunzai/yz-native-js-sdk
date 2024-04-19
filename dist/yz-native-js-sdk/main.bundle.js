@@ -1,6 +1,6 @@
 /*!
  * 
- *   YzPlatForm v0.1.26
+ *   YzPlatForm v0.1.28
  *   provide the native function call API of yunzai mobile platform for the third party.
  *   Copyright (c) 2019 河北云在, https://github.com/ferried/yz-native-js-sdk
  *   
