@@ -41,6 +41,7 @@ import { DeviceOption } from "./device.option";
 import { FileBrowser } from "../operation/fileBrowser";
 import { DownloadBrowserParam } from "../operation";
 import { WechatMicro } from "./wechat.micro";
+import {YunzaiIm} from "./yunzai.im";
 
 export class PlatForm extends BaseDevice {
   private proxy: BaseDevice;
@@ -53,7 +54,11 @@ export class PlatForm extends BaseDevice {
     const agent = window.navigator.userAgent.toLowerCase();
     if (/miniprogram/.test(agent)) {
       return new WechatMicro(option);
-    } else if (/micromessenger/.test(agent)) {
+    }
+    if (/yunzai_im/.test(agent)) {
+      return new YunzaiIm(option);
+    }
+    if (/micromessenger/.test(agent)) {
       return new WechatOffice(option);
     } else if (
       /iphone/.test(agent) &&
