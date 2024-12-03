@@ -115,11 +115,11 @@ var YunzaiIm = /** @class */ (function (_super) {
         return undefined;
     };
     YunzaiIm.prototype.fileBrowser = function (param) {
-        alert("微信请在打开页面后,选择右上角选择浏览器打开!");
+        alert("请在打开页面后,选择右上角选择浏览器打开!");
         return Promise.resolve(true);
     };
     YunzaiIm.prototype.downloadByBrowser = function (param) {
-        alert("微信请在打开页面后,选择右上角选择浏览器打开!");
+        alert("请在打开页面后,选择右上角选择浏览器打开!");
         return Promise.resolve(true);
     };
     return YunzaiIm;

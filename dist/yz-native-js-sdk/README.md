@@ -382,7 +382,8 @@ clear your html to this
     <base href="./" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
-    <script type="text/javascript"src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js" ></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js" ></script>
+    <script type="text/javascript" src="https://g.alicdn.com/dingding/dingtalk-jsapi/3.0.41/dingtalk.open.js"></script>
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <style type="text/css">
       .preloader {
