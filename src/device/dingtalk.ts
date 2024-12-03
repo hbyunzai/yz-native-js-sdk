@@ -23,32 +23,55 @@ import {http} from "../utils/http";
 import {FileBrowser} from "../operation/fileBrowser";
 import {DownloadBrowserParam} from "../operation";
 
-declare let UniJsBridge: any;
+declare let dd: any;
 
-export class YunzaiIm extends BaseDevice {
+export class Dingtalk extends BaseDevice {
     constructor(option?: DeviceOption) {
         super(option);
     }
 
     auth(): Promise<Token> {
         return new Promise<Token>((resolve, reject) => {
-            UniJsBridge.callHandler("getToken", {}, (res: any) => {
-                // res:就是上面的callbackFunction的参数
-                // 注意：如果uni-app不调用callbackFunction,那么这个回调函数是不会执行
-                console.log('getToken response:', JSON.stringify(res));
-                const token: any = {};
-                token.tokenType = res.data.token_type;
-                token.accessToken = res.data.access_token;
-                token.scope = res.data.scope;
-                token.tokenDateLine = res.data.expires_in;
-                // 设置token
-                const realToken = {accessToken: token.accessToken};
+            let authurl = this.option.GATE_WAY + "/wechat/mp/token?url=" + encodeURIComponent(window.location.href);
+            http("GET", authurl, token => {
+                if (JSON.parse(token).error_code === 500) {
+                    window.location.href = JSON.parse(token).path
+                }
+                const realToken = {accessToken: JSON.parse(token).message};
                 resolve(realToken);
             });
         });
     }
 
     apiRegister(): void {
+        http(
+            "GET",
+            this.option.GATE_WAY + "/wechat/mp/jssdk?url=" + encodeURIComponent(window.location.href),
+            (res: string) => {
+                const data = JSON.parse(res);
+                dd.config({
+                    agentId: data.agentId, // 必填，微应用ID
+                    corpId: data.corpId, // 必填，企业ID
+                    timeStamp: data.timestamp, // 必填，生成签名的时间戳
+                    nonceStr: data.nonceStr, // 必填，自定义固定字符串。
+                    signature: data.signature, // 必填，签名
+                    type: 0,   // 选填。0表示微应用的jsapi,1表示服务窗的jsapi；不填默认为0。该参数从dingtalk.js的0.8.3版本开始支持
+                    jsApiList: [
+                        'requestAuthCode',
+                        'scan',
+                        'getLocation',
+                        'device.geolocation.get',
+                    ] // 必填，需要使用的jsapi列表，注意：不要带dd。
+                });
+                dd.ready(() => {
+                    console.log('钉钉jssdk初始化完成.');
+                });
+                dd.error((res: any) => {
+                    console.error('钉钉jssdk初始化失败:', res);
+                });
+            },
+            this.option
+        );
     }
 
     setNavigationBarRightItems(param?: NavigationBarRightItems): void {
@@ -83,12 +106,23 @@ export class YunzaiIm extends BaseDevice {
     }
 
     scanQrCodeAsync(param?: YzQrcodeParam): Promise<QRcode> {
-        return new Promise<YzQrcode>((resovle, reject) => {
-            UniJsBridge.callHandler("clickScan", {}, (res: any) => {
-                console.log('clickScan response:', JSON.stringify(res));
-                const {result} = res.data;
-                resovle(result);
-            })
+        return new Promise<YzQrcode>((resolve, reject) => {
+            dd.scan({
+                type: 'qr',
+                success: (res: any) => {
+                    resolve(res.text);
+                    if (param && param.success) {
+                        param.success(res.text)
+                    }
+                },
+                fail: (err: any) => {
+                    console.error('调用扫一扫失败:' + JSON.stringify(err));
+                    reject("DingtalkJSSDK Error:error to scan qrcode");
+                    if (param && param.fail) {
+                        param.fail("DingtalkJSSDK Error:error to scan qrcode")
+                    }
+                },
+            });
         });
     }
 
@@ -106,13 +140,28 @@ export class YunzaiIm extends BaseDevice {
 
     userLocationAsync(param?: YzMediaLocationParam): Promise<YzMediaLocation> {
         return new Promise<YzMediaLocation>((resolve, reject) => {
-            // type参数支持 wgs84和 gcj02
-            UniJsBridge.callHandler("userLocation", {type: 'wgs84',}, (res: any) => {
-                console.log('userLocation response:', JSON.stringify(res));
-                const {latitude, longitude} = res.data;
-                const address = '暂无address';
-                resolve({latitude, longitude, address});
-            })
+            dd.getLocation({
+                type: 1,
+                useCache: true,
+                coordinate: '0',
+                cacheTimeout: 20,
+                withReGeocode: true,
+                targetAccuracy: '200',
+                success: (res: any) => {
+                    const {latitude, longitude, address} = res;
+                    resolve({latitude, longitude, address});
+                    if (param && param.success) {
+                        param.success({latitude, longitude, address});
+                    }
+                },
+                fail: (err: any) => {
+                    console.error('调用定位失败:' + JSON.stringify(err));
+                    reject("DingtalkJSSDK Error:error to get location!");
+                    if (param && param.fail) {
+                        param.fail("DingtalkJSSDK Error:error to get location!");
+                    }
+                },
+            });
         });
     }
 

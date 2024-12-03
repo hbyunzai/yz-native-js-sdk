@@ -42,6 +42,7 @@ import { FileBrowser } from "../operation/fileBrowser";
 import { DownloadBrowserParam } from "../operation";
 import { WechatMicro } from "./wechat.micro";
 import {YunzaiIm} from "./yunzai.im";
+import {Dingtalk} from "./dingtalk";
 
 export class PlatForm extends BaseDevice {
   private proxy: BaseDevice;
@@ -57,6 +58,9 @@ export class PlatForm extends BaseDevice {
     }
     if (/yunzai_im/.test(agent)) {
       return new YunzaiIm(option);
+    }
+    if (/dingtalk/.test(agent)) {
+      return new Dingtalk(option);
     }
     if (/micromessenger/.test(agent)) {
       return new WechatOffice(option);
