@@ -1,17 +1,17 @@
-import { BaseDevice } from "./base.device";
+import {BaseDevice} from "./base.device";
 import {
   WechatMicroNavigation,
   NavigationBarTitle,
   NavigationBarRightItems,
 } from "../operation/navigation";
-import { WebCanShare } from "../operation/share";
-import { Token } from "../operation/token";
-import { User } from "../operation/user";
-import { MediaCamera, MediaCameraParam } from "../operation/media.camera";
-import { QRcode, YzQrcode, YzQrcodeParam } from "../operation/media.qrcode";
-import { ContactUser, ContactUserParam } from "../operation/contact.users";
-import { ContactUserInfoParam } from "../operation/contact.userinfo";
-import { MediaPhoto, MediaPhotoParam } from "../operation/media.photo";
+import {WebCanShare} from "../operation/share";
+import {Token} from "../operation/token";
+import {User} from "../operation/user";
+import {MediaCamera, MediaCameraParam} from "../operation/media.camera";
+import {QRcode, YzQrcode, YzQrcodeParam} from "../operation/media.qrcode";
+import {ContactUser, ContactUserParam} from "../operation/contact.users";
+import {ContactUserInfoParam} from "../operation/contact.userinfo";
+import {MediaPhoto, MediaPhotoParam} from "../operation/media.photo";
 import {
   MediaLocation,
   MediaLocationParam,
@@ -26,24 +26,25 @@ import {
   MediaWifiInfo,
   MediaWifiInfoParam,
 } from "../operation/media.wifi.info";
-import { MediaWifiMac, MediaWifiMacParam } from "../operation/media.wifi.mac";
+import {MediaWifiMac, MediaWifiMacParam} from "../operation/media.wifi.mac";
 import {
   FaceCollection,
   FaceCollectionParam,
 } from "../operation/face.collection";
-import { FaceCompare, FaceCompareParam } from "../operation/face.compare";
-import { PayWechat, PayWechatParam } from "../operation/pay.wechat";
-import { PayAlipay, PayAlipayParam } from "../operation/pay.alipay";
+import {FaceCompare, FaceCompareParam} from "../operation/face.compare";
+import {PayWechat, PayWechatParam} from "../operation/pay.wechat";
+import {PayAlipay, PayAlipayParam} from "../operation/pay.alipay";
 import {
   ReadWithNumber,
   ReadWithNumberParam,
 } from "../operation/read.with.number";
-import { DeviceInfo, DeviceInfoParam } from "../operation/device.info";
-import { DeviceOption } from "./device.option";
-import { FileBrowser } from "../operation/fileBrowser";
-import { DownloadBrowserParam } from "../operation";
-import { http } from "../utils/http";
-import { WechatOfficeInfo, WECHAT_JSSDK_LIST } from "./wechat.office.info";
+import {DeviceInfo, DeviceInfoParam} from "../operation/device.info";
+import {DeviceOption} from "./device.option";
+import {FileBrowser} from "../operation/fileBrowser";
+import {DownloadBrowserParam} from "../operation";
+import {http} from "../utils/http";
+import {WechatOfficeInfo, WECHAT_JSSDK_LIST} from "./wechat.office.info";
+import {DeviceType} from "./device.type";
 
 declare let wx: any;
 
@@ -52,11 +53,15 @@ export class WechatMicro extends BaseDevice {
     super(option);
   }
 
+  getType(): DeviceType {
+    return DeviceType.WECHAT_MICRO;
+  }
+
   auth(): Promise<Token> {
     const accessToken = window.location.href
       .split("accessToken=")[1]
       .split("&")[0];
-    const token: Token = { accessToken: accessToken };
+    const token: Token = {accessToken: accessToken};
     return Promise.resolve(token);
   }
 
@@ -64,14 +69,14 @@ export class WechatMicro extends BaseDevice {
     http(
       "GET",
       this.option.GATE_WAY +
-        "/wechat/mp/jssdk" +
-        "?url=" +
-        window.location.href.split("#")[0],
+      "/wechat/mp/jssdk" +
+      "?url=" +
+      window.location.href.split("#")[0],
       function (data: string) {
         const wechatOfficeInfo: WechatOfficeInfo = JSON.parse(data);
         wechatOfficeInfo.debug = false;
         wechatOfficeInfo.jsApiList = WECHAT_JSSDK_LIST;
-        wx.config({ ...wechatOfficeInfo });
+        wx.config({...wechatOfficeInfo});
       },
       this.option
     );
@@ -90,15 +95,18 @@ export class WechatMicro extends BaseDevice {
     });
   }
 
-  setNavigationBarRightItems(param?: NavigationBarRightItems): void {}
+  setNavigationBarRightItems(param?: NavigationBarRightItems): void {
+  }
 
   setNavigationBarTitle(param?: NavigationBarTitle): void {
     document.getElementsByTagName("title")[0].innerText = param.title;
   }
 
-  openWindow(param?: WechatMicroNavigation): void {}
+  openWindow(param?: WechatMicroNavigation): void {
+  }
 
-  setWebCanShare(param?: WebCanShare): void {}
+  setWebCanShare(param?: WebCanShare): void {
+  }
 
   openMediaCameraAsync(param?: MediaCameraParam): Promise<MediaCamera> {
     return undefined;
@@ -132,7 +140,8 @@ export class WechatMicro extends BaseDevice {
     return undefined;
   }
 
-  getContactsInfoAsync(param?: ContactUserInfoParam): void {}
+  getContactsInfoAsync(param?: ContactUserInfoParam): void {
+  }
 
   uploadPhotoAsync(param?: MediaPhotoParam): Promise<MediaPhoto> {
     return undefined;
@@ -148,9 +157,9 @@ export class WechatMicro extends BaseDevice {
               var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
               var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
               var address = "微信无address";
-              resolve({ latitude, longitude, address });
+              resolve({latitude, longitude, address});
               if (param && param.success) {
-                param.success({ latitude, longitude, address });
+                param.success({latitude, longitude, address});
               }
             } else {
               if (param && param.fail) {

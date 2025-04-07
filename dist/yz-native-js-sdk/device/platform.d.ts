@@ -21,10 +21,12 @@ import { DeviceInfo, DeviceInfoParam } from "../operation/device.info";
 import { DeviceOption } from "./device.option";
 import { FileBrowser } from "../operation/fileBrowser";
 import { DownloadBrowserParam } from "../operation";
+import { DeviceType } from "./device.type";
 export declare class PlatForm extends BaseDevice {
     private proxy;
     constructor(option?: DeviceOption);
     distribute(option?: DeviceOption): BaseDevice;
+    getType(): DeviceType;
     getUser(): Promise<User>;
     auth(): Promise<Token>;
     apiRegister(): void;

@@ -39,10 +39,15 @@ import {DeviceOption} from "./device.option";
 import {http} from "../utils";
 import {FileBrowser} from "../operation/fileBrowser";
 import {DownloadBrowserParam} from "../operation";
+import {DeviceType} from "./device.type";
 
 export class Browser extends BaseDevice {
     constructor(option?: DeviceOption) {
         super(option);
+    }
+
+    getType(): DeviceType {
+        return DeviceType.BROWSER;
     }
 
     auth(): Promise<Token> {

@@ -128,6 +128,11 @@
         <button onclick="getDeviceInfo()">设备信息</button>
     </li>
 
+    <li>
+        <div id="devicetype"></div>
+        <button onclick="getDeviceType()">获取设备类型</button>
+    </li>
+
 
 </ol>
 </body>
@@ -375,6 +380,11 @@
                 alert(clickId + "按钮1被点击了");
             }
         });
+    }
+
+    function getDeviceType() {
+        const type = device.getType();
+        document.getElementById('devicetype').innerHTML = type;
     }
 </script>
 

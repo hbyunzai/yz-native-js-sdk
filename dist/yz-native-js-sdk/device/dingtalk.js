@@ -13,11 +13,15 @@ var __extends = (this && this.__extends) || (function () {
 })();
 import { BaseDevice } from "./base.device";
 import { http } from "../utils/http";
+import { DeviceType } from "./device.type";
 var Dingtalk = /** @class */ (function (_super) {
     __extends(Dingtalk, _super);
     function Dingtalk(option) {
         return _super.call(this, option) || this;
     }
+    Dingtalk.prototype.getType = function () {
+        return DeviceType.DINGTALK;
+    };
     Dingtalk.prototype.auth = function () {
         var _this = this;
         return new Promise(function (resolve, reject) {

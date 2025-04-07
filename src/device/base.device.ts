@@ -36,6 +36,7 @@ import {DeviceOption} from "./device.option";
 import {User} from "../operation/user";
 import {FileBrowser} from "../operation/fileBrowser";
 import {DownloadBrowserParam} from "../operation";
+import {DeviceType} from "./device.type";
 
 export abstract class BaseDevice {
     option: DeviceOption;
@@ -44,6 +45,10 @@ export abstract class BaseDevice {
         this.option = option;
     }
 
+    /**
+     * 获取设备类型
+     */
+    abstract getType(): DeviceType;
     /**
      * 获取用户
      */

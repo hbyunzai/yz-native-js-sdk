@@ -25,11 +25,15 @@ var __assign = (this && this.__assign) || function () {
 import { BaseDevice } from "./base.device";
 import { http } from "../utils/http";
 import { WECHAT_JSSDK_LIST } from "./wechat.office.info";
+import { DeviceType } from "./device.type";
 var WechatMicro = /** @class */ (function (_super) {
     __extends(WechatMicro, _super);
     function WechatMicro(option) {
         return _super.call(this, option) || this;
     }
+    WechatMicro.prototype.getType = function () {
+        return DeviceType.WECHAT_MICRO;
+    };
     WechatMicro.prototype.auth = function () {
         var accessToken = window.location.href
             .split("accessToken=")[1]
@@ -56,12 +60,15 @@ var WechatMicro = /** @class */ (function (_super) {
             }, _this.option);
         });
     };
-    WechatMicro.prototype.setNavigationBarRightItems = function (param) { };
+    WechatMicro.prototype.setNavigationBarRightItems = function (param) {
+    };
     WechatMicro.prototype.setNavigationBarTitle = function (param) {
         document.getElementsByTagName("title")[0].innerText = param.title;
     };
-    WechatMicro.prototype.openWindow = function (param) { };
-    WechatMicro.prototype.setWebCanShare = function (param) { };
+    WechatMicro.prototype.openWindow = function (param) {
+    };
+    WechatMicro.prototype.setWebCanShare = function (param) {
+    };
     WechatMicro.prototype.openMediaCameraAsync = function (param) {
         return undefined;
     };
@@ -92,7 +99,8 @@ var WechatMicro = /** @class */ (function (_super) {
     WechatMicro.prototype.chooseContactsAsync = function (param) {
         return undefined;
     };
-    WechatMicro.prototype.getContactsInfoAsync = function (param) { };
+    WechatMicro.prototype.getContactsInfoAsync = function (param) {
+    };
     WechatMicro.prototype.uploadPhotoAsync = function (param) {
         return undefined;
     };

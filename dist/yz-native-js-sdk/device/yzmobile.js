@@ -14,11 +14,15 @@ var __extends = (this && this.__extends) || (function () {
 import { BaseDevice } from "./base.device";
 import { YzMediaPhotoType } from "../operation/media.photo";
 import { http } from "../utils/http";
+import { DeviceType } from "./device.type";
 var YzMobile = /** @class */ (function (_super) {
     __extends(YzMobile, _super);
     function YzMobile(option) {
         return _super.call(this, option) || this;
     }
+    YzMobile.prototype.getType = function () {
+        return DeviceType.YZ_MOBILE;
+    };
     YzMobile.prototype.getUser = function () {
         var _this = this;
         return new Promise(function (resolve, reject) {

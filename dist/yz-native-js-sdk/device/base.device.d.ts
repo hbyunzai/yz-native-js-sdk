@@ -20,9 +20,14 @@ import { DeviceOption } from "./device.option";
 import { User } from "../operation/user";
 import { FileBrowser } from "../operation/fileBrowser";
 import { DownloadBrowserParam } from "../operation";
+import { DeviceType } from "./device.type";
 export declare abstract class BaseDevice {
     option: DeviceOption;
     constructor(option?: DeviceOption);
+    /**
+     * 获取设备类型
+     */
+    abstract getType(): DeviceType;
     /**
      * 获取用户
      */

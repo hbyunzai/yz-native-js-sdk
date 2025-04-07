@@ -22,12 +22,17 @@ import {DeviceOption} from "./device.option";
 import {http} from "../utils/http";
 import {FileBrowser} from "../operation/fileBrowser";
 import {DownloadBrowserParam} from "../operation";
+import {DeviceType} from "./device.type";
 
 declare let UniJsBridge: any;
 
 export class YunzaiIm extends BaseDevice {
     constructor(option?: DeviceOption) {
         super(option);
+    }
+
+    getType(): DeviceType {
+        return DeviceType.YUNZAI_IM;
     }
 
     auth(): Promise<Token> {

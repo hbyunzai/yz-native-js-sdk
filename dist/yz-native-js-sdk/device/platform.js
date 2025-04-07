@@ -56,6 +56,9 @@ var PlatForm = /** @class */ (function (_super) {
             return new Browser(option);
         }
     };
+    PlatForm.prototype.getType = function () {
+        return this.proxy.getType();
+    };
     PlatForm.prototype.getUser = function () {
         return this.proxy.getUser();
     };

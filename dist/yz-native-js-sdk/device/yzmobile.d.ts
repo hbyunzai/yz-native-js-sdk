@@ -21,8 +21,10 @@ import { YzDeviceInfo, YzDeviceInfoParam } from "../operation/device.info";
 import { DeviceOption } from "../device/device.option";
 import { YzFileBrowser } from "../operation/fileBrowser";
 import { YzDownloadBrowserParam } from "../operation";
+import { DeviceType } from "./device.type";
 export declare class YzMobile extends BaseDevice {
     constructor(option?: DeviceOption);
+    getType(): DeviceType;
     getUser(): Promise<YzUser>;
     auth(): Promise<YzToken>;
     apiRegister(): void;

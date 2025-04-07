@@ -25,11 +25,15 @@ var __assign = (this && this.__assign) || function () {
 import { BaseDevice } from "./base.device";
 import { http } from "../utils/http";
 import { WECHAT_JSSDK_LIST } from "./wechat.office.info";
+import { DeviceType } from "./device.type";
 var WechatOffice = /** @class */ (function (_super) {
     __extends(WechatOffice, _super);
     function WechatOffice(option) {
         return _super.call(this, option) || this;
     }
+    WechatOffice.prototype.getType = function () {
+        return DeviceType.WECHAT_MP;
+    };
     WechatOffice.prototype.auth = function () {
         var _this = this;
         return new Promise(function (resolve, reject) {

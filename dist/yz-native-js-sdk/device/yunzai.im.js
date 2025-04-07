@@ -13,11 +13,15 @@ var __extends = (this && this.__extends) || (function () {
 })();
 import { BaseDevice } from "./base.device";
 import { http } from "../utils/http";
+import { DeviceType } from "./device.type";
 var YunzaiIm = /** @class */ (function (_super) {
     __extends(YunzaiIm, _super);
     function YunzaiIm(option) {
         return _super.call(this, option) || this;
     }
+    YunzaiIm.prototype.getType = function () {
+        return DeviceType.YUNZAI_IM;
+    };
     YunzaiIm.prototype.auth = function () {
         return new Promise(function (resolve, reject) {
             UniJsBridge.callHandler("getToken", {}, function (res) {

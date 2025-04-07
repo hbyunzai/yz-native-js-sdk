@@ -12,11 +12,15 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 import { BaseDevice } from "./base.device";
+import { DeviceType } from "./device.type";
 var Alipay = /** @class */ (function (_super) {
     __extends(Alipay, _super);
     function Alipay(option) {
         return _super.call(this, option) || this;
     }
+    Alipay.prototype.getType = function () {
+        return DeviceType.ALIPAY;
+    };
     Alipay.prototype.auth = function () {
         return Promise.resolve(null);
     };

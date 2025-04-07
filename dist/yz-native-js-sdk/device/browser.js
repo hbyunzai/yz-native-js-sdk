@@ -13,11 +13,15 @@ var __extends = (this && this.__extends) || (function () {
 })();
 import { BaseDevice } from "./base.device";
 import { http } from "../utils";
+import { DeviceType } from "./device.type";
 var Browser = /** @class */ (function (_super) {
     __extends(Browser, _super);
     function Browser(option) {
         return _super.call(this, option) || this;
     }
+    Browser.prototype.getType = function () {
+        return DeviceType.BROWSER;
+    };
     Browser.prototype.auth = function () {
         var _this = this;
         var url = encodeURIComponent(window.location.href.toString());

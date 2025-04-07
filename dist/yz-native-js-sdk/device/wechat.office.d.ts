@@ -21,8 +21,10 @@ import { DeviceInfo, DeviceInfoParam } from "../operation/device.info";
 import { DeviceOption } from "./device.option";
 import { FileBrowser } from "../operation/fileBrowser";
 import { DownloadBrowserParam } from "../operation";
+import { DeviceType } from "./device.type";
 export declare class WechatOffice extends BaseDevice {
     constructor(option?: DeviceOption);
+    getType(): DeviceType;
     auth(): Promise<Token>;
     apiRegister(): void;
     setNavigationBarRightItems(param?: NavigationBarRightItems): void;

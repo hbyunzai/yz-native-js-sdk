@@ -1,19 +1,19 @@
-import { BaseDevice } from "./base.device";
+import {BaseDevice} from "./base.device";
 import {
   Navigation,
   NavigationBarTitle,
   NavigationBarRightItems,
 } from "../operation/navigation";
-import { WebCanShare } from "../operation/share";
-import { YzMobile } from "./yzmobile";
-import { Token } from "../operation/token";
-import { User } from "../operation/user";
-import { MediaCamera, MediaCameraParam } from "../operation/media.camera";
-import { QRcode, QRcodeParam } from "../operation/media.qrcode";
-import { ContactUser, ContactUserParam } from "../operation/contact.users";
-import { ContactUserInfoParam } from "../operation/contact.userinfo";
-import { MediaPhoto, MediaPhotoParam } from "../operation/media.photo";
-import { MediaLocation, MediaLocationParam } from "../operation/media.location";
+import {WebCanShare} from "../operation/share";
+import {YzMobile} from "./yzmobile";
+import {Token} from "../operation/token";
+import {User} from "../operation/user";
+import {MediaCamera, MediaCameraParam} from "../operation/media.camera";
+import {QRcode, QRcodeParam} from "../operation/media.qrcode";
+import {ContactUser, ContactUserParam} from "../operation/contact.users";
+import {ContactUserInfoParam} from "../operation/contact.userinfo";
+import {MediaPhoto, MediaPhotoParam} from "../operation/media.photo";
+import {MediaLocation, MediaLocationParam} from "../operation/media.location";
 import {
   MediaWifiLocation,
   MediaWifiLocationParam,
@@ -22,30 +22,32 @@ import {
   MediaWifiInfo,
   MediaWifiInfoParam,
 } from "../operation/media.wifi.info";
-import { MediaWifiMac, MediaWifiMacParam } from "../operation/media.wifi.mac";
+import {MediaWifiMac, MediaWifiMacParam} from "../operation/media.wifi.mac";
 import {
   FaceCollection,
   FaceCollectionParam,
 } from "../operation/face.collection";
-import { FaceCompare, FaceCompareParam } from "../operation/face.compare";
-import { PayWechat, PayWechatParam } from "../operation/pay.wechat";
-import { PayAlipay, PayAlipayParam } from "../operation/pay.alipay";
+import {FaceCompare, FaceCompareParam} from "../operation/face.compare";
+import {PayWechat, PayWechatParam} from "../operation/pay.wechat";
+import {PayAlipay, PayAlipayParam} from "../operation/pay.alipay";
 import {
   ReadWithNumber,
   ReadWithNumberParam,
 } from "../operation/read.with.number";
-import { DeviceInfo, DeviceInfoParam } from "../operation/device.info";
-import { WechatOffice } from "./wechat.office";
-import { Browser } from "./browser";
-import { DeviceOption } from "./device.option";
-import { FileBrowser } from "../operation/fileBrowser";
-import { DownloadBrowserParam } from "../operation";
-import { WechatMicro } from "./wechat.micro";
+import {DeviceInfo, DeviceInfoParam} from "../operation/device.info";
+import {WechatOffice} from "./wechat.office";
+import {Browser} from "./browser";
+import {DeviceOption} from "./device.option";
+import {FileBrowser} from "../operation/fileBrowser";
+import {DownloadBrowserParam} from "../operation";
+import {WechatMicro} from "./wechat.micro";
 import {YunzaiIm} from "./yunzai.im";
 import {Dingtalk} from "./dingtalk";
+import {DeviceType} from "./device.type";
 
 export class PlatForm extends BaseDevice {
   private proxy: BaseDevice;
+
   constructor(option?: DeviceOption) {
     super(option);
     this.proxy = this.distribute(option);
@@ -82,12 +84,19 @@ export class PlatForm extends BaseDevice {
       return new Browser(option);
     }
   }
+
+  getType(): DeviceType {
+    return this.proxy.getType();
+  }
+
   getUser(): Promise<User> {
     return this.proxy.getUser();
   }
+
   auth(): Promise<Token> {
     return this.proxy.auth();
   }
+
   apiRegister(): void {
     this.proxy.apiRegister();
   }

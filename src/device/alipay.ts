@@ -38,10 +38,15 @@ import {DeviceInfo, DeviceInfoParam} from "../operation/device.info";
 import {DeviceOption} from "./device.option";
 import {FileBrowser} from "../operation/fileBrowser";
 import {DownloadBrowserParam} from "../operation";
+import {DeviceType} from "./device.type";
 
 export class Alipay extends BaseDevice {
     constructor(option?: DeviceOption) {
         super(option);
+    }
+
+    getType(): DeviceType {
+        return DeviceType.ALIPAY;
     }
 
     auth(): Promise<Token> {
