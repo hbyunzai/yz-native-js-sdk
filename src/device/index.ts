@@ -17,3 +17,4 @@ export * from "./wechat.micro";
 export * from "./wechat.office.info";
 export * from "./wechat.office";
 export * from "./yzmobile";
+export * from "./device.type";
