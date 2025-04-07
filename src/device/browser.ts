@@ -135,12 +135,17 @@ export class Browser extends BaseDevice {
     }
 
     userLocationAsync(param?: MediaLocationParam): Promise<MediaLocation> {
-        return new Promise<MediaLocation>((reslove, reject) => {
-            reslove({
-                address: "brwoser hasn't location",
-                latitude: 0,
-                longitude: 0
-            });
+        return new Promise<MediaLocation>((resolve, reject) => {
+            if (!navigator.geolocation) {
+                reject("不支持获取地理位置。");
+            }
+            navigator.geolocation.getCurrentPosition((res) => {
+                resolve({
+                    address: "",
+                    latitude: res.coords.latitude,
+                    longitude: res.coords.longitude
+                });
+            }, err => reject(err));
         });
     }
 

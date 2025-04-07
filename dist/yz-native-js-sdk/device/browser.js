@@ -89,12 +89,17 @@ var Browser = /** @class */ (function (_super) {
         return undefined;
     };
     Browser.prototype.userLocationAsync = function (param) {
-        return new Promise(function (reslove, reject) {
-            reslove({
-                address: "brwoser hasn't location",
-                latitude: 0,
-                longitude: 0
-            });
+        return new Promise(function (resolve, reject) {
+            if (!navigator.geolocation) {
+                reject("不支持获取地理位置。");
+            }
+            navigator.geolocation.getCurrentPosition(function (res) {
+                resolve({
+                    address: "",
+                    latitude: res.coords.latitude,
+                    longitude: res.coords.longitude
+                });
+            }, function (err) { return reject(err); });
         });
     };
     Browser.prototype.userLocationWifiAsync = function (param) {
