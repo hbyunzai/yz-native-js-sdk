@@ -66,7 +66,7 @@ var Browser = /** @class */ (function (_super) {
             }, _this.option);
         });
     };
-    Browser.prototype.apiRegister = function () {
+    Browser.prototype.apiRegister = function (url) {
         console.warn("browser hasn't api register");
     };
     Browser.prototype.setNavigationBarRightItems = function (param) {

@@ -35,8 +35,11 @@ var Dingtalk = /** @class */ (function (_super) {
             });
         });
     };
-    Dingtalk.prototype.apiRegister = function () {
-        http("GET", this.option.GATE_WAY + "/wechat/mp/jssdk?url=" + encodeURIComponent(window.location.href), function (res) {
+    Dingtalk.prototype.apiRegister = function (url) {
+        if (url == null) {
+            url = window.location.href;
+        }
+        http("GET", this.option.GATE_WAY + "/wechat/mp/jssdk?url=" + encodeURIComponent(url), function (res) {
             var data = JSON.parse(res);
             dd.config({
                 agentId: data.agentId,

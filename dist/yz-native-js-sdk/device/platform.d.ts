@@ -29,7 +29,7 @@ export declare class PlatForm extends BaseDevice {
     getType(): DeviceType;
     getUser(): Promise<User>;
     auth(): Promise<Token>;
-    apiRegister(): void;
+    apiRegister(url?: string): void;
     openWindow(param?: Navigation): void;
     setNavigationBarTitle(param?: NavigationBarTitle): void;
     setNavigationBarRightItems(param?: NavigationBarRightItems): void;

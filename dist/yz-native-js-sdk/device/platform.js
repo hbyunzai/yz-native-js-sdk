@@ -65,8 +65,8 @@ var PlatForm = /** @class */ (function (_super) {
     PlatForm.prototype.auth = function () {
         return this.proxy.auth();
     };
-    PlatForm.prototype.apiRegister = function () {
-        this.proxy.apiRegister();
+    PlatForm.prototype.apiRegister = function (url) {
+        this.proxy.apiRegister(url);
     };
     PlatForm.prototype.openWindow = function (param) {
         this.proxy.openWindow(param);

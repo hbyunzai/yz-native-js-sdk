@@ -62,7 +62,7 @@ export abstract class BaseDevice {
     /**
      * API注册
      */
-    abstract apiRegister(): void;
+    abstract apiRegister(url?: string): void;
 
     /**
      * 打开新窗口

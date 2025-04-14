@@ -27,7 +27,7 @@ export declare class Browser extends BaseDevice {
     getType(): DeviceType;
     auth(): Promise<Token>;
     getUser(): Promise<YzUser>;
-    apiRegister(): void;
+    apiRegister(url?: string): void;
     setNavigationBarRightItems(param?: NavigationBarRightItems): void;
     setNavigationBarTitle(param?: NavigationBarTitle): void;
     openWindow(param?: BrowserNavigation): void;

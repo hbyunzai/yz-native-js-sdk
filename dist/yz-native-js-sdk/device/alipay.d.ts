@@ -27,7 +27,7 @@ export declare class Alipay extends BaseDevice {
     getType(): DeviceType;
     auth(): Promise<Token>;
     getUser(): Promise<User>;
-    apiRegister(): void;
+    apiRegister(url?: string): void;
     setNavigationBarRightItems(param?: NavigationBarRightItems): void;
     setNavigationBarTitle(param?: NavigationBarTitle): void;
     openWindow(param?: AliPayNavigation): void;

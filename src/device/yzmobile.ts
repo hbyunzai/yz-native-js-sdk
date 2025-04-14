@@ -82,7 +82,7 @@ export class YzMobile extends BaseDevice {
     });
   }
 
-  apiRegister(): void {
+  apiRegister(url?: string): void {
   }
 
   setNavigationBarRightItems(param?: YzNavigationBarRightItems): void {

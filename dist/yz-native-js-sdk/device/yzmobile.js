@@ -37,7 +37,7 @@ var YzMobile = /** @class */ (function (_super) {
             resolve(token);
         });
     };
-    YzMobile.prototype.apiRegister = function () {
+    YzMobile.prototype.apiRegister = function (url) {
     };
     YzMobile.prototype.setNavigationBarRightItems = function (param) {
         yz.setNavigationBarRightItems(param);

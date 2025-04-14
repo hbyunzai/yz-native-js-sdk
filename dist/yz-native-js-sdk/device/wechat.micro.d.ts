@@ -26,7 +26,7 @@ export declare class WechatMicro extends BaseDevice {
     constructor(option?: DeviceOption);
     getType(): DeviceType;
     auth(): Promise<Token>;
-    apiRegister(): void;
+    apiRegister(url?: string): void;
     getUser(): Promise<User>;
     setNavigationBarRightItems(param?: NavigationBarRightItems): void;
     setNavigationBarTitle(param?: NavigationBarTitle): void;

@@ -57,7 +57,7 @@ export class Alipay extends BaseDevice {
         return Promise.resolve(null);
     }
 
-    apiRegister(): void {
+    apiRegister(url?: string): void {
     }
 
     setNavigationBarRightItems(param?: NavigationBarRightItems): void {

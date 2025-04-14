@@ -41,11 +41,13 @@ var WechatMicro = /** @class */ (function (_super) {
         var token = { accessToken: accessToken };
         return Promise.resolve(token);
     };
-    WechatMicro.prototype.apiRegister = function () {
+    WechatMicro.prototype.apiRegister = function (url) {
+        if (url == null) {
+            url = window.location.href;
+        }
         http("GET", this.option.GATE_WAY +
             "/wechat/mp/jssdk" +
-            "?url=" +
-            window.location.href.split("#")[0], function (data) {
+            "?url=" + encodeURIComponent(url), function (data) {
             var wechatOfficeInfo = JSON.parse(data);
             wechatOfficeInfo.debug = false;
             wechatOfficeInfo.jsApiList = WECHAT_JSSDK_LIST;

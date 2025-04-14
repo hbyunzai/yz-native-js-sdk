@@ -48,10 +48,13 @@ export class Dingtalk extends BaseDevice {
         });
     }
 
-    apiRegister(): void {
+    apiRegister(url?: string): void {
+        if (url == null) {
+            url = window.location.href;
+        }
         http(
             "GET",
-            this.option.GATE_WAY + "/wechat/mp/jssdk?url=" + encodeURIComponent(window.location.href),
+            this.option.GATE_WAY + "/wechat/mp/jssdk?url=" + encodeURIComponent(url),
             (res: string) => {
                 const data = JSON.parse(res);
                 dd.config({

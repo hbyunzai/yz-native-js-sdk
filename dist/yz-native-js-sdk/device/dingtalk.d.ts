@@ -26,7 +26,7 @@ export declare class Dingtalk extends BaseDevice {
     constructor(option?: DeviceOption);
     getType(): DeviceType;
     auth(): Promise<Token>;
-    apiRegister(): void;
+    apiRegister(url?: string): void;
     setNavigationBarRightItems(param?: NavigationBarRightItems): void;
     setNavigationBarTitle(param?: NavigationBarTitle): void;
     openWindow(param?: WechatOfficeNavigation): void;

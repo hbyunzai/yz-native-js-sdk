@@ -65,13 +65,15 @@ export class WechatMicro extends BaseDevice {
     return Promise.resolve(token);
   }
 
-  apiRegister(): void {
+  apiRegister(url?: string): void {
+    if (url == null) {
+      url = window.location.href;
+    }
     http(
       "GET",
       this.option.GATE_WAY +
       "/wechat/mp/jssdk" +
-      "?url=" +
-      window.location.href.split("#")[0],
+      "?url=" + encodeURIComponent(url),
       function (data: string) {
         const wechatOfficeInfo: WechatOfficeInfo = JSON.parse(data);
         wechatOfficeInfo.debug = false;

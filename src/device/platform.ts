@@ -97,8 +97,8 @@ export class PlatForm extends BaseDevice {
     return this.proxy.auth();
   }
 
-  apiRegister(): void {
-    this.proxy.apiRegister();
+  apiRegister(url?: string): void {
+    this.proxy.apiRegister(url);
   }
 
   openWindow(param?: Navigation): void {

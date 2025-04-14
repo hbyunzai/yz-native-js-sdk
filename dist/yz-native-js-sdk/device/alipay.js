@@ -27,7 +27,7 @@ var Alipay = /** @class */ (function (_super) {
     Alipay.prototype.getUser = function () {
         return Promise.resolve(null);
     };
-    Alipay.prototype.apiRegister = function () {
+    Alipay.prototype.apiRegister = function (url) {
     };
     Alipay.prototype.setNavigationBarRightItems = function (param) {
     };

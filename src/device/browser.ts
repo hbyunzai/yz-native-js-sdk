@@ -103,7 +103,7 @@ export class Browser extends BaseDevice {
         });
     }
 
-    apiRegister(): void {
+    apiRegister(url?: string): void {
         console.warn("browser hasn't api register");
     }
 

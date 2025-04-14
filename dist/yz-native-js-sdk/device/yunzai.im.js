@@ -39,7 +39,7 @@ var YunzaiIm = /** @class */ (function (_super) {
             });
         });
     };
-    YunzaiIm.prototype.apiRegister = function () {
+    YunzaiIm.prototype.apiRegister = function (url) {
     };
     YunzaiIm.prototype.setNavigationBarRightItems = function (param) {
     };

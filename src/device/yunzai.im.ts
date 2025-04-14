@@ -53,7 +53,7 @@ export class YunzaiIm extends BaseDevice {
         });
     }
 
-    apiRegister(): void {
+    apiRegister(url?: string): void {
     }
 
     setNavigationBarRightItems(param?: NavigationBarRightItems): void {

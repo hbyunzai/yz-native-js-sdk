@@ -27,7 +27,7 @@ export declare class YzMobile extends BaseDevice {
     getType(): DeviceType;
     getUser(): Promise<YzUser>;
     auth(): Promise<YzToken>;
-    apiRegister(): void;
+    apiRegister(url?: string): void;
     setNavigationBarRightItems(param?: YzNavigationBarRightItems): void;
     setNavigationBarTitle(param?: YzNavigationBarTitle): void;
     openWindow(param?: YzNavigation): void;
