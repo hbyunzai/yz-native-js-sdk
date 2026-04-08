@@ -5,8 +5,16 @@ var WebViewAppCommService = /** @class */ (function () {
         this.callbackId = 0;
         // JSBridge 是否就绪
         this.bridgeReady = false;
+        this.initBridgeReadyPromise(); // 初始化等待 Promise
         this.initBridgeListener();
     }
+    // 初始化等待 Promise
+    WebViewAppCommService.prototype.initBridgeReadyPromise = function () {
+        var _this = this;
+        this.bridgeReadyPromise = new Promise(function (resolve) {
+            _this.resolveBridgeReady = resolve;
+        });
+    };
     /**
      * 初始化监听 UniApp JSBridge 就绪
      */
@@ -24,39 +32,49 @@ var WebViewAppCommService = /** @class */ (function () {
     WebViewAppCommService.prototype.listenUniAppBridge = function () {
         var _this = this;
         document.addEventListener('UniAppJSBridgeReady', function () {
-            _this.bridgeReady = true;
-            window.handleAppMessage = _this.handleAppMessage.bind(_this);
+            _this.setBridgeReady();
         });
         // 兜底
         if (window.uni) {
-            this.bridgeReady = true;
-            window.handleAppMessage = this.handleAppMessage.bind(this);
+            this.setBridgeReady();
         }
+        // 终极兜底：延迟检查（解决部分设备桥接延迟）
+        setTimeout(function () {
+            if (window.uni) {
+                _this.setBridgeReady();
+            }
+        }, 300);
+    };
+    // 标记桥接就绪并解锁等待
+    WebViewAppCommService.prototype.setBridgeReady = function () {
+        if (this.bridgeReady)
+            return;
+        this.bridgeReady = true;
+        window.handleAppMessage = this.handleAppMessage.bind(this);
+        this.resolveBridgeReady();
     };
     /**
      * 统一发送消息给 App
      */
     WebViewAppCommService.prototype.postMessage = function (param) {
         var _this = this;
-        return new Promise(function (resolve, reject) {
-            // 桥接未就绪
-            if (!_this.bridgeReady) {
-                reject(new Error('JSBridge 未初始化'));
-                return;
-            }
-            // 生成唯一回调 ID
-            var cid = "cb_" + _this.callbackId++;
-            param.callbackId = cid;
-            // 存入回调
-            _this.callbackMap.set(cid, function (data, status) {
-                _this.callbackMap.delete(cid); // 执行后立即删除
-                if (status === 'success')
-                    resolve(data);
-                else
-                    reject(new Error('App 返回失败'));
-            });
-            uni.webView.postMessage({
-                data: param
+        // 核心修复：先等待 JSBridge 就绪，再执行逻辑
+        return this.bridgeReadyPromise.then(function () {
+            return new Promise(function (resolve, reject) {
+                // 生成唯一回调 ID
+                var cid = "cb_" + _this.callbackId++;
+                param.callbackId = cid;
+                // 存入回调
+                _this.callbackMap.set(cid, function (data, status) {
+                    _this.callbackMap.delete(cid); // 执行后立即删除
+                    if (status === 'success')
+                        resolve(data);
+                    else
+                        reject(new Error('App 返回失败'));
+                });
+                uni.webView.postMessage({
+                    data: param
+                });
             });
         });
     };

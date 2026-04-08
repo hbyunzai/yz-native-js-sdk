@@ -18,12 +18,16 @@ export declare class WebViewAppCommService {
     private callbackMap;
     private callbackId;
     private bridgeReady;
+    private bridgeReadyPromise;
+    private resolveBridgeReady;
     constructor();
+    private initBridgeReadyPromise;
     /**
      * 初始化监听 UniApp JSBridge 就绪
      */
     private initBridgeListener;
     private listenUniAppBridge;
+    private setBridgeReady;
     /**
      * 统一发送消息给 App
      */
