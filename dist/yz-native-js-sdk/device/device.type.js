@@ -15,6 +15,8 @@ export var DeviceType;
     DeviceType["YIBAN"] = "YIBAN";
     // YUNZAI_IM
     DeviceType["YUNZAI_IM"] = "YUNZAI_IM";
+    // YUNZAI_OA_UNI_APP_X
+    DeviceType["YUNZAI_OA_UNI_APP_X"] = "YUNZAI_OA_UNI_APP_X";
     // 钉钉
     DeviceType["DINGTALK"] = "DINGTALK";
     // 支付宝

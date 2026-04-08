@@ -8,7 +8,17 @@
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
     <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
     <script type="text/javascript" src="https://g.alicdn.com/dingding/dingtalk-jsapi/3.0.41/dingtalk.open.js"></script>
+    <script type="text/javascript" src="js/uni.webview.1.5.5.js"></script>
+    <script type="text/javascript" src="js/uni-js-bridge.umd.js"></script>
     <script type="text/javascript" src="sdk.js"></script>
+    <script>
+        ;(function () {
+            var src = 'js/eruda.js';
+            if (!/eruda=true/.test(window.location)) return;
+            document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+            document.write('<scr' + 'ipt>eruda.init();</scr' + 'ipt>');
+        })();
+    </script>
 </head>
 
 <body>
@@ -137,7 +147,7 @@
 </ol>
 </body>
 <script>
-    const device = new YzDevice({GATE_WAY: "http://222.30.195.53:8080/backstage"});
+    const device = new YzDevice({GATE_WAY: "https://dev.yunzainfo.com/backstage"});
     device.auth().then((token) => {
         device.option.TOKEN_TYPE = "Authority"
         device.option.TOKEN_VALUE = "Bearer " + token.accessToken;

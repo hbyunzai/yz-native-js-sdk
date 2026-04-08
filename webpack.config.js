@@ -97,6 +97,7 @@ module.exports = {
         banner,
         new CopyPlugin([
                 {from: "./src/sdk.js", to: "sdk.js"},
+                {from: "./src/js", to: "js"},
                 {from: "package.json", to: "package.json"},
                 {from: 'README.md', to: "README.md"}
             ]

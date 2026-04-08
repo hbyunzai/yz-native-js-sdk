@@ -18,6 +18,7 @@ import { Browser } from "./browser";
 import { WechatMicro } from "./wechat.micro";
 import { YunzaiIm } from "./yunzai.im";
 import { Dingtalk } from "./dingtalk";
+import { YunzaiOaUniAppX } from "./yunzai.oa-uni-app-x";
 var PlatForm = /** @class */ (function (_super) {
     __extends(PlatForm, _super);
     function PlatForm(option) {
@@ -32,6 +33,9 @@ var PlatForm = /** @class */ (function (_super) {
         }
         if (/yunzai_im/.test(agent)) {
             return new YunzaiIm(option);
+        }
+        if (/uni-app-x/.test(agent)) {
+            return new YunzaiOaUniAppX(option);
         }
         if (/dingtalk/.test(agent)) {
             return new Dingtalk(option);

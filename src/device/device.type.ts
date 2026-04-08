@@ -14,6 +14,8 @@ export enum DeviceType {
   YIBAN = "YIBAN",
   // YUNZAI_IM
   YUNZAI_IM = "YUNZAI_IM",
+  // YUNZAI_OA_UNI_APP_X
+  YUNZAI_OA_UNI_APP_X = "YUNZAI_OA_UNI_APP_X",
   // 钉钉
   DINGTALK = "DINGTALK",
   // 支付宝

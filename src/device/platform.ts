@@ -44,6 +44,7 @@ import {WechatMicro} from "./wechat.micro";
 import {YunzaiIm} from "./yunzai.im";
 import {Dingtalk} from "./dingtalk";
 import {DeviceType} from "./device.type";
+import {YunzaiOaUniAppX} from "./yunzai.oa-uni-app-x";
 
 export class PlatForm extends BaseDevice {
   private proxy: BaseDevice;
@@ -60,6 +61,9 @@ export class PlatForm extends BaseDevice {
     }
     if (/yunzai_im/.test(agent)) {
       return new YunzaiIm(option);
+    }
+    if (/uni-app-x/.test(agent)) {
+      return new YunzaiOaUniAppX(option);
     }
     if (/dingtalk/.test(agent)) {
       return new Dingtalk(option);

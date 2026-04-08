@@ -8,6 +8,7 @@ export declare enum DeviceType {
     WECHAT_MICRO = "WECHAT_MICRO",
     YIBAN = "YIBAN",
     YUNZAI_IM = "YUNZAI_IM",
+    YUNZAI_OA_UNI_APP_X = "YUNZAI_OA_UNI_APP_X",
     DINGTALK = "DINGTALK",
     ALIPAY = "ALIPAY"
 }
