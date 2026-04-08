@@ -32,20 +32,9 @@ export class WebViewAppCommService {
   // JSBridge 是否就绪
   private bridgeReady = false;
 
-  // 核心修复：用于等待桥接就绪的 Promise
-  private bridgeReadyPromise!: Promise<void>;
-  private resolveBridgeReady!: () => void;
 
   constructor() {
-    this.initBridgeReadyPromise(); // 初始化等待 Promise
     this.initBridgeListener();
-  }
-
-  // 初始化等待 Promise
-  private initBridgeReadyPromise() {
-    this.bridgeReadyPromise = new Promise<void>((resolve) => {
-      this.resolveBridgeReady = resolve;
-    });
   }
 
   /**
@@ -63,49 +52,38 @@ export class WebViewAppCommService {
 
   private listenUniAppBridge(): void {
     document.addEventListener('UniAppJSBridgeReady', () => {
-      this.setBridgeReady();
+      this.bridgeReady = true;
+      (window as any).handleAppMessage = this.handleAppMessage.bind(this);
     });
 
     // 兜底
     if ((window as any).uni) {
-      this.setBridgeReady();
+      this.bridgeReady = true;
+      (window as any).handleAppMessage = this.handleAppMessage.bind(this);
     }
-
-    // 终极兜底：延迟检查（解决部分设备桥接延迟）
-    setTimeout(() => {
-      if ((window as any).uni) {
-        this.setBridgeReady();
-      }
-    }, 300);
-  }
-
-  // 标记桥接就绪并解锁等待
-  private setBridgeReady() {
-    if (this.bridgeReady) return;
-    this.bridgeReady = true;
-    (window as any).handleAppMessage = this.handleAppMessage.bind(this);
-    this.resolveBridgeReady();
   }
 
   /**
    * 统一发送消息给 App
    */
   postMessage<T = any>(param: WebViewMessage): Promise<T> {
-    // 核心修复：先等待 JSBridge 就绪，再执行逻辑
-    return this.bridgeReadyPromise.then(() => {
-      return new Promise((resolve, reject) => {
-        // 生成唯一回调 ID
-        const cid = `cb_${this.callbackId++}`;
-        param.callbackId = cid;
-        // 存入回调
-        this.callbackMap.set(cid, (data, status) => {
-          this.callbackMap.delete(cid); // 执行后立即删除
-          if (status === 'success') resolve(data);
-          else reject(new Error('App 返回失败'));
-        });
-        uni.webView.postMessage({
-          data: param
-        });
+    return new Promise((resolve, reject) => {
+      // 桥接未就绪
+      if (!this.bridgeReady) {
+        reject(new Error('JSBridge 未初始化'));
+        return;
+      }
+      // 生成唯一回调 ID
+      const cid = `cb_${this.callbackId++}`;
+      param.callbackId = cid
+      // 存入回调
+      this.callbackMap.set(cid, (data, status) => {
+        this.callbackMap.delete(cid); // 执行后立即删除
+        if (status === 'success') resolve(data);
+        else reject(new Error('App 返回失败'));
+      });
+      uni.webView.postMessage({
+        data: param
       });
     });
   }
