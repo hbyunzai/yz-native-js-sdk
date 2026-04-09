@@ -11,26 +11,9 @@ var WebViewAppCommService = /** @class */ (function () {
      * 初始化监听 UniApp JSBridge 就绪
      */
     WebViewAppCommService.prototype.initBridgeListener = function () {
-        var _this = this;
-        if (document.readyState === 'complete' || document.readyState === 'interactive') {
-            this.listenUniAppBridge();
-        }
-        else {
-            document.addEventListener('DOMContentLoaded', function () {
-                _this.listenUniAppBridge();
-            });
-        }
-    };
-    WebViewAppCommService.prototype.listenUniAppBridge = function () {
-        var _this = this;
-        document.addEventListener('UniAppJSBridgeReady', function () {
-            _this.bridgeReady = true;
-            window.handleAppMessage = _this.handleAppMessage.bind(_this);
-        });
-        // 兜底
         if (window.uni) {
-            this.bridgeReady = true;
             window.handleAppMessage = this.handleAppMessage.bind(this);
+            this.bridgeReady = true;
         }
     };
     /**

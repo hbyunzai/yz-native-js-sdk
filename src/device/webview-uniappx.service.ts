@@ -41,25 +41,9 @@ export class WebViewAppCommService {
    * 初始化监听 UniApp JSBridge 就绪
    */
   private initBridgeListener(): void {
-    if (document.readyState === 'complete' || document.readyState === 'interactive') {
-      this.listenUniAppBridge();
-    } else {
-      document.addEventListener('DOMContentLoaded', () => {
-        this.listenUniAppBridge();
-      });
-    }
-  }
-
-  private listenUniAppBridge(): void {
-    document.addEventListener('UniAppJSBridgeReady', () => {
-      this.bridgeReady = true;
-      (window as any).handleAppMessage = this.handleAppMessage.bind(this);
-    });
-
-    // 兜底
     if ((window as any).uni) {
-      this.bridgeReady = true;
       (window as any).handleAppMessage = this.handleAppMessage.bind(this);
+      this.bridgeReady = true;
     }
   }
 

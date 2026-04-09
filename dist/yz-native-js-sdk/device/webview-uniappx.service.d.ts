@@ -23,7 +23,6 @@ export declare class WebViewAppCommService {
      * 初始化监听 UniApp JSBridge 就绪
      */
     private initBridgeListener;
-    private listenUniAppBridge;
     /**
      * 统一发送消息给 App
      */
